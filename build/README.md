@@ -9,6 +9,7 @@ Healthcare AI Hackathon, Sat 2026-09-26. Two people, each driving their own codi
 | `TRACK_A.md` | Person A's agents - engines and data |
 | `TRACK_B.md` | Person B's agents - API, UI, patient loop |
 | `DESIGN.md` | Both, at the end - visual pass, copy audit, rehearsal, backup video |
+| `AWS.md` | After the hackathon - moving each local piece onto AWS services, section by section |
 
 Paste into each agent: "Read build/PROJECT.md, then do section <X> of build/TRACK_<A|B>.md. Do only that section. Don't edit files the other track owns. If a contract in PROJECT.md needs to change, stop and tell me."
 
