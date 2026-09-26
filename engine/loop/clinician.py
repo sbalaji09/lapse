@@ -93,7 +93,11 @@ def clinician_card(case: Case) -> dict:
     for f in case.facts:
         if f.source == Source.patient_reply and f.quote and f.key in ("standing_tolerance_minutes", "significantly_impairs"):
             received = f.recorded_at.date().isoformat()
-            spans.append({"source": "patient_reply", "quote": f.quote, "date": received,
+            # The clinician reads the whole reply; the words the fact was parsed from are highlighted inside it.
+            full = next((e["detail"]["text"] for e in reversed(case.events)
+                         if e.get("kind") == "patient_reply_received" and isinstance(e.get("detail"), dict)
+                         and f.quote in e["detail"].get("text", "")), f.quote)
+            spans.append({"source": "patient_reply", "quote": f.quote, "context": full, "date": received,
                           "label": f"Patient's own words, received {received}",
                           "message_id": f.source_ref.get("message_id")})
     notes = {n.id: n for n in store.get_notes(case.patient_id)}

@@ -4,6 +4,7 @@
 """
 from datetime import datetime, timezone
 
+from engine.config import CLINICS
 from engine.models import CaseStatus, Holder, MissingFact
 import engine.store as store
 
@@ -15,7 +16,7 @@ TEMPLATES = {
             "As part of your Medi-Cal coverage review (due {renewal_date}), we have one quick question:\n\n"
             "{question}\n\n"
             "Please reply in your own words, in any language you're comfortable with. No login needed.\n\n"
-            "Thank you,\n{clinic_name}"
+            "Thank you,\n{clinic_name}\n{clinic_phone}"
         ),
     },
     "es": {
@@ -25,7 +26,7 @@ TEMPLATES = {
             "Como parte de su revisión de cobertura de Medi-Cal (vence el {renewal_date}), tenemos una pregunta rápida:\n\n"
             "{question}\n\n"
             "Por favor responda con sus propias palabras, en cualquier idioma que prefiera. No necesita iniciar sesión.\n\n"
-            "Gracias,\n{clinic_name}"
+            "Gracias,\n{clinic_name}\n{clinic_phone}"
         ),
     },
 }
@@ -42,11 +43,13 @@ def render_email(case, missing_fact: MissingFact) -> dict:
     lang = case.language if case.language in TEMPLATES else "en"
     tpl = TEMPLATES[lang]
     question = missing_fact.question.get(lang) or missing_fact.question.get("en", "")
+    clinic = CLINICS.get(case.clinic_id, {})
     fields = dict(
-        name=case.display_name,
+        name=case.display_name.split()[0],
         renewal_date=case.renewal_date.isoformat(),
         question=question,
-        clinic_name=case.clinician_name or "your clinic",
+        clinic_name=clinic.get("name", "your clinic"),
+        clinic_phone=clinic.get("phone", ""),
     )
     return {"subject": tpl["subject"], "body": tpl["body"].format(**fields)}
 

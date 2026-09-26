@@ -11,11 +11,14 @@ LOOKBACK_START = date(2026, 2, 15)
 # Seed for every generated artifact (Synthea was run with -s 42 too). Same seed -> same cohort, truth, notes.
 SEED = 42
 
-# Three synthetic clinics; each cohort patient is assigned one, and its clinician signs attestations.
+# Three synthetic clinics (phone numbers in the reserved fictional 555-01xx range); each cohort patient is assigned one, and its clinician signs attestations.
 CLINICS = {
-    "clinic-mission": {"name": "Mission Community Health", "clinician": "Dr. Anita Patel", "nurse": "Dana Whitfield, RN"},
-    "clinic-eastside": {"name": "Eastside Family Clinic", "clinician": "Dr. James Okafor", "nurse": "Luis Ortega, RN"},
-    "clinic-valley": {"name": "Valley Health Center", "clinician": "Dr. Maria Reyes", "nurse": "Grace Kim, RN"},
+    "clinic-mission": {"name": "Mission Community Health", "clinician": "Dr. Anita Patel", "nurse": "Dana Whitfield, RN",
+                       "phone": "(555) 010-0101"},
+    "clinic-eastside": {"name": "Eastside Family Clinic", "clinician": "Dr. James Okafor", "nurse": "Luis Ortega, RN",
+                        "phone": "(555) 010-0102"},
+    "clinic-valley": {"name": "Valley Health Center", "clinician": "Dr. Maria Reyes", "nurse": "Grace Kim, RN",
+                      "phone": "(555) 010-0103"},
 }
 
 # Fast model for extraction/parsing, stronger model for the verifier. Bedrock is a config swap.
