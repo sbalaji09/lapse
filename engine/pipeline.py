@@ -2,6 +2,8 @@
 
     python -m engine.pipeline --stage cohort      # A1: cohort, truth, notes, labels, external databases
     python -m engine.pipeline --stage channel_a   # A2: the state's ex parte check, zero LLM
+    python -m engine.pipeline --stage channel_b   # A3: evidence finder + verifier (LLM, cached to disk)
+          [--golden-only] [--estimate]
     python -m engine.pipeline                  # everything implemented so far
 
 Later stages (A2 channel_a, A3 channel_b + verifier, A4 final/buckets/solver) register themselves in STAGES.
@@ -10,8 +12,9 @@ import argparse
 import collections
 import time
 
-from engine import external, notes as notegen, store
+from engine import channel_b, external, llm, notes as notegen, store, verifier
 from engine.cohort import COHORT_SIZE, Patient, load_cohort
+from engine.config import MODEL_FAST, MODEL_VERIFY
 from engine.golden import BUILDERS
 from engine.channel_a import run_channel_a
 from engine.rulepack import load_pack
@@ -20,7 +23,7 @@ from engine.truth import Truth, generate as generate_truth, load_truth, write_tr
 GOLDEN_IDS = {f"g-{b.__name__}" for b in BUILDERS}
 
 
-def stage_cohort() -> None:
+def stage_cohort(args=None) -> None:
     t0 = time.time()
     patients = load_cohort()
     if len(patients) != COHORT_SIZE:
@@ -95,7 +98,7 @@ def print_truth_rates(patients: list[Patient], truths: list[Truth], labels) -> N
     print("  languages:", ", ".join(f"{k} {v}" for k, v in langs.most_common(5)))
 
 
-def stage_channel_a() -> None:
+def stage_channel_a(args=None) -> None:
     t0 = time.time()
     pack = load_pack()
     patients = store.list_patients()
@@ -122,16 +125,82 @@ def stage_channel_a() -> None:
     print(f"  -> {len(really - safe)} people who already qualify would get a notice")
 
 
-STAGES = {"cohort": stage_cohort, "channel_a": stage_channel_a}
+# USD per 1M tokens (input, output), OpenAI list prices; used only for the printed estimate.
+PRICES = {"gpt-4.1-mini": (0.40, 1.60), "gpt-4.1": (2.00, 8.00)}
+CLAIMS_PER_NOTE_GUESS = 0.9
+
+
+def _cost(model: str, tokens_in: float, tokens_out: float) -> float:
+    pin, pout = PRICES.get(model, (0, 0))
+    return (tokens_in * pin + tokens_out * pout) / 1e6
+
+
+def stage_channel_b(args=None) -> None:
+    golden_only = bool(args and args.golden_only)
+    pack = load_pack()
+    a_runs = store.list_channel_runs("A")
+    if not a_runs:
+        raise RuntimeError("no Channel A results; run --stage channel_a first")
+    notes = [n for n in store.all_notes() if not golden_only or n.patient_id in GOLDEN_IDS]
+    ext_calls = [channel_b.extraction_call(n) for n in notes]
+
+    todo = llm.uncached(ext_calls)
+    est_in = sum(len(c["system"]) + len(c["user"]) for c in todo) / 4
+    n_verify = len(todo) * CLAIMS_PER_NOTE_GUESS
+    ver_in = n_verify * (len(verifier.SYSTEM) + 250) / 4
+    est = _cost(MODEL_FAST, est_in, len(todo) * 150) + _cost(MODEL_VERIFY, ver_in, n_verify * 40)
+    minutes = (len(todo) + n_verify) / llm.CONCURRENCY * 2.5 / 60
+    print(f"channel B: {len(notes)} notes, {len(notes) - len(todo)} cached, {len(todo)} to extract "
+          f"(+~{n_verify:.0f} verifier calls). Estimate: ~${est:.2f}, ~{minutes:.1f} min.")
+    if args and args.estimate:
+        return
+
+    t0 = time.time()
+    responses = llm.run_batch(ext_calls)
+    claims, unlocatable = [], 0
+    for note, resp in zip(notes, responses):
+        cs, bad = channel_b.to_claims(note, resp)
+        claims += cs
+        unlocatable += bad
+    verdicts = llm.run_batch([verifier.verify_call(c) for c in claims])
+    claims = [verifier.apply(c, v) for c, v in zip(claims, verdicts)]
+
+    by_patient: dict[str, list] = collections.defaultdict(list)
+    for c in claims:
+        by_patient[c.patient_id].append(c)
+    pids = {n.patient_id for n in notes}
+    runs = []
+    for pid in sorted(pids):
+        b_facts = channel_b.evidence_facts(by_patient[pid], pack)
+        a_facts = a_runs[pid][1]
+        runs.append((channel_b.determine(pid, a_facts, b_facts, pack), b_facts))
+    store.replace_claims(pids, claims)
+    store.save_channel_runs("B", runs, replace_all=not golden_only)
+
+    kept = sum(bool(c.verified) for c in claims)
+    status = collections.Counter(d.status for d, _ in runs)
+    cost = sum(_cost(m, llm.stats.input_tokens[m], llm.stats.output_tokens.get(m, 0)) for m in llm.stats.input_tokens)
+    print(f"  {time.time() - t0:.1f}s; LLM calls: {llm.stats.misses} new (${cost:.2f}), {llm.stats.hits} from cache")
+    print(f"  claims: {len(claims) + unlocatable} extracted, {kept} verified, {len(claims) - kept} dropped by the "
+          f"verifier, {unlocatable} unlocatable (quote not found in the note)")
+    print("  B status: " + ", ".join(f"{s} {status[s]}" for s in ("compliant", "exempt", "not_determined")))
+    a_clear = sum(a_runs[d.patient_id][0].status != "not_determined" for d, _ in runs)
+    b_clear = sum(d.status != "not_determined" for d, _ in runs)
+    print(f"  cleared: state {a_clear} -> with notes {b_clear} (+{b_clear - a_clear})")
+
+
+STAGES = {"cohort": stage_cohort, "channel_a": stage_channel_a, "channel_b": stage_channel_b}
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--stage", choices=sorted(STAGES), help="run a single stage (default: all, in order)")
+    parser.add_argument("--golden-only", action="store_true", help="channel_b: only the 7 golden patients")
+    parser.add_argument("--estimate", action="store_true", help="channel_b: print the cost estimate and stop")
     args = parser.parse_args()
     for name, run in STAGES.items():
         if args.stage in (None, name):
-            run()
+            run(args)
 
 
 if __name__ == "__main__":

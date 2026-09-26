@@ -13,7 +13,7 @@ from pathlib import Path
 from engine.checks import check_case
 from engine.cohort import Patient
 from engine.config import AS_OF_DATE, DB_PATH, FIXTURES_PATH
-from engine.models import Bucket, Case, CaseStatus, Determination, Fact, Note
+from engine.models import Bucket, Case, CaseStatus, Claim, Determination, Fact, Note
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS cases (
@@ -37,6 +37,14 @@ CREATE TABLE IF NOT EXISTS patients (
     id   TEXT PRIMARY KEY,
     data TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS claims (
+    id         TEXT PRIMARY KEY,
+    patient_id TEXT NOT NULL,
+    note_id    TEXT NOT NULL,
+    verified   INTEGER,
+    data       TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS claims_patient ON claims (patient_id);
 CREATE TABLE IF NOT EXISTS channel_runs (
     patient_id TEXT NOT NULL,
     channel    TEXT NOT NULL,
@@ -121,6 +129,30 @@ def replace_cohort(patients: list[Patient], notes: list[Note]) -> None:
                          [(n.id, n.patient_id, n.date.isoformat(), n.model_dump_json()) for n in notes])
 
 
+def all_notes() -> list[Note]:
+    with connect() as conn:
+        rows = conn.execute("SELECT data FROM notes ORDER BY patient_id, date, id").fetchall()
+    return [Note.model_validate_json(r[0]) for r in rows]
+
+
+def replace_claims(patient_ids: set[str], claims: list[Claim]) -> None:
+    """Swap in Channel B's claims (verified and dropped) for these patients in one transaction."""
+    with connect() as conn:
+        conn.executemany("DELETE FROM claims WHERE patient_id = ?", [(pid,) for pid in patient_ids])
+        conn.executemany("INSERT INTO claims VALUES (?, ?, ?, ?, ?)",
+                         [(c.id, c.patient_id, c.note_id, None if c.verified is None else int(c.verified),
+                           c.model_dump_json()) for c in claims])
+
+
+def list_claims(patient_id: str | None = None) -> list[Claim]:
+    sql, args = "SELECT data FROM claims", ()
+    if patient_id is not None:
+        sql, args = sql + " WHERE patient_id = ?", (patient_id,)
+    with connect() as conn:
+        rows = conn.execute(sql + " ORDER BY id", args).fetchall()
+    return [Claim.model_validate_json(r[0]) for r in rows]
+
+
 def get_patient(patient_id: str) -> Patient | None:
     with connect() as conn:
         row = conn.execute("SELECT data FROM patients WHERE id = ?", (patient_id,)).fetchone()
@@ -133,10 +165,14 @@ def list_patients() -> list[Patient]:
     return [Patient.model_validate_json(r[0]) for r in rows]
 
 
-def save_channel_runs(channel: str, runs: list[tuple[Determination, list[Fact]]]) -> None:
-    """Replace every stored result for one channel ("A", "B", ...) in one transaction."""
+def save_channel_runs(channel: str, runs: list[tuple[Determination, list[Fact]]], replace_all: bool = True) -> None:
+    """Store one channel's results ("A", "B", ...) in one transaction; by default replacing all earlier ones."""
     with connect() as conn:
-        conn.execute("DELETE FROM channel_runs WHERE channel = ?", (channel,))
+        if replace_all:
+            conn.execute("DELETE FROM channel_runs WHERE channel = ?", (channel,))
+        else:
+            conn.executemany("DELETE FROM channel_runs WHERE channel = ? AND patient_id = ?",
+                             [(channel, d.patient_id) for d, _ in runs])
         conn.executemany(
             "INSERT INTO channel_runs VALUES (?, ?, ?, ?)",
             [(d.patient_id, channel, d.status,
