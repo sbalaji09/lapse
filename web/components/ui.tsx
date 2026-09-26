@@ -20,9 +20,8 @@ function LogoMark() {
 
 const LINKS = [
   { href: "/", label: "Work queue", hint: "Members renewing soon, and the one action that keeps each covered" },
-  { href: "/plan", label: "For health plans", hint: "Totals, recovered members, and exemptions that would not survive an audit" },
-  { href: "/eval", label: "Accuracy", hint: "How Lapse compares with the state's check, measured on synthetic data" },
   { href: "/tests", label: "Verification", hint: "Re-run every claim the product makes against the live system" },
+  { href: "/plan", label: "Analytics", hint: "Totals, accuracy, and the members you would lose to paperwork" },
 ];
 
 export function Nav({ right }: { right?: React.ReactNode }) {

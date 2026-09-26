@@ -26,6 +26,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.on_event("startup")
+def _ensure_demo_data() -> None:
+    """Never boot to an empty queue: load the golden cases on first start."""
+    if not store.list_cases():
+        store.load_fixtures()
+
+
 router = APIRouter(prefix="/api")
 
 def not_implemented():

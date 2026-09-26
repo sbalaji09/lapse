@@ -35,6 +35,8 @@ OPENAI_MODEL_FAST = os.environ.get("OPENAI_MODEL_FAST", "gpt-4.1-mini")
 OPENAI_MODEL_VERIFY = os.environ.get("OPENAI_MODEL_VERIFY", "gpt-4.1")
 BEDROCK_MODEL_FAST = os.environ.get("BEDROCK_MODEL_FAST", "amazon.nova-lite-v1:0")
 BEDROCK_MODEL_VERIFY = os.environ.get("BEDROCK_MODEL_VERIFY", "amazon.nova-pro-v1:0")
+BEDROCK_GUARDRAIL_ID = os.environ.get("BEDROCK_GUARDRAIL_ID")
+BEDROCK_GUARDRAIL_VERSION = os.environ.get("BEDROCK_GUARDRAIL_VERSION")
 
 MODEL_FAST = BEDROCK_MODEL_FAST if LAPSE_BACKEND == "aws" else OPENAI_MODEL_FAST
 MODEL_VERIFY = BEDROCK_MODEL_VERIFY if LAPSE_BACKEND == "aws" else OPENAI_MODEL_VERIFY
@@ -54,6 +56,8 @@ EXTERNAL_DIR = DATA_DIR / "external"
 FIXTURES_PATH = ROOT / "fixtures" / "golden_cases.json"
 CACHE_DIR = ROOT / ".cache"
 LLM_CACHE_DIR = CACHE_DIR / "llm"
+GUARDRAIL_CACHE_DIR = CACHE_DIR / "guardrails"
+GUARDRAIL_CONFIG_PATH = CACHE_DIR / "bedrock_guardrail.json"
 DB_PATH = ROOT / "lapse.sqlite"
 
 

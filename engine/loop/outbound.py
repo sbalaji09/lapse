@@ -5,6 +5,7 @@
 from datetime import datetime, timezone
 
 from engine.config import CLINICS
+from engine import guardrails
 from engine.models import CaseStatus, Holder, MissingFact
 import engine.store as store
 
@@ -64,6 +65,8 @@ def send_ask(case_id: str) -> dict:
         raise ValueError(f"no open patient-held missing facts for case: {case_id}")
 
     email = render_email(case, missing_fact)
+    if guardrails.configured():
+        guardrails.enforce_patient_message(f"{email['subject']}\n\n{email['body']}")
     message_id = f"msg-{case_id}-{missing_fact.id}"
 
     missing_fact.status = "asked"
