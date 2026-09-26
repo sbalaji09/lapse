@@ -7,19 +7,26 @@ limitation_attested:        {type: bool, holders: [clinician],
   question: {en: "Does the record support that {condition} limits {name}'s ability to work?"}}
 monthly_income:             {type: int, holders: [database, patient], database: state_wage_records}
 hours_per_month:            {type: int, holders: [patient]}
-enrolled_half_time_school:  {type: bool, holders: [database, patient], database: student_enrollment}
+enrolled_half_time_school:  {type: bool, holders: [database, patient], database: student_enrollment,
+  question: {en: "Is {name} enrolled at least half time in school?"}}
 snap_tanf_work_compliant:   {type: bool, holders: [database], database: snap}
-in_sud_treatment:           {type: bool, holders: [clinician, patient]}
+in_sud_treatment:           {type: bool, holders: [clinician, patient],
+  question: {en: "Does the record support that {name} is currently in a substance use treatment program?"}}
 released_incarceration_days: {type: int, holders: [database], database: corrections}
 dependent_child_13_or_under: {type: bool, holders: [patient]}
 caregiver_disabled_person:  {type: bool, holders: [patient]}
 pregnant_or_postpartum:     {type: bool, holders: [clinician, patient]}
 ai_an:                      {type: bool, holders: [patient]}
-veteran_total_disability:   {type: bool, holders: [database], database: va}
-former_foster_youth:        {type: bool, holders: [database, patient], database: child_welfare}
-county_hardship:            {type: bool, holders: [database], database: county}
+veteran_total_disability:   {type: bool, holders: [database], database: va,
+  question: {en: "Does {name} have a total disability rating from the VA?"}}
+former_foster_youth:        {type: bool, holders: [database, patient], database: child_welfare,
+  question: {en: "Was {name} in foster care?"}}
+county_hardship:            {type: bool, holders: [database], database: county,
+  question: {en: "Does {name} live in a county with a declared hardship?"}}
 
 # Added in T0a: the two medically-frail tests are facts in their own right (billing codes and
 # note spans both produce them). Kept as separate keys so a ruling on test (2) changes one rule, not the data.
 qualifying_condition:       {type: bool, holders: [clinician]}
-significantly_impairs:      {type: bool, holders: [clinician, patient]}
+significantly_impairs:      {type: bool, holders: [clinician, patient],
+  question: {en: "In your own words, how does your health make work or daily tasks hard for you?",
+             es: "Con sus propias palabras, ¿cómo le dificulta su salud el trabajo o las tareas diarias?"}}

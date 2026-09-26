@@ -4,17 +4,21 @@
     python -m engine.pipeline --stage channel_a   # A2: the state's ex parte check, zero LLM
     python -m engine.pipeline --stage channel_b   # A3: evidence finder + verifier (LLM, cached to disk)
           [--golden-only] [--estimate]
+    python -m engine.pipeline --stage final       # A4: final determination, buckets, solver, database lookups
     python -m engine.pipeline                  # everything implemented so far
 
 Later stages (A2 channel_a, A3 channel_b + verifier, A4 final/buckets/solver) register themselves in STAGES.
 """
 import argparse
 import collections
+import json
 import time
 
-from engine import channel_b, external, llm, notes as notegen, store, verifier
+from engine import buckets, channel_b, external, llm, notes as notegen, store, verifier
+from engine.channel_a import months_before
+from engine.models import Bucket, Case, CaseStatus
 from engine.cohort import COHORT_SIZE, Patient, load_cohort
-from engine.config import MODEL_FAST, MODEL_VERIFY
+from engine.config import AS_OF_DATE, MODEL_FAST, MODEL_VERIFY, PIPELINE_RUN_AT
 from engine.golden import BUILDERS
 from engine.channel_a import run_channel_a
 from engine.rulepack import load_pack
@@ -189,7 +193,90 @@ def stage_channel_b(args=None) -> None:
     print(f"  cleared: state {a_clear} -> with notes {b_clear} (+{b_clear - a_clear})")
 
 
-STAGES = {"cohort": stage_cohort, "channel_a": stage_channel_a, "channel_b": stage_channel_b}
+# The live demo resolves this one by hand ("Check student enrollment"), so the batch run leaves it open.
+DEMO_DATABASE_CLICK = ("g-deshawn", "enrolled_half_time_school")
+
+
+def _summary_event(case, db_hits: list[str]) -> str:
+    from engine.solver import DB_LABELS, RULE_NAMES
+
+    a = case.determination_a
+    names = ", ".join(RULE_NAMES[r] for r in case.determination_final.rule_ids)
+    if a.status == "compliant":
+        return f"Meets the requirement through {names} in state records. Never contacted."
+    if a.status == "exempt":
+        text = f"State exempts through {names}."
+        return text + (" No verified sentence in the chart supports an impairment. Flagged fragile."
+                       if case.fragile else " No action needed.")
+    if case.bucket == Bucket.SAFE:
+        return f"Resolved from {' and '.join(DB_LABELS[d] for d in db_hits)}. Nobody contacted."
+    if case.bucket == Bucket.PROVABLE:
+        return f"State check could not determine. The chart already supports {names}; ready for clinician signature."
+    if case.bucket == Bucket.ONE_AWAY:
+        return f"State check could not determine. One fact away: {case.missing[0].why}"
+    return "No exemption within one fact. Needs help reporting hours."
+
+
+def stage_final(args=None) -> None:
+    from engine.solver import default_status, settle
+
+    t0 = time.time()
+    pack = load_pack()
+    patients = store.list_patients()
+    a_runs, b_runs = store.list_channel_runs("A"), store.list_channel_runs("B")
+    missing_b = [p.id for p in patients if p.id not in b_runs]
+    if missing_b:
+        raise RuntimeError(f"no Channel B result for {len(missing_b)} patients; run --stage channel_b first")
+    claims: dict[str, list] = collections.defaultdict(list)
+    for c in store.list_claims():
+        claims[c.patient_id].append(c)
+
+    cases, db_cleared = [], 0
+    for p in patients:
+        det_a, a_facts = a_runs[p.id]
+        b_facts = b_runs[p.id][1]
+        verified = [c for c in claims[p.id] if c.verified]
+        case = Case(
+            patient_id=p.id, display_name=p.display_name, age=p.age, language=p.language, email=p.email,
+            phone=p.phone, clinic_id=p.clinic_id, clinician_name=p.clinician_name, renewal_date=p.renewal_date,
+            bucket=Bucket.NO_PATH, fragile=buckets.is_fragile(det_a, claims[p.id]), status=CaseStatus.no_action,
+            determination_a=det_a, determination_final=det_a.model_copy(update={"channel": "final"}),
+            claims=verified, dropped_claims=[c for c in claims[p.id] if c.verified is False],
+            facts=a_facts + b_facts, missing=[], billed_dx_12mo=p.billed_dx(months_before(AS_OF_DATE, pack.lookback_months)),
+            events=[],
+        )
+        keep_open = (DEMO_DATABASE_CLICK[1],) if p.id == DEMO_DATABASE_CLICK[0] else ()
+        case, db_hits = settle(case, pack, keep_open=keep_open, at=PIPELINE_RUN_AT)
+        if db_hits and case.bucket == Bucket.SAFE:
+            db_cleared += 1
+        case.status = default_status(case)
+        case.events = [{"at": PIPELINE_RUN_AT.isoformat(), "kind": "pipeline_run", "detail": _summary_event(case, db_hits)}]
+        cases.append(case)
+    store.replace_cases(cases)
+
+    n = len(cases)
+    cleared = lambda d: d.status != "not_determined"   # noqa: E731
+    summary = {
+        "cohort": n,
+        "a_exempt": sum(cleared(c.determination_a) for c in cases),
+        "a_not_determined": sum(not cleared(c.determination_a) for c in cases),
+        "final_exempt": sum(cleared(c.determination_final) for c in cases),
+        "provable": sum(c.bucket == Bucket.PROVABLE for c in cases),
+        "one_away": sum(c.bucket == Bucket.ONE_AWAY for c in cases),
+        "no_path": sum(c.bucket == Bucket.NO_PATH for c in cases),
+        "fragile": sum(c.fragile for c in cases),
+        "recovered": sum(cleared(c.determination_final) and not cleared(c.determination_a) for c in cases),
+        "database_resolved_no_contact": db_cleared,
+        "verifier_dropped": sum(len(c.dropped_claims) for c in cases),
+        "rule_pack": pack.version,
+    }
+    print(f"final: {n} cases in {time.time() - t0:.1f}s")
+    print(json.dumps(summary, indent=1))
+    top = collections.Counter((c.missing[0].key, c.missing[0].holder.value) for c in cases if c.bucket == Bucket.ONE_AWAY)
+    print("  ONE_AWAY top missing fact:", ", ".join(f"{k}/{h} {v}" for (k, h), v in top.most_common()))
+
+
+STAGES = {"cohort": stage_cohort, "channel_a": stage_channel_a, "channel_b": stage_channel_b, "final": stage_final}
 
 
 def main() -> None:

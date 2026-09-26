@@ -74,6 +74,17 @@ def save_case(case: Case) -> None:
         )
 
 
+def replace_cases(cases: list[Case]) -> None:
+    """Swap in the pipeline's cases for the whole cohort in one transaction."""
+    with connect() as conn:
+        conn.execute("DELETE FROM cases")
+        conn.executemany(
+            "INSERT INTO cases VALUES (?, ?, ?, ?, ?, ?, ?)",
+            [(c.patient_id, c.renewal_date.isoformat(), c.bucket.value, int(c.fragile), c.status.value, c.clinic_id,
+              c.model_dump_json()) for c in cases],
+        )
+
+
 def save_notes(notes: list[Note]) -> None:
     with connect() as conn:
         conn.executemany(
