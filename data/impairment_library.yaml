@@ -61,7 +61,7 @@ conditions:
       - "Morning stiffness from rheumatoid arthritis lasts until midday; cannot stand longer than {minutes} minutes."
   sud:
     unstated:
-      - "Opioid use disorder, on buprenorphine maintenance."
+      - "Opioid use disorder, reports ongoing use."
       - "Substance use disorder, discussed harm reduction and naloxone."
     positive:
       - "Ongoing substance use has led to missed days and inability to keep a daily schedule."
