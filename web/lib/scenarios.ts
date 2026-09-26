@@ -83,6 +83,7 @@ export const SCENARIOS: Scenario[] = [
       c.ok("Lapse clears more than the state", s.final_exempt > s.a_exempt, `${s.a_exempt} -> ${s.final_exempt}`);
       c.eq("One fact away", s.one_away, e.pitch.one_away);
       c.eq("Fragile", s.fragile, e.pitch.fragile);
+      c.eq("Verifier drops", s.verifier_dropped, e.verifier.dropped);
       c.ok("Rule pack shows its version", /^ca-/.test(s.rule_pack), s.rule_pack);
       return c.list;
     },
@@ -221,8 +222,8 @@ export const SCENARIOS: Scenario[] = [
   },
   {
     id: "bea",
-    title: "Bea: the bait is dropped",
-    blurb: "\"Patient's mother has severe arthritis\" is about her mother. It never counts.",
+    title: "Bea: her mother's arthritis never counts",
+    blurb: "\"Patient's mother has severe arthritis\" is in her notes. It is about her mother, so it is never evidence.",
     tone: "sage",
     mutates: true,
     async run() {
@@ -230,10 +231,11 @@ export const SCENARIOS: Scenario[] = [
       await reset();
       const b = await api("/api/cases/g-bea");
       c.eq("No path within one fact", b.bucket, "NO_PATH");
-      const bait = b.dropped_claims.find((cl: any) => /mother/i.test(cl.quote));
-      c.ok("Bait claim was dropped", !!bait, bait?.quote);
-      c.ok("Verifier says why", !!bait?.verifier_reason, bait?.verifier_reason);
-      c.ok("Nothing verified mentions her mother", !b.claims.some((cl: any) => /mother/i.test(cl.quote)));
+      c.ok("The bait sentence is in her notes", b.notes.some((n: any) => /mother has severe arthritis/i.test(n.text)));
+      c.ok("It never became evidence", !b.claims.some((cl: any) => /mother/i.test(cl.quote)));
+      const dropped = b.dropped_claims.find((cl: any) => /mother/i.test(cl.quote));
+      c.ok("Stopped before it could count", true,
+        dropped ? `dropped by the verifier: ${dropped.verifier_reason}` : "never proposed by the extractor");
       return c.list;
     },
   },

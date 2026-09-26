@@ -104,9 +104,11 @@ def get_queue(bucket: str | None = None, window_days: int | None = None):
             "bucket": c.bucket.value,
             "fragile": c.fragile,
             "status": c.status.value,
+            "clinician_name": c.clinician_name,
             "top_missing_fact": {
                 "key": top_missing.key,
                 "holder": top_missing.holder.value,
+                "database": top_missing.database,
                 "why": top_missing.why,
             } if top_missing else None,
         })
@@ -216,7 +218,7 @@ def post_rulepack(state: str):
 
 @router.post("/demo/reset")
 def demo_reset():
-    count = store.load_fixtures()
+    count = store.reset_demo()
     return {"reloaded": count}
 
 

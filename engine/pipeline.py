@@ -253,6 +253,7 @@ def stage_final(args=None) -> None:
         case.events = [{"at": PIPELINE_RUN_AT.isoformat(), "kind": "pipeline_run", "detail": _summary_event(case, db_hits)}]
         cases.append(case)
     store.replace_cases(cases)
+    store.save_baseline([c for c in cases if c.patient_id in GOLDEN_IDS])     # what `make reset` restores
 
     n = len(cases)
     cleared = lambda d: d.status != "not_determined"   # noqa: E731

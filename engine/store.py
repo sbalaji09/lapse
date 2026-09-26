@@ -45,6 +45,10 @@ CREATE TABLE IF NOT EXISTS claims (
     data       TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS claims_patient ON claims (patient_id);
+CREATE TABLE IF NOT EXISTS baseline_cases (
+    patient_id TEXT PRIMARY KEY,
+    data       TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS channel_runs (
     patient_id TEXT NOT NULL,
     channel    TEXT NOT NULL,
@@ -83,6 +87,25 @@ def replace_cases(cases: list[Case]) -> None:
             [(c.patient_id, c.renewal_date.isoformat(), c.bucket.value, int(c.fragile), c.status.value, c.clinic_id,
               c.model_dump_json()) for c in cases],
         )
+
+
+def save_baseline(cases: list[Case]) -> None:
+    """Remember these cases' pre-demo state; reset_demo() puts them back."""
+    with connect() as conn:
+        conn.execute("DELETE FROM baseline_cases")
+        conn.executemany("INSERT INTO baseline_cases VALUES (?, ?)", [(c.patient_id, c.model_dump_json()) for c in cases])
+
+
+def reset_demo() -> int:
+    """Restore the demo cases to their pre-demo state: the pipeline's own output when a pipeline has run (so every
+    number on screen matches the eval), else the hand-built fixtures. Returns how many cases were restored."""
+    with connect() as conn:
+        rows = conn.execute("SELECT data FROM baseline_cases").fetchall()
+    if not rows:
+        return load_fixtures()
+    for (raw,) in rows:
+        save_case(Case.model_validate_json(raw))
+    return len(rows)
 
 
 def save_notes(notes: list[Note]) -> None:
