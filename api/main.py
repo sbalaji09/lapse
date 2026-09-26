@@ -1,12 +1,13 @@
-import hashlib
-import hmac
-from datetime import date
-
 from fastapi import APIRouter, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
+from pydantic import BaseModel
 
 from engine import store
-from engine.config import ACTIVE_RULE_PACK, AS_OF_DATE
+from engine.loop.clinician import case_for_token, sign_clinician
+from engine.loop.inbound import handle_reply
+from engine.loop.outbound import send_ask
+from engine.loop.pdf import build_attestation_pdf
 
 app = FastAPI()
 
@@ -20,22 +21,17 @@ app.add_middleware(
 
 router = APIRouter(prefix="/api")
 
-CLINICIAN_TOKEN_SECRET = b"lapse-demo-secret"  # hackathon demo only, not real auth
-
-
 def not_implemented():
     raise HTTPException(status_code=501, detail="not implemented")
 
 
-def clinician_token(case_id: str) -> str:
-    return hmac.new(CLINICIAN_TOKEN_SECRET, case_id.encode(), hashlib.sha256).hexdigest()[:16]
+class ReplyBody(BaseModel):
+    text: str
+    language: str | None = None
 
 
-def case_for_token(token: str):
-    for case in store.list_cases():
-        if clinician_token(case.patient_id) == token:
-            return case
-    return None
+class DecisionBody(BaseModel):
+    decision: str
 
 
 def summary_dict(cases, channel_a_only: bool = False) -> dict:
@@ -118,17 +114,26 @@ def get_case_detail(id: str):
 
 @router.post("/cases/{id}/ask")
 def case_ask(id: str):
-    not_implemented()
+    try:
+        return send_ask(id)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.post("/cases/{id}/reply")
-def case_reply(id: str):
-    not_implemented()
+def case_reply(id: str, body: ReplyBody):
+    try:
+        return handle_reply(id, body.text)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.post("/inbound/email")
-def inbound_email():
-    not_implemented()
+def inbound_email(body: dict):
+    try:
+        return handle_reply(body["case_id"], body["text"], body.get("message_id"))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.post("/cases/{id}/check-database")
@@ -145,13 +150,24 @@ def get_clinician(token: str):
 
 
 @router.post("/clinician/{token}")
-def post_clinician(token: str):
-    not_implemented()
+def post_clinician(token: str, body: DecisionBody):
+    case = case_for_token(token)
+    if case is None:
+        raise HTTPException(status_code=404, detail="invalid token")
+    try:
+        return sign_clinician(case.patient_id, body.decision)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.get("/cases/{id}/attestation.pdf")
 def case_attestation_pdf(id: str):
-    not_implemented()
+    case = store.get_case(id)
+    if case is None:
+        raise HTTPException(status_code=404, detail="case not found")
+    rule_id = case.determination_final.rule_ids[0] if case.determination_final.rule_ids else "unknown"
+    pdf_bytes = build_attestation_pdf(case, rule_id, case.clinician_name)
+    return Response(content=pdf_bytes, media_type="application/pdf")
 
 
 @router.get("/eval")
