@@ -1,0 +1,1607 @@
+{
+ "g-bea": {
+  "monthly_income": 0,
+  "quarter": "2026-Q4",
+  "record_id": "wr-bea-2027-01"
+ },
+ "g-deshawn": {
+  "monthly_income": 0,
+  "quarter": "2026-Q4",
+  "record_id": "wr-deshawn-2027-01"
+ },
+ "g-omar": {
+  "monthly_income": 920,
+  "quarter": "2026-Q4",
+  "record_id": "wr-omar-2027-01"
+ },
+ "p-0128b52a": {
+  "monthly_income": 1861,
+  "quarter": "2026-Q4",
+  "record_id": "wr-0128b52a"
+ },
+ "p-01ce818c": {
+  "monthly_income": 1349,
+  "quarter": "2026-Q4",
+  "record_id": "wr-01ce818c"
+ },
+ "p-0382e102": {
+  "monthly_income": 161,
+  "quarter": "2026-Q4",
+  "record_id": "wr-0382e102"
+ },
+ "p-03e733d5": {
+  "monthly_income": 1049,
+  "quarter": "2026-Q4",
+  "record_id": "wr-03e733d5"
+ },
+ "p-04e52287": {
+  "monthly_income": 2115,
+  "quarter": "2026-Q4",
+  "record_id": "wr-04e52287"
+ },
+ "p-06d9b168": {
+  "monthly_income": 609,
+  "quarter": "2026-Q4",
+  "record_id": "wr-06d9b168"
+ },
+ "p-07811815": {
+  "monthly_income": 654,
+  "quarter": "2026-Q4",
+  "record_id": "wr-07811815"
+ },
+ "p-080b069b": {
+  "monthly_income": 453,
+  "quarter": "2026-Q4",
+  "record_id": "wr-080b069b"
+ },
+ "p-0aad30a9": {
+  "monthly_income": 412,
+  "quarter": "2026-Q4",
+  "record_id": "wr-0aad30a9"
+ },
+ "p-0b490094": {
+  "monthly_income": 727,
+  "quarter": "2026-Q4",
+  "record_id": "wr-0b490094"
+ },
+ "p-0b6b1053": {
+  "monthly_income": 519,
+  "quarter": "2026-Q4",
+  "record_id": "wr-0b6b1053"
+ },
+ "p-0b9ae72a": {
+  "monthly_income": 245,
+  "quarter": "2026-Q4",
+  "record_id": "wr-0b9ae72a"
+ },
+ "p-0c77f232": {
+  "monthly_income": 1611,
+  "quarter": "2026-Q4",
+  "record_id": "wr-0c77f232"
+ },
+ "p-0c9872cf": {
+  "monthly_income": 1682,
+  "quarter": "2026-Q4",
+  "record_id": "wr-0c9872cf"
+ },
+ "p-0d6a874a": {
+  "monthly_income": 1257,
+  "quarter": "2026-Q4",
+  "record_id": "wr-0d6a874a"
+ },
+ "p-11a50515": {
+  "monthly_income": 191,
+  "quarter": "2026-Q4",
+  "record_id": "wr-11a50515"
+ },
+ "p-12b83633": {
+  "monthly_income": 974,
+  "quarter": "2026-Q4",
+  "record_id": "wr-12b83633"
+ },
+ "p-131fec9c": {
+  "monthly_income": 277,
+  "quarter": "2026-Q4",
+  "record_id": "wr-131fec9c"
+ },
+ "p-132074e8": {
+  "monthly_income": 1041,
+  "quarter": "2026-Q4",
+  "record_id": "wr-132074e8"
+ },
+ "p-13fa1160": {
+  "monthly_income": 495,
+  "quarter": "2026-Q4",
+  "record_id": "wr-13fa1160"
+ },
+ "p-16c6292b": {
+  "monthly_income": 1905,
+  "quarter": "2026-Q4",
+  "record_id": "wr-16c6292b"
+ },
+ "p-184d403d": {
+  "monthly_income": 64,
+  "quarter": "2026-Q4",
+  "record_id": "wr-184d403d"
+ },
+ "p-19b87c0d": {
+  "monthly_income": 284,
+  "quarter": "2026-Q4",
+  "record_id": "wr-19b87c0d"
+ },
+ "p-19d11b13": {
+  "monthly_income": 958,
+  "quarter": "2026-Q4",
+  "record_id": "wr-19d11b13"
+ },
+ "p-1d0c6a63": {
+  "monthly_income": 377,
+  "quarter": "2026-Q4",
+  "record_id": "wr-1d0c6a63"
+ },
+ "p-1dc844fd": {
+  "monthly_income": 524,
+  "quarter": "2026-Q4",
+  "record_id": "wr-1dc844fd"
+ },
+ "p-1e1b6829": {
+  "monthly_income": 501,
+  "quarter": "2026-Q4",
+  "record_id": "wr-1e1b6829"
+ },
+ "p-1fee85c9": {
+  "monthly_income": 334,
+  "quarter": "2026-Q4",
+  "record_id": "wr-1fee85c9"
+ },
+ "p-20950ce0": {
+  "monthly_income": 1268,
+  "quarter": "2026-Q4",
+  "record_id": "wr-20950ce0"
+ },
+ "p-22a118a1": {
+  "monthly_income": 2324,
+  "quarter": "2026-Q4",
+  "record_id": "wr-22a118a1"
+ },
+ "p-22e9c711": {
+  "monthly_income": 336,
+  "quarter": "2026-Q4",
+  "record_id": "wr-22e9c711"
+ },
+ "p-23be53d1": {
+  "monthly_income": 1089,
+  "quarter": "2026-Q4",
+  "record_id": "wr-23be53d1"
+ },
+ "p-243a5936": {
+  "monthly_income": 771,
+  "quarter": "2026-Q4",
+  "record_id": "wr-243a5936"
+ },
+ "p-24774252": {
+  "monthly_income": 438,
+  "quarter": "2026-Q4",
+  "record_id": "wr-24774252"
+ },
+ "p-24ce3151": {
+  "monthly_income": 1011,
+  "quarter": "2026-Q4",
+  "record_id": "wr-24ce3151"
+ },
+ "p-261baccc": {
+  "monthly_income": 448,
+  "quarter": "2026-Q4",
+  "record_id": "wr-261baccc"
+ },
+ "p-265323f0": {
+  "monthly_income": 164,
+  "quarter": "2026-Q4",
+  "record_id": "wr-265323f0"
+ },
+ "p-27b3914f": {
+  "monthly_income": 2000,
+  "quarter": "2026-Q4",
+  "record_id": "wr-27b3914f"
+ },
+ "p-27cca774": {
+  "monthly_income": 2332,
+  "quarter": "2026-Q4",
+  "record_id": "wr-27cca774"
+ },
+ "p-28dc95ea": {
+  "monthly_income": 183,
+  "quarter": "2026-Q4",
+  "record_id": "wr-28dc95ea"
+ },
+ "p-28fc4489": {
+  "monthly_income": 183,
+  "quarter": "2026-Q4",
+  "record_id": "wr-28fc4489"
+ },
+ "p-2924da49": {
+  "monthly_income": 376,
+  "quarter": "2026-Q4",
+  "record_id": "wr-2924da49"
+ },
+ "p-292b5aae": {
+  "monthly_income": 274,
+  "quarter": "2026-Q4",
+  "record_id": "wr-292b5aae"
+ },
+ "p-29a638b7": {
+  "monthly_income": 167,
+  "quarter": "2026-Q4",
+  "record_id": "wr-29a638b7"
+ },
+ "p-2bcba2d0": {
+  "monthly_income": 1632,
+  "quarter": "2026-Q4",
+  "record_id": "wr-2bcba2d0"
+ },
+ "p-2c35b5f8": {
+  "monthly_income": 397,
+  "quarter": "2026-Q4",
+  "record_id": "wr-2c35b5f8"
+ },
+ "p-2deee42b": {
+  "monthly_income": 470,
+  "quarter": "2026-Q4",
+  "record_id": "wr-2deee42b"
+ },
+ "p-303b4bc9": {
+  "monthly_income": 164,
+  "quarter": "2026-Q4",
+  "record_id": "wr-303b4bc9"
+ },
+ "p-30730007": {
+  "monthly_income": 446,
+  "quarter": "2026-Q4",
+  "record_id": "wr-30730007"
+ },
+ "p-309d98fb": {
+  "monthly_income": 1629,
+  "quarter": "2026-Q4",
+  "record_id": "wr-309d98fb"
+ },
+ "p-30eb8a8c": {
+  "monthly_income": 683,
+  "quarter": "2026-Q4",
+  "record_id": "wr-30eb8a8c"
+ },
+ "p-322ab5c6": {
+  "monthly_income": 211,
+  "quarter": "2026-Q4",
+  "record_id": "wr-322ab5c6"
+ },
+ "p-335f5e30": {
+  "monthly_income": 190,
+  "quarter": "2026-Q4",
+  "record_id": "wr-335f5e30"
+ },
+ "p-33704fef": {
+  "monthly_income": 83,
+  "quarter": "2026-Q4",
+  "record_id": "wr-33704fef"
+ },
+ "p-33c23b76": {
+  "monthly_income": 446,
+  "quarter": "2026-Q4",
+  "record_id": "wr-33c23b76"
+ },
+ "p-34548186": {
+  "monthly_income": 466,
+  "quarter": "2026-Q4",
+  "record_id": "wr-34548186"
+ },
+ "p-34c33b47": {
+  "monthly_income": 147,
+  "quarter": "2026-Q4",
+  "record_id": "wr-34c33b47"
+ },
+ "p-351bf4e1": {
+  "monthly_income": 214,
+  "quarter": "2026-Q4",
+  "record_id": "wr-351bf4e1"
+ },
+ "p-35b353dd": {
+  "monthly_income": 332,
+  "quarter": "2026-Q4",
+  "record_id": "wr-35b353dd"
+ },
+ "p-36f895c5": {
+  "monthly_income": 443,
+  "quarter": "2026-Q4",
+  "record_id": "wr-36f895c5"
+ },
+ "p-378f5f5f": {
+  "monthly_income": 1506,
+  "quarter": "2026-Q4",
+  "record_id": "wr-378f5f5f"
+ },
+ "p-37d59dbe": {
+  "monthly_income": 298,
+  "quarter": "2026-Q4",
+  "record_id": "wr-37d59dbe"
+ },
+ "p-3b24d024": {
+  "monthly_income": 236,
+  "quarter": "2026-Q4",
+  "record_id": "wr-3b24d024"
+ },
+ "p-3becc9ed": {
+  "monthly_income": 229,
+  "quarter": "2026-Q4",
+  "record_id": "wr-3becc9ed"
+ },
+ "p-3c2e37d8": {
+  "monthly_income": 749,
+  "quarter": "2026-Q4",
+  "record_id": "wr-3c2e37d8"
+ },
+ "p-3dab68ba": {
+  "monthly_income": 327,
+  "quarter": "2026-Q4",
+  "record_id": "wr-3dab68ba"
+ },
+ "p-3deb75e9": {
+  "monthly_income": 1122,
+  "quarter": "2026-Q4",
+  "record_id": "wr-3deb75e9"
+ },
+ "p-3f8330ee": {
+  "monthly_income": 170,
+  "quarter": "2026-Q4",
+  "record_id": "wr-3f8330ee"
+ },
+ "p-421719bf": {
+  "monthly_income": 656,
+  "quarter": "2026-Q4",
+  "record_id": "wr-421719bf"
+ },
+ "p-42382f35": {
+  "monthly_income": 88,
+  "quarter": "2026-Q4",
+  "record_id": "wr-42382f35"
+ },
+ "p-42b98020": {
+  "monthly_income": 1247,
+  "quarter": "2026-Q4",
+  "record_id": "wr-42b98020"
+ },
+ "p-44a8241a": {
+  "monthly_income": 1187,
+  "quarter": "2026-Q4",
+  "record_id": "wr-44a8241a"
+ },
+ "p-44bf5b9e": {
+  "monthly_income": 136,
+  "quarter": "2026-Q4",
+  "record_id": "wr-44bf5b9e"
+ },
+ "p-44c97973": {
+  "monthly_income": 363,
+  "quarter": "2026-Q4",
+  "record_id": "wr-44c97973"
+ },
+ "p-4550000a": {
+  "monthly_income": 238,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4550000a"
+ },
+ "p-46213fa7": {
+  "monthly_income": 440,
+  "quarter": "2026-Q4",
+  "record_id": "wr-46213fa7"
+ },
+ "p-4648a54f": {
+  "monthly_income": 433,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4648a54f"
+ },
+ "p-4760e5e7": {
+  "monthly_income": 339,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4760e5e7"
+ },
+ "p-47d390c6": {
+  "monthly_income": 517,
+  "quarter": "2026-Q4",
+  "record_id": "wr-47d390c6"
+ },
+ "p-47f1d597": {
+  "monthly_income": 1292,
+  "quarter": "2026-Q4",
+  "record_id": "wr-47f1d597"
+ },
+ "p-4811b87b": {
+  "monthly_income": 1408,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4811b87b"
+ },
+ "p-48cfee32": {
+  "monthly_income": 1585,
+  "quarter": "2026-Q4",
+  "record_id": "wr-48cfee32"
+ },
+ "p-48ffc47a": {
+  "monthly_income": 1233,
+  "quarter": "2026-Q4",
+  "record_id": "wr-48ffc47a"
+ },
+ "p-4a3660b4": {
+  "monthly_income": 230,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4a3660b4"
+ },
+ "p-4aaa0001": {
+  "monthly_income": 176,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4aaa0001"
+ },
+ "p-4b3f60a8": {
+  "monthly_income": 247,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4b3f60a8"
+ },
+ "p-4bc6b4b1": {
+  "monthly_income": 149,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4bc6b4b1"
+ },
+ "p-4dbe6dc4": {
+  "monthly_income": 441,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4dbe6dc4"
+ },
+ "p-4eae15cd": {
+  "monthly_income": 269,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4eae15cd"
+ },
+ "p-4f899403": {
+  "monthly_income": 422,
+  "quarter": "2026-Q4",
+  "record_id": "wr-4f899403"
+ },
+ "p-50a071ca": {
+  "monthly_income": 191,
+  "quarter": "2026-Q4",
+  "record_id": "wr-50a071ca"
+ },
+ "p-50ad813c": {
+  "monthly_income": 1481,
+  "quarter": "2026-Q4",
+  "record_id": "wr-50ad813c"
+ },
+ "p-5107a1a0": {
+  "monthly_income": 769,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5107a1a0"
+ },
+ "p-51a285b2": {
+  "monthly_income": 2057,
+  "quarter": "2026-Q4",
+  "record_id": "wr-51a285b2"
+ },
+ "p-51b91092": {
+  "monthly_income": 493,
+  "quarter": "2026-Q4",
+  "record_id": "wr-51b91092"
+ },
+ "p-51ffec06": {
+  "monthly_income": 370,
+  "quarter": "2026-Q4",
+  "record_id": "wr-51ffec06"
+ },
+ "p-531e04b6": {
+  "monthly_income": 665,
+  "quarter": "2026-Q4",
+  "record_id": "wr-531e04b6"
+ },
+ "p-56258afc": {
+  "monthly_income": 1657,
+  "quarter": "2026-Q4",
+  "record_id": "wr-56258afc"
+ },
+ "p-56c63f3e": {
+  "monthly_income": 51,
+  "quarter": "2026-Q4",
+  "record_id": "wr-56c63f3e"
+ },
+ "p-58419e9c": {
+  "monthly_income": 1643,
+  "quarter": "2026-Q4",
+  "record_id": "wr-58419e9c"
+ },
+ "p-59bf3bd3": {
+  "monthly_income": 325,
+  "quarter": "2026-Q4",
+  "record_id": "wr-59bf3bd3"
+ },
+ "p-5b74100e": {
+  "monthly_income": 270,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5b74100e"
+ },
+ "p-5ba0a3f3": {
+  "monthly_income": 1306,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5ba0a3f3"
+ },
+ "p-5bcd499f": {
+  "monthly_income": 1522,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5bcd499f"
+ },
+ "p-5bde0701": {
+  "monthly_income": 464,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5bde0701"
+ },
+ "p-5c39a9da": {
+  "monthly_income": 1324,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5c39a9da"
+ },
+ "p-5c4fe487": {
+  "monthly_income": 70,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5c4fe487"
+ },
+ "p-5c92da33": {
+  "monthly_income": 1854,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5c92da33"
+ },
+ "p-5d77f297": {
+  "monthly_income": 1295,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5d77f297"
+ },
+ "p-5de127b1": {
+  "monthly_income": 737,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5de127b1"
+ },
+ "p-5efaa97c": {
+  "monthly_income": 1749,
+  "quarter": "2026-Q4",
+  "record_id": "wr-5efaa97c"
+ },
+ "p-6047419c": {
+  "monthly_income": 204,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6047419c"
+ },
+ "p-60af8ed1": {
+  "monthly_income": 1243,
+  "quarter": "2026-Q4",
+  "record_id": "wr-60af8ed1"
+ },
+ "p-6275deb4": {
+  "monthly_income": 778,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6275deb4"
+ },
+ "p-62faaba8": {
+  "monthly_income": 271,
+  "quarter": "2026-Q4",
+  "record_id": "wr-62faaba8"
+ },
+ "p-63ca8664": {
+  "monthly_income": 728,
+  "quarter": "2026-Q4",
+  "record_id": "wr-63ca8664"
+ },
+ "p-63f00385": {
+  "monthly_income": 216,
+  "quarter": "2026-Q4",
+  "record_id": "wr-63f00385"
+ },
+ "p-63f4d267": {
+  "monthly_income": 1294,
+  "quarter": "2026-Q4",
+  "record_id": "wr-63f4d267"
+ },
+ "p-6902c7bb": {
+  "monthly_income": 1077,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6902c7bb"
+ },
+ "p-6a16bdcc": {
+  "monthly_income": 1032,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6a16bdcc"
+ },
+ "p-6bb007b9": {
+  "monthly_income": 197,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6bb007b9"
+ },
+ "p-6bd8b4d0": {
+  "monthly_income": 157,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6bd8b4d0"
+ },
+ "p-6c0ad5e9": {
+  "monthly_income": 2157,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6c0ad5e9"
+ },
+ "p-6c56f201": {
+  "monthly_income": 1366,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6c56f201"
+ },
+ "p-6d9dc108": {
+  "monthly_income": 239,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6d9dc108"
+ },
+ "p-6de3fef5": {
+  "monthly_income": 2388,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6de3fef5"
+ },
+ "p-6e6a4d89": {
+  "monthly_income": 621,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6e6a4d89"
+ },
+ "p-6f45f2e9": {
+  "monthly_income": 2036,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6f45f2e9"
+ },
+ "p-6fb2e20a": {
+  "monthly_income": 1574,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6fb2e20a"
+ },
+ "p-6fc11c55": {
+  "monthly_income": 825,
+  "quarter": "2026-Q4",
+  "record_id": "wr-6fc11c55"
+ },
+ "p-71618ae8": {
+  "monthly_income": 214,
+  "quarter": "2026-Q4",
+  "record_id": "wr-71618ae8"
+ },
+ "p-73501c39": {
+  "monthly_income": 1808,
+  "quarter": "2026-Q4",
+  "record_id": "wr-73501c39"
+ },
+ "p-74730a78": {
+  "monthly_income": 502,
+  "quarter": "2026-Q4",
+  "record_id": "wr-74730a78"
+ },
+ "p-75422a41": {
+  "monthly_income": 491,
+  "quarter": "2026-Q4",
+  "record_id": "wr-75422a41"
+ },
+ "p-757aa994": {
+  "monthly_income": 2030,
+  "quarter": "2026-Q4",
+  "record_id": "wr-757aa994"
+ },
+ "p-75d6a35c": {
+  "monthly_income": 1578,
+  "quarter": "2026-Q4",
+  "record_id": "wr-75d6a35c"
+ },
+ "p-76a1559f": {
+  "monthly_income": 533,
+  "quarter": "2026-Q4",
+  "record_id": "wr-76a1559f"
+ },
+ "p-76a5927f": {
+  "monthly_income": 838,
+  "quarter": "2026-Q4",
+  "record_id": "wr-76a5927f"
+ },
+ "p-7756280d": {
+  "monthly_income": 447,
+  "quarter": "2026-Q4",
+  "record_id": "wr-7756280d"
+ },
+ "p-777cc353": {
+  "monthly_income": 624,
+  "quarter": "2026-Q4",
+  "record_id": "wr-777cc353"
+ },
+ "p-7bdcc7a4": {
+  "monthly_income": 365,
+  "quarter": "2026-Q4",
+  "record_id": "wr-7bdcc7a4"
+ },
+ "p-7bdd30f5": {
+  "monthly_income": 475,
+  "quarter": "2026-Q4",
+  "record_id": "wr-7bdd30f5"
+ },
+ "p-7c913488": {
+  "monthly_income": 2100,
+  "quarter": "2026-Q4",
+  "record_id": "wr-7c913488"
+ },
+ "p-7cfa80d2": {
+  "monthly_income": 1525,
+  "quarter": "2026-Q4",
+  "record_id": "wr-7cfa80d2"
+ },
+ "p-7e2e8efa": {
+  "monthly_income": 407,
+  "quarter": "2026-Q4",
+  "record_id": "wr-7e2e8efa"
+ },
+ "p-7f50d0ba": {
+  "monthly_income": 100,
+  "quarter": "2026-Q4",
+  "record_id": "wr-7f50d0ba"
+ },
+ "p-807344f2": {
+  "monthly_income": 842,
+  "quarter": "2026-Q4",
+  "record_id": "wr-807344f2"
+ },
+ "p-811b3aac": {
+  "monthly_income": 532,
+  "quarter": "2026-Q4",
+  "record_id": "wr-811b3aac"
+ },
+ "p-82312251": {
+  "monthly_income": 158,
+  "quarter": "2026-Q4",
+  "record_id": "wr-82312251"
+ },
+ "p-82b25eea": {
+  "monthly_income": 166,
+  "quarter": "2026-Q4",
+  "record_id": "wr-82b25eea"
+ },
+ "p-82e8875f": {
+  "monthly_income": 545,
+  "quarter": "2026-Q4",
+  "record_id": "wr-82e8875f"
+ },
+ "p-82ec1b7a": {
+  "monthly_income": 191,
+  "quarter": "2026-Q4",
+  "record_id": "wr-82ec1b7a"
+ },
+ "p-831291fd": {
+  "monthly_income": 452,
+  "quarter": "2026-Q4",
+  "record_id": "wr-831291fd"
+ },
+ "p-847988f9": {
+  "monthly_income": 61,
+  "quarter": "2026-Q4",
+  "record_id": "wr-847988f9"
+ },
+ "p-84ee9557": {
+  "monthly_income": 463,
+  "quarter": "2026-Q4",
+  "record_id": "wr-84ee9557"
+ },
+ "p-85009e2d": {
+  "monthly_income": 2266,
+  "quarter": "2026-Q4",
+  "record_id": "wr-85009e2d"
+ },
+ "p-85120612": {
+  "monthly_income": 391,
+  "quarter": "2026-Q4",
+  "record_id": "wr-85120612"
+ },
+ "p-8580a690": {
+  "monthly_income": 207,
+  "quarter": "2026-Q4",
+  "record_id": "wr-8580a690"
+ },
+ "p-8635d560": {
+  "monthly_income": 1260,
+  "quarter": "2026-Q4",
+  "record_id": "wr-8635d560"
+ },
+ "p-869668f8": {
+  "monthly_income": 199,
+  "quarter": "2026-Q4",
+  "record_id": "wr-869668f8"
+ },
+ "p-88639eaa": {
+  "monthly_income": 2298,
+  "quarter": "2026-Q4",
+  "record_id": "wr-88639eaa"
+ },
+ "p-88d9f932": {
+  "monthly_income": 272,
+  "quarter": "2026-Q4",
+  "record_id": "wr-88d9f932"
+ },
+ "p-89080f3e": {
+  "monthly_income": 823,
+  "quarter": "2026-Q4",
+  "record_id": "wr-89080f3e"
+ },
+ "p-890caa08": {
+  "monthly_income": 2015,
+  "quarter": "2026-Q4",
+  "record_id": "wr-890caa08"
+ },
+ "p-8a378120": {
+  "monthly_income": 230,
+  "quarter": "2026-Q4",
+  "record_id": "wr-8a378120"
+ },
+ "p-8c9658c1": {
+  "monthly_income": 1673,
+  "quarter": "2026-Q4",
+  "record_id": "wr-8c9658c1"
+ },
+ "p-8f60b8eb": {
+  "monthly_income": 501,
+  "quarter": "2026-Q4",
+  "record_id": "wr-8f60b8eb"
+ },
+ "p-8f65985d": {
+  "monthly_income": 162,
+  "quarter": "2026-Q4",
+  "record_id": "wr-8f65985d"
+ },
+ "p-900239ad": {
+  "monthly_income": 452,
+  "quarter": "2026-Q4",
+  "record_id": "wr-900239ad"
+ },
+ "p-902f4727": {
+  "monthly_income": 429,
+  "quarter": "2026-Q4",
+  "record_id": "wr-902f4727"
+ },
+ "p-905d3fd1": {
+  "monthly_income": 811,
+  "quarter": "2026-Q4",
+  "record_id": "wr-905d3fd1"
+ },
+ "p-9096ceff": {
+  "monthly_income": 2085,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9096ceff"
+ },
+ "p-90cc6828": {
+  "monthly_income": 446,
+  "quarter": "2026-Q4",
+  "record_id": "wr-90cc6828"
+ },
+ "p-90ef36c4": {
+  "monthly_income": 324,
+  "quarter": "2026-Q4",
+  "record_id": "wr-90ef36c4"
+ },
+ "p-9116ecc2": {
+  "monthly_income": 2346,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9116ecc2"
+ },
+ "p-91b62291": {
+  "monthly_income": 1408,
+  "quarter": "2026-Q4",
+  "record_id": "wr-91b62291"
+ },
+ "p-922fb35e": {
+  "monthly_income": 247,
+  "quarter": "2026-Q4",
+  "record_id": "wr-922fb35e"
+ },
+ "p-9255b577": {
+  "monthly_income": 2371,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9255b577"
+ },
+ "p-9291fd88": {
+  "monthly_income": 488,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9291fd88"
+ },
+ "p-92cc1dc9": {
+  "monthly_income": 236,
+  "quarter": "2026-Q4",
+  "record_id": "wr-92cc1dc9"
+ },
+ "p-93a4ee80": {
+  "monthly_income": 308,
+  "quarter": "2026-Q4",
+  "record_id": "wr-93a4ee80"
+ },
+ "p-95504355": {
+  "monthly_income": 182,
+  "quarter": "2026-Q4",
+  "record_id": "wr-95504355"
+ },
+ "p-955dbe2e": {
+  "monthly_income": 220,
+  "quarter": "2026-Q4",
+  "record_id": "wr-955dbe2e"
+ },
+ "p-9596033e": {
+  "monthly_income": 515,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9596033e"
+ },
+ "p-96b128de": {
+  "monthly_income": 198,
+  "quarter": "2026-Q4",
+  "record_id": "wr-96b128de"
+ },
+ "p-96e4667e": {
+  "monthly_income": 1765,
+  "quarter": "2026-Q4",
+  "record_id": "wr-96e4667e"
+ },
+ "p-97a7a416": {
+  "monthly_income": 465,
+  "quarter": "2026-Q4",
+  "record_id": "wr-97a7a416"
+ },
+ "p-9832fd60": {
+  "monthly_income": 527,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9832fd60"
+ },
+ "p-9a3c3c60": {
+  "monthly_income": 2359,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9a3c3c60"
+ },
+ "p-9b1e4fde": {
+  "monthly_income": 497,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9b1e4fde"
+ },
+ "p-9c5fc104": {
+  "monthly_income": 924,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9c5fc104"
+ },
+ "p-9d0941e4": {
+  "monthly_income": 1338,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9d0941e4"
+ },
+ "p-9d3551b7": {
+  "monthly_income": 251,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9d3551b7"
+ },
+ "p-9d6a1668": {
+  "monthly_income": 2153,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9d6a1668"
+ },
+ "p-9dc02e0c": {
+  "monthly_income": 484,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9dc02e0c"
+ },
+ "p-9e81dd6c": {
+  "monthly_income": 1265,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9e81dd6c"
+ },
+ "p-9f10defe": {
+  "monthly_income": 1695,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9f10defe"
+ },
+ "p-9f736313": {
+  "monthly_income": 192,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9f736313"
+ },
+ "p-9f988e19": {
+  "monthly_income": 323,
+  "quarter": "2026-Q4",
+  "record_id": "wr-9f988e19"
+ },
+ "p-a190b534": {
+  "monthly_income": 162,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a190b534"
+ },
+ "p-a203c138": {
+  "monthly_income": 406,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a203c138"
+ },
+ "p-a296a2ba": {
+  "monthly_income": 2116,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a296a2ba"
+ },
+ "p-a2fb233f": {
+  "monthly_income": 827,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a2fb233f"
+ },
+ "p-a31c8fbc": {
+  "monthly_income": 434,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a31c8fbc"
+ },
+ "p-a475675c": {
+  "monthly_income": 197,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a475675c"
+ },
+ "p-a61aaeb8": {
+  "monthly_income": 2023,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a61aaeb8"
+ },
+ "p-a62a973c": {
+  "monthly_income": 126,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a62a973c"
+ },
+ "p-a71f9d8c": {
+  "monthly_income": 1106,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a71f9d8c"
+ },
+ "p-a7b1943e": {
+  "monthly_income": 91,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a7b1943e"
+ },
+ "p-a7d8d5ec": {
+  "monthly_income": 493,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a7d8d5ec"
+ },
+ "p-a8113386": {
+  "monthly_income": 1423,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a8113386"
+ },
+ "p-a87f5c0f": {
+  "monthly_income": 273,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a87f5c0f"
+ },
+ "p-a9cfce0c": {
+  "monthly_income": 244,
+  "quarter": "2026-Q4",
+  "record_id": "wr-a9cfce0c"
+ },
+ "p-aa07ed35": {
+  "monthly_income": 870,
+  "quarter": "2026-Q4",
+  "record_id": "wr-aa07ed35"
+ },
+ "p-ac679580": {
+  "monthly_income": 1991,
+  "quarter": "2026-Q4",
+  "record_id": "wr-ac679580"
+ },
+ "p-acef2454": {
+  "monthly_income": 2010,
+  "quarter": "2026-Q4",
+  "record_id": "wr-acef2454"
+ },
+ "p-aee7bbe1": {
+  "monthly_income": 430,
+  "quarter": "2026-Q4",
+  "record_id": "wr-aee7bbe1"
+ },
+ "p-affb0758": {
+  "monthly_income": 73,
+  "quarter": "2026-Q4",
+  "record_id": "wr-affb0758"
+ },
+ "p-b08cd82f": {
+  "monthly_income": 634,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b08cd82f"
+ },
+ "p-b1ceaebb": {
+  "monthly_income": 1397,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b1ceaebb"
+ },
+ "p-b211445d": {
+  "monthly_income": 706,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b211445d"
+ },
+ "p-b247d724": {
+  "monthly_income": 347,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b247d724"
+ },
+ "p-b25487ce": {
+  "monthly_income": 488,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b25487ce"
+ },
+ "p-b2a15b27": {
+  "monthly_income": 1266,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b2a15b27"
+ },
+ "p-b2a9b73f": {
+  "monthly_income": 967,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b2a9b73f"
+ },
+ "p-b41565d2": {
+  "monthly_income": 1864,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b41565d2"
+ },
+ "p-b491f7a5": {
+  "monthly_income": 253,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b491f7a5"
+ },
+ "p-b4de9023": {
+  "monthly_income": 1683,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b4de9023"
+ },
+ "p-b5616304": {
+  "monthly_income": 71,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b5616304"
+ },
+ "p-b5924e84": {
+  "monthly_income": 403,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b5924e84"
+ },
+ "p-b5ee0b3b": {
+  "monthly_income": 104,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b5ee0b3b"
+ },
+ "p-b69192ed": {
+  "monthly_income": 328,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b69192ed"
+ },
+ "p-b6a1cac9": {
+  "monthly_income": 400,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b6a1cac9"
+ },
+ "p-b7493ffd": {
+  "monthly_income": 538,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b7493ffd"
+ },
+ "p-b7d36224": {
+  "monthly_income": 364,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b7d36224"
+ },
+ "p-b97cb293": {
+  "monthly_income": 90,
+  "quarter": "2026-Q4",
+  "record_id": "wr-b97cb293"
+ },
+ "p-ba1b42b4": {
+  "monthly_income": 125,
+  "quarter": "2026-Q4",
+  "record_id": "wr-ba1b42b4"
+ },
+ "p-ba419d35": {
+  "monthly_income": 205,
+  "quarter": "2026-Q4",
+  "record_id": "wr-ba419d35"
+ },
+ "p-bbad496a": {
+  "monthly_income": 1380,
+  "quarter": "2026-Q4",
+  "record_id": "wr-bbad496a"
+ },
+ "p-bc304f26": {
+  "monthly_income": 74,
+  "quarter": "2026-Q4",
+  "record_id": "wr-bc304f26"
+ },
+ "p-bcec5d06": {
+  "monthly_income": 280,
+  "quarter": "2026-Q4",
+  "record_id": "wr-bcec5d06"
+ },
+ "p-bd699d4b": {
+  "monthly_income": 2079,
+  "quarter": "2026-Q4",
+  "record_id": "wr-bd699d4b"
+ },
+ "p-bedafc44": {
+  "monthly_income": 938,
+  "quarter": "2026-Q4",
+  "record_id": "wr-bedafc44"
+ },
+ "p-bfcea0d0": {
+  "monthly_income": 312,
+  "quarter": "2026-Q4",
+  "record_id": "wr-bfcea0d0"
+ },
+ "p-bfcf7fd4": {
+  "monthly_income": 524,
+  "quarter": "2026-Q4",
+  "record_id": "wr-bfcf7fd4"
+ },
+ "p-c0a47dee": {
+  "monthly_income": 1159,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c0a47dee"
+ },
+ "p-c20e3ef0": {
+  "monthly_income": 881,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c20e3ef0"
+ },
+ "p-c2736bc2": {
+  "monthly_income": 213,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c2736bc2"
+ },
+ "p-c29ada1b": {
+  "monthly_income": 56,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c29ada1b"
+ },
+ "p-c307b408": {
+  "monthly_income": 148,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c307b408"
+ },
+ "p-c3c29b35": {
+  "monthly_income": 101,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c3c29b35"
+ },
+ "p-c44159a3": {
+  "monthly_income": 389,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c44159a3"
+ },
+ "p-c527d951": {
+  "monthly_income": 405,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c527d951"
+ },
+ "p-c53d3c4b": {
+  "monthly_income": 790,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c53d3c4b"
+ },
+ "p-c5e76e9e": {
+  "monthly_income": 505,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c5e76e9e"
+ },
+ "p-c66e4f6a": {
+  "monthly_income": 947,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c66e4f6a"
+ },
+ "p-c6814385": {
+  "monthly_income": 699,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c6814385"
+ },
+ "p-c86c400e": {
+  "monthly_income": 1792,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c86c400e"
+ },
+ "p-c8c9fa57": {
+  "monthly_income": 280,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c8c9fa57"
+ },
+ "p-c9585d7a": {
+  "monthly_income": 207,
+  "quarter": "2026-Q4",
+  "record_id": "wr-c9585d7a"
+ },
+ "p-cb45c886": {
+  "monthly_income": 216,
+  "quarter": "2026-Q4",
+  "record_id": "wr-cb45c886"
+ },
+ "p-cd8b093f": {
+  "monthly_income": 366,
+  "quarter": "2026-Q4",
+  "record_id": "wr-cd8b093f"
+ },
+ "p-cdf9f16d": {
+  "monthly_income": 348,
+  "quarter": "2026-Q4",
+  "record_id": "wr-cdf9f16d"
+ },
+ "p-cf22cde5": {
+  "monthly_income": 352,
+  "quarter": "2026-Q4",
+  "record_id": "wr-cf22cde5"
+ },
+ "p-cf33d965": {
+  "monthly_income": 226,
+  "quarter": "2026-Q4",
+  "record_id": "wr-cf33d965"
+ },
+ "p-d1281ff9": {
+  "monthly_income": 848,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d1281ff9"
+ },
+ "p-d15b23ed": {
+  "monthly_income": 236,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d15b23ed"
+ },
+ "p-d2a36b49": {
+  "monthly_income": 111,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d2a36b49"
+ },
+ "p-d3727ff2": {
+  "monthly_income": 521,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d3727ff2"
+ },
+ "p-d3cd07ef": {
+  "monthly_income": 1362,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d3cd07ef"
+ },
+ "p-d460615c": {
+  "monthly_income": 2067,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d460615c"
+ },
+ "p-d5757f6a": {
+  "monthly_income": 434,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d5757f6a"
+ },
+ "p-d7e2d35b": {
+  "monthly_income": 1141,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d7e2d35b"
+ },
+ "p-d7ffc709": {
+  "monthly_income": 127,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d7ffc709"
+ },
+ "p-d81fa205": {
+  "monthly_income": 415,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d81fa205"
+ },
+ "p-d95116a7": {
+  "monthly_income": 280,
+  "quarter": "2026-Q4",
+  "record_id": "wr-d95116a7"
+ },
+ "p-dcfce45d": {
+  "monthly_income": 2097,
+  "quarter": "2026-Q4",
+  "record_id": "wr-dcfce45d"
+ },
+ "p-dd7be1e2": {
+  "monthly_income": 1502,
+  "quarter": "2026-Q4",
+  "record_id": "wr-dd7be1e2"
+ },
+ "p-de1bfe03": {
+  "monthly_income": 110,
+  "quarter": "2026-Q4",
+  "record_id": "wr-de1bfe03"
+ },
+ "p-deb162bf": {
+  "monthly_income": 1374,
+  "quarter": "2026-Q4",
+  "record_id": "wr-deb162bf"
+ },
+ "p-e12ccbe4": {
+  "monthly_income": 473,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e12ccbe4"
+ },
+ "p-e3203e31": {
+  "monthly_income": 1163,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e3203e31"
+ },
+ "p-e3dedd75": {
+  "monthly_income": 538,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e3dedd75"
+ },
+ "p-e53b7cd9": {
+  "monthly_income": 1033,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e53b7cd9"
+ },
+ "p-e5cb5486": {
+  "monthly_income": 2350,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e5cb5486"
+ },
+ "p-e717c24e": {
+  "monthly_income": 83,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e717c24e"
+ },
+ "p-e753f96c": {
+  "monthly_income": 1057,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e753f96c"
+ },
+ "p-e7888b45": {
+  "monthly_income": 160,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e7888b45"
+ },
+ "p-e89af71d": {
+  "monthly_income": 534,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e89af71d"
+ },
+ "p-e919f7d2": {
+  "monthly_income": 74,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e919f7d2"
+ },
+ "p-e91b38e7": {
+  "monthly_income": 324,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e91b38e7"
+ },
+ "p-e9bbe168": {
+  "monthly_income": 153,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e9bbe168"
+ },
+ "p-e9ca0b18": {
+  "monthly_income": 299,
+  "quarter": "2026-Q4",
+  "record_id": "wr-e9ca0b18"
+ },
+ "p-ea923aa8": {
+  "monthly_income": 349,
+  "quarter": "2026-Q4",
+  "record_id": "wr-ea923aa8"
+ },
+ "p-ea9c475a": {
+  "monthly_income": 385,
+  "quarter": "2026-Q4",
+  "record_id": "wr-ea9c475a"
+ },
+ "p-eb9de5be": {
+  "monthly_income": 1074,
+  "quarter": "2026-Q4",
+  "record_id": "wr-eb9de5be"
+ },
+ "p-ebb5a8b0": {
+  "monthly_income": 1362,
+  "quarter": "2026-Q4",
+  "record_id": "wr-ebb5a8b0"
+ },
+ "p-ed97ff75": {
+  "monthly_income": 54,
+  "quarter": "2026-Q4",
+  "record_id": "wr-ed97ff75"
+ },
+ "p-ee3b5fff": {
+  "monthly_income": 1752,
+  "quarter": "2026-Q4",
+  "record_id": "wr-ee3b5fff"
+ },
+ "p-eec4d4f2": {
+  "monthly_income": 544,
+  "quarter": "2026-Q4",
+  "record_id": "wr-eec4d4f2"
+ },
+ "p-eed0e7bb": {
+  "monthly_income": 829,
+  "quarter": "2026-Q4",
+  "record_id": "wr-eed0e7bb"
+ },
+ "p-eed50a92": {
+  "monthly_income": 1812,
+  "quarter": "2026-Q4",
+  "record_id": "wr-eed50a92"
+ },
+ "p-f09bda7a": {
+  "monthly_income": 819,
+  "quarter": "2026-Q4",
+  "record_id": "wr-f09bda7a"
+ },
+ "p-f1698104": {
+  "monthly_income": 1766,
+  "quarter": "2026-Q4",
+  "record_id": "wr-f1698104"
+ },
+ "p-f48d79b2": {
+  "monthly_income": 542,
+  "quarter": "2026-Q4",
+  "record_id": "wr-f48d79b2"
+ },
+ "p-f4923c94": {
+  "monthly_income": 428,
+  "quarter": "2026-Q4",
+  "record_id": "wr-f4923c94"
+ },
+ "p-f75f7812": {
+  "monthly_income": 375,
+  "quarter": "2026-Q4",
+  "record_id": "wr-f75f7812"
+ },
+ "p-f81f969d": {
+  "monthly_income": 514,
+  "quarter": "2026-Q4",
+  "record_id": "wr-f81f969d"
+ },
+ "p-f83a2cb7": {
+  "monthly_income": 2293,
+  "quarter": "2026-Q4",
+  "record_id": "wr-f83a2cb7"
+ },
+ "p-f844016a": {
+  "monthly_income": 291,
+  "quarter": "2026-Q4",
+  "record_id": "wr-f844016a"
+ },
+ "p-f8edcca4": {
+  "monthly_income": 452,
+  "quarter": "2026-Q4",
+  "record_id": "wr-f8edcca4"
+ },
+ "p-f95a6723": {
+  "monthly_income": 331,
+  "quarter": "2026-Q4",
+  "record_id": "wr-f95a6723"
+ },
+ "p-fa26d14b": {
+  "monthly_income": 524,
+  "quarter": "2026-Q4",
+  "record_id": "wr-fa26d14b"
+ },
+ "p-fe8ce897": {
+  "monthly_income": 240,
+  "quarter": "2026-Q4",
+  "record_id": "wr-fe8ce897"
+ },
+ "p-fe97136b": {
+  "monthly_income": 1315,
+  "quarter": "2026-Q4",
+  "record_id": "wr-fe97136b"
+ },
+ "p-febdc17b": {
+  "monthly_income": 338,
+  "quarter": "2026-Q4",
+  "record_id": "wr-febdc17b"
+ },
+ "p-ffdd5df8": {
+  "monthly_income": 425,
+  "quarter": "2026-Q4",
+  "record_id": "wr-ffdd5df8"
+ },
+ "p-ffec08f0": {
+  "monthly_income": 1637,
+  "quarter": "2026-Q4",
+  "record_id": "wr-ffec08f0"
+ }
+}

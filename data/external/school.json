@@ -1,0 +1,248 @@
+{
+ "g-deshawn": {
+  "enrollment_status": "half_time",
+  "institution": "Fresno City College",
+  "record_id": "se-deshawn",
+  "term": "Spring 2027"
+ },
+ "p-019cda32": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "Santa Ana College",
+  "record_id": "se-019cda32",
+  "term": "Spring 2027"
+ },
+ "p-19b87c0d": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "Cal State Long Beach",
+  "record_id": "se-19b87c0d",
+  "term": "Spring 2027"
+ },
+ "p-22929a68": {
+  "enrollment_status": "half_time",
+  "institution": "Santa Ana College",
+  "record_id": "se-22929a68",
+  "term": "Spring 2027"
+ },
+ "p-2caac3fb": {
+  "enrollment_status": "full_time",
+  "institution": "Fresno City College",
+  "record_id": "se-2caac3fb",
+  "term": "Spring 2027"
+ },
+ "p-307966cc": {
+  "enrollment_status": "half_time",
+  "institution": "Los Angeles City College",
+  "record_id": "se-307966cc",
+  "term": "Spring 2027"
+ },
+ "p-337d2cd0": {
+  "enrollment_status": "half_time",
+  "institution": "De Anza College",
+  "record_id": "se-337d2cd0",
+  "term": "Spring 2027"
+ },
+ "p-33a6f1a7": {
+  "enrollment_status": "full_time",
+  "institution": "Sacramento City College",
+  "record_id": "se-33a6f1a7",
+  "term": "Spring 2027"
+ },
+ "p-46213fa7": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "UC Riverside",
+  "record_id": "se-46213fa7",
+  "term": "Spring 2027"
+ },
+ "p-47b7dbd0": {
+  "enrollment_status": "full_time",
+  "institution": "Los Angeles City College",
+  "record_id": "se-47b7dbd0",
+  "term": "Spring 2027"
+ },
+ "p-48cfee32": {
+  "enrollment_status": "half_time",
+  "institution": "UC Riverside",
+  "record_id": "se-48cfee32",
+  "term": "Spring 2027"
+ },
+ "p-4eae15cd": {
+  "enrollment_status": "full_time",
+  "institution": "Santa Ana College",
+  "record_id": "se-4eae15cd",
+  "term": "Spring 2027"
+ },
+ "p-51a285b2": {
+  "enrollment_status": "full_time",
+  "institution": "De Anza College",
+  "record_id": "se-51a285b2",
+  "term": "Spring 2027"
+ },
+ "p-590dbe87": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "UC Riverside",
+  "record_id": "se-590dbe87",
+  "term": "Spring 2027"
+ },
+ "p-64a65d4c": {
+  "enrollment_status": "full_time",
+  "institution": "Fresno City College",
+  "record_id": "se-64a65d4c",
+  "term": "Spring 2027"
+ },
+ "p-83cf6620": {
+  "enrollment_status": "full_time",
+  "institution": "De Anza College",
+  "record_id": "se-83cf6620",
+  "term": "Spring 2027"
+ },
+ "p-8e358a6e": {
+  "enrollment_status": "half_time",
+  "institution": "Fresno City College",
+  "record_id": "se-8e358a6e",
+  "term": "Spring 2027"
+ },
+ "p-95504355": {
+  "enrollment_status": "full_time",
+  "institution": "Santa Ana College",
+  "record_id": "se-95504355",
+  "term": "Spring 2027"
+ },
+ "p-9f162fed": {
+  "enrollment_status": "half_time",
+  "institution": "Cal State Long Beach",
+  "record_id": "se-9f162fed",
+  "term": "Spring 2027"
+ },
+ "p-a05202c2": {
+  "enrollment_status": "half_time",
+  "institution": "Cal State Long Beach",
+  "record_id": "se-a05202c2",
+  "term": "Spring 2027"
+ },
+ "p-a1ca0d37": {
+  "enrollment_status": "full_time",
+  "institution": "UC Riverside",
+  "record_id": "se-a1ca0d37",
+  "term": "Spring 2027"
+ },
+ "p-a30db668": {
+  "enrollment_status": "half_time",
+  "institution": "Santa Ana College",
+  "record_id": "se-a30db668",
+  "term": "Spring 2027"
+ },
+ "p-a31c8fbc": {
+  "enrollment_status": "half_time",
+  "institution": "Cal State Long Beach",
+  "record_id": "se-a31c8fbc",
+  "term": "Spring 2027"
+ },
+ "p-a9cfce0c": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "Los Angeles City College",
+  "record_id": "se-a9cfce0c",
+  "term": "Spring 2027"
+ },
+ "p-b1d5fa44": {
+  "enrollment_status": "full_time",
+  "institution": "UC Riverside",
+  "record_id": "se-b1d5fa44",
+  "term": "Spring 2027"
+ },
+ "p-b1d83b24": {
+  "enrollment_status": "half_time",
+  "institution": "Los Angeles City College",
+  "record_id": "se-b1d83b24",
+  "term": "Spring 2027"
+ },
+ "p-b498abf6": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "Sacramento City College",
+  "record_id": "se-b498abf6",
+  "term": "Spring 2027"
+ },
+ "p-b7d36224": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "De Anza College",
+  "record_id": "se-b7d36224",
+  "term": "Spring 2027"
+ },
+ "p-bbad496a": {
+  "enrollment_status": "half_time",
+  "institution": "UC Riverside",
+  "record_id": "se-bbad496a",
+  "term": "Spring 2027"
+ },
+ "p-c307b408": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "Cal State Long Beach",
+  "record_id": "se-c307b408",
+  "term": "Spring 2027"
+ },
+ "p-c44159a3": {
+  "enrollment_status": "full_time",
+  "institution": "San Diego Mesa College",
+  "record_id": "se-c44159a3",
+  "term": "Spring 2027"
+ },
+ "p-c46215b0": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "De Anza College",
+  "record_id": "se-c46215b0",
+  "term": "Spring 2027"
+ },
+ "p-cb45c886": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "Fresno City College",
+  "record_id": "se-cb45c886",
+  "term": "Spring 2027"
+ },
+ "p-cc2db4f4": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "Sacramento City College",
+  "record_id": "se-cc2db4f4",
+  "term": "Spring 2027"
+ },
+ "p-dee27dcc": {
+  "enrollment_status": "half_time",
+  "institution": "Los Angeles City College",
+  "record_id": "se-dee27dcc",
+  "term": "Spring 2027"
+ },
+ "p-e753f96c": {
+  "enrollment_status": "half_time",
+  "institution": "Santa Ana College",
+  "record_id": "se-e753f96c",
+  "term": "Spring 2027"
+ },
+ "p-e89af71d": {
+  "enrollment_status": "full_time",
+  "institution": "De Anza College",
+  "record_id": "se-e89af71d",
+  "term": "Spring 2027"
+ },
+ "p-f09bda7a": {
+  "enrollment_status": "half_time",
+  "institution": "San Diego Mesa College",
+  "record_id": "se-f09bda7a",
+  "term": "Spring 2027"
+ },
+ "p-f1bb1b85": {
+  "enrollment_status": "half_time",
+  "institution": "Sacramento City College",
+  "record_id": "se-f1bb1b85",
+  "term": "Spring 2027"
+ },
+ "p-f8edcca4": {
+  "enrollment_status": "full_time",
+  "institution": "Fresno City College",
+  "record_id": "se-f8edcca4",
+  "term": "Spring 2027"
+ },
+ "p-fb50bcb9": {
+  "enrollment_status": "less_than_half_time",
+  "institution": "Fresno City College",
+  "record_id": "se-fb50bcb9",
+  "term": "Spring 2027"
+ }
+}

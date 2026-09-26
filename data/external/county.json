@@ -1,0 +1,6002 @@
+{
+ "g-bea": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bea"
+ },
+ "g-deshawn": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-deshawn"
+ },
+ "g-karen": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-karen"
+ },
+ "g-linh": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-linh"
+ },
+ "g-marcus": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-marcus"
+ },
+ "g-omar": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-omar"
+ },
+ "g-rosa": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-rosa"
+ },
+ "p-003b30a0": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-003b30a0"
+ },
+ "p-00bd0ed6": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-00bd0ed6"
+ },
+ "p-010d736c": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-010d736c"
+ },
+ "p-011a4095": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-011a4095"
+ },
+ "p-0128b52a": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0128b52a"
+ },
+ "p-016a1a5e": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-016a1a5e"
+ },
+ "p-019cda32": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-019cda32"
+ },
+ "p-01ce818c": {
+  "county": "Lassen",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-01ce818c"
+ },
+ "p-021142be": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-021142be"
+ },
+ "p-02cca109": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-02cca109"
+ },
+ "p-02e8a145": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-02e8a145"
+ },
+ "p-032000cf": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-032000cf"
+ },
+ "p-0382e102": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0382e102"
+ },
+ "p-0399299d": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0399299d"
+ },
+ "p-03e733d5": {
+  "county": "Napa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-03e733d5"
+ },
+ "p-046c8377": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-046c8377"
+ },
+ "p-04dd6dd9": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-04dd6dd9"
+ },
+ "p-04e52287": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-04e52287"
+ },
+ "p-05d39322": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-05d39322"
+ },
+ "p-060aa7a8": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-060aa7a8"
+ },
+ "p-062d51e6": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-062d51e6"
+ },
+ "p-06a762e8": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-06a762e8"
+ },
+ "p-06d9b168": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-06d9b168"
+ },
+ "p-06eb6dda": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-06eb6dda"
+ },
+ "p-06fe0fa1": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-06fe0fa1"
+ },
+ "p-073f0b4c": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-073f0b4c"
+ },
+ "p-075c319c": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-075c319c"
+ },
+ "p-07811815": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-07811815"
+ },
+ "p-080b069b": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-080b069b"
+ },
+ "p-0859291e": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0859291e"
+ },
+ "p-08a12ee7": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-08a12ee7"
+ },
+ "p-08d65f8d": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-08d65f8d"
+ },
+ "p-0a7ebdbd": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0a7ebdbd"
+ },
+ "p-0a80947b": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0a80947b"
+ },
+ "p-0aad30a9": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0aad30a9"
+ },
+ "p-0ad0bcc5": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0ad0bcc5"
+ },
+ "p-0b490094": {
+  "county": "Madera",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0b490094"
+ },
+ "p-0b6b1053": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0b6b1053"
+ },
+ "p-0b9ae72a": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0b9ae72a"
+ },
+ "p-0c77f232": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0c77f232"
+ },
+ "p-0c9872cf": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0c9872cf"
+ },
+ "p-0d6a874a": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0d6a874a"
+ },
+ "p-0eeaee3c": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0eeaee3c"
+ },
+ "p-0f00a4c3": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0f00a4c3"
+ },
+ "p-0f07fc79": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0f07fc79"
+ },
+ "p-0fcc090f": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0fcc090f"
+ },
+ "p-0fed2443": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-0fed2443"
+ },
+ "p-102ce685": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-102ce685"
+ },
+ "p-109492b1": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-109492b1"
+ },
+ "p-10fd7415": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-10fd7415"
+ },
+ "p-11a50515": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-11a50515"
+ },
+ "p-11b4e9dc": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-11b4e9dc"
+ },
+ "p-11ea9e54": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-11ea9e54"
+ },
+ "p-120ef489": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-120ef489"
+ },
+ "p-123b5515": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-123b5515"
+ },
+ "p-12b83633": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-12b83633"
+ },
+ "p-131a22f5": {
+  "county": "Yolo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-131a22f5"
+ },
+ "p-131fec9c": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-131fec9c"
+ },
+ "p-132074e8": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-132074e8"
+ },
+ "p-13b74bc5": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-13b74bc5"
+ },
+ "p-13c3d085": {
+  "county": "Sutter",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-13c3d085"
+ },
+ "p-13fa1160": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-13fa1160"
+ },
+ "p-148d5f62": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-148d5f62"
+ },
+ "p-150d2bd4": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-150d2bd4"
+ },
+ "p-1554b134": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1554b134"
+ },
+ "p-15c4e9f2": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-15c4e9f2"
+ },
+ "p-15d81844": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-15d81844"
+ },
+ "p-161a011f": {
+  "county": "Madera",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-161a011f"
+ },
+ "p-1675291c": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1675291c"
+ },
+ "p-16c6292b": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-16c6292b"
+ },
+ "p-173d0512": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-173d0512"
+ },
+ "p-179faead": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-179faead"
+ },
+ "p-17cb5ccc": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-17cb5ccc"
+ },
+ "p-184d403d": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-184d403d"
+ },
+ "p-184d84b2": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-184d84b2"
+ },
+ "p-1888bd1d": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-1888bd1d"
+ },
+ "p-18b101ed": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-18b101ed"
+ },
+ "p-18cbb615": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-18cbb615"
+ },
+ "p-19aaec98": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-19aaec98"
+ },
+ "p-19b87c0d": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-19b87c0d"
+ },
+ "p-19bd99e5": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-19bd99e5"
+ },
+ "p-19d11b13": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-19d11b13"
+ },
+ "p-1a578c2a": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1a578c2a"
+ },
+ "p-1a965d90": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1a965d90"
+ },
+ "p-1b260b8e": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1b260b8e"
+ },
+ "p-1be7d604": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1be7d604"
+ },
+ "p-1d0c6a63": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1d0c6a63"
+ },
+ "p-1d55f8ae": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1d55f8ae"
+ },
+ "p-1dc844fd": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1dc844fd"
+ },
+ "p-1e1b6829": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1e1b6829"
+ },
+ "p-1e8afa68": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1e8afa68"
+ },
+ "p-1f5e460e": {
+  "county": "Kings",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1f5e460e"
+ },
+ "p-1fee85c9": {
+  "county": "Solano",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1fee85c9"
+ },
+ "p-1ffa429d": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-1ffa429d"
+ },
+ "p-20950ce0": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-20950ce0"
+ },
+ "p-20a24b42": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-20a24b42"
+ },
+ "p-20bf4185": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-20bf4185"
+ },
+ "p-20c58944": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-20c58944"
+ },
+ "p-210e7241": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-210e7241"
+ },
+ "p-2133cc41": {
+  "county": "Santa Cruz",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2133cc41"
+ },
+ "p-21cb4452": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-21cb4452"
+ },
+ "p-2201f761": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2201f761"
+ },
+ "p-22929a68": {
+  "county": "San Luis Obispo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-22929a68"
+ },
+ "p-22a118a1": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-22a118a1"
+ },
+ "p-22e9c711": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-22e9c711"
+ },
+ "p-231e2bcc": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-231e2bcc"
+ },
+ "p-2388187a": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2388187a"
+ },
+ "p-239ee417": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-239ee417"
+ },
+ "p-23be53d1": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-23be53d1"
+ },
+ "p-243a5936": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-243a5936"
+ },
+ "p-2474a716": {
+  "county": "Napa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2474a716"
+ },
+ "p-2474b3ff": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2474b3ff"
+ },
+ "p-24774252": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-24774252"
+ },
+ "p-24a557fc": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-24a557fc"
+ },
+ "p-24ce3151": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-24ce3151"
+ },
+ "p-24f27ab5": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-24f27ab5"
+ },
+ "p-2503f21b": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2503f21b"
+ },
+ "p-25494748": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-25494748"
+ },
+ "p-25f2b1e8": {
+  "county": "Merced",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-25f2b1e8"
+ },
+ "p-261baccc": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-261baccc"
+ },
+ "p-265323f0": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-265323f0"
+ },
+ "p-26aa011e": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-26aa011e"
+ },
+ "p-27181dd6": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-27181dd6"
+ },
+ "p-271af137": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-271af137"
+ },
+ "p-275c1e1f": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-275c1e1f"
+ },
+ "p-277b19e2": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-277b19e2"
+ },
+ "p-27af11aa": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-27af11aa"
+ },
+ "p-27b3914f": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-27b3914f"
+ },
+ "p-27cca774": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-27cca774"
+ },
+ "p-27d44017": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-27d44017"
+ },
+ "p-289d9a59": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-289d9a59"
+ },
+ "p-28dc95ea": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-28dc95ea"
+ },
+ "p-28fc4489": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-28fc4489"
+ },
+ "p-28fe5454": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-28fe5454"
+ },
+ "p-2924da49": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2924da49"
+ },
+ "p-292b5aae": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-292b5aae"
+ },
+ "p-293b5046": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-293b5046"
+ },
+ "p-29a638b7": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-29a638b7"
+ },
+ "p-2a89ee40": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2a89ee40"
+ },
+ "p-2a8f308d": {
+  "county": "Santa Cruz",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2a8f308d"
+ },
+ "p-2b38c847": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2b38c847"
+ },
+ "p-2bbd76b7": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2bbd76b7"
+ },
+ "p-2bcba2d0": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2bcba2d0"
+ },
+ "p-2c203652": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2c203652"
+ },
+ "p-2c35b5f8": {
+  "county": "Santa Cruz",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2c35b5f8"
+ },
+ "p-2c588417": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2c588417"
+ },
+ "p-2caac3fb": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2caac3fb"
+ },
+ "p-2d01a22b": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2d01a22b"
+ },
+ "p-2d20e4a5": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2d20e4a5"
+ },
+ "p-2d2c8cd2": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2d2c8cd2"
+ },
+ "p-2d487497": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2d487497"
+ },
+ "p-2d50c1da": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2d50c1da"
+ },
+ "p-2d68ad16": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-2d68ad16"
+ },
+ "p-2de4dd0d": {
+  "county": "Butte",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2de4dd0d"
+ },
+ "p-2deee42b": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2deee42b"
+ },
+ "p-2e0bbae3": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2e0bbae3"
+ },
+ "p-2f14578f": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2f14578f"
+ },
+ "p-2f4e5dee": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-2f4e5dee"
+ },
+ "p-30331ffd": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-30331ffd"
+ },
+ "p-303b4bc9": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-303b4bc9"
+ },
+ "p-30730007": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-30730007"
+ },
+ "p-307966cc": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-307966cc"
+ },
+ "p-309d98fb": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-309d98fb"
+ },
+ "p-30eb8a8c": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-30eb8a8c"
+ },
+ "p-310b0372": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-310b0372"
+ },
+ "p-31f6875a": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-31f6875a"
+ },
+ "p-322ab5c6": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-322ab5c6"
+ },
+ "p-322d2eb8": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-322d2eb8"
+ },
+ "p-3236b1f8": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3236b1f8"
+ },
+ "p-326580b5": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-326580b5"
+ },
+ "p-335f5e30": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-335f5e30"
+ },
+ "p-33704fef": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-33704fef"
+ },
+ "p-337d2cd0": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-337d2cd0"
+ },
+ "p-33a6f1a7": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-33a6f1a7"
+ },
+ "p-33c23b76": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-33c23b76"
+ },
+ "p-3438408f": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3438408f"
+ },
+ "p-34548186": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-34548186"
+ },
+ "p-346c747a": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-346c747a"
+ },
+ "p-34c33b47": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-34c33b47"
+ },
+ "p-351bf4e1": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-351bf4e1"
+ },
+ "p-35432f52": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-35432f52"
+ },
+ "p-355d5f82": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-355d5f82"
+ },
+ "p-356a05d5": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-356a05d5"
+ },
+ "p-35b353dd": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-35b353dd"
+ },
+ "p-35bae7db": {
+  "county": "Marin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-35bae7db"
+ },
+ "p-36047b27": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-36047b27"
+ },
+ "p-368b436b": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-368b436b"
+ },
+ "p-36b3d329": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-36b3d329"
+ },
+ "p-36f895c5": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-36f895c5"
+ },
+ "p-3717c133": {
+  "county": "San Benito",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3717c133"
+ },
+ "p-37673647": {
+  "county": "Merced",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-37673647"
+ },
+ "p-378f5f5f": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-378f5f5f"
+ },
+ "p-37d59dbe": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-37d59dbe"
+ },
+ "p-380e310b": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-380e310b"
+ },
+ "p-38947f55": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-38947f55"
+ },
+ "p-38d31286": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-38d31286"
+ },
+ "p-39162559": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-39162559"
+ },
+ "p-39bdbcaa": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-39bdbcaa"
+ },
+ "p-3a0268da": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3a0268da"
+ },
+ "p-3b24d024": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3b24d024"
+ },
+ "p-3b969c93": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3b969c93"
+ },
+ "p-3bc4da10": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3bc4da10"
+ },
+ "p-3bdc062d": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3bdc062d"
+ },
+ "p-3becc9ed": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3becc9ed"
+ },
+ "p-3c2e37d8": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3c2e37d8"
+ },
+ "p-3ccd1608": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3ccd1608"
+ },
+ "p-3dab68ba": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3dab68ba"
+ },
+ "p-3deb75e9": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3deb75e9"
+ },
+ "p-3f63dcce": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3f63dcce"
+ },
+ "p-3f70dd9b": {
+  "county": "Santa Barbara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3f70dd9b"
+ },
+ "p-3f8330ee": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3f8330ee"
+ },
+ "p-3f9967ef": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-3f9967ef"
+ },
+ "p-400a497a": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-400a497a"
+ },
+ "p-40fb9a7a": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-40fb9a7a"
+ },
+ "p-421719bf": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-421719bf"
+ },
+ "p-42382f35": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-42382f35"
+ },
+ "p-429c0ce7": {
+  "county": "Placer",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-429c0ce7"
+ },
+ "p-42b98020": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-42b98020"
+ },
+ "p-42c06688": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-42c06688"
+ },
+ "p-43324e5e": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-43324e5e"
+ },
+ "p-43afdd74": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-43afdd74"
+ },
+ "p-440cfb11": {
+  "county": "Santa Barbara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-440cfb11"
+ },
+ "p-4456bd10": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4456bd10"
+ },
+ "p-445be4e4": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-445be4e4"
+ },
+ "p-449ed4e4": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-449ed4e4"
+ },
+ "p-44a8241a": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-44a8241a"
+ },
+ "p-44bf5b9e": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-44bf5b9e"
+ },
+ "p-44c97973": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-44c97973"
+ },
+ "p-44f3b7ec": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-44f3b7ec"
+ },
+ "p-4550000a": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4550000a"
+ },
+ "p-456f1eb2": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-456f1eb2"
+ },
+ "p-45ea9e13": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-45ea9e13"
+ },
+ "p-46213fa7": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-46213fa7"
+ },
+ "p-4648a54f": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4648a54f"
+ },
+ "p-46976cf7": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-46976cf7"
+ },
+ "p-46acfc22": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-46acfc22"
+ },
+ "p-46afc23b": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-46afc23b"
+ },
+ "p-46ee9d82": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-46ee9d82"
+ },
+ "p-46f06816": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-46f06816"
+ },
+ "p-47128282": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-47128282"
+ },
+ "p-4760e5e7": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4760e5e7"
+ },
+ "p-47b7dbd0": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-47b7dbd0"
+ },
+ "p-47bcdce7": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-47bcdce7"
+ },
+ "p-47c1333a": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-47c1333a"
+ },
+ "p-47d390c6": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-47d390c6"
+ },
+ "p-47f1d597": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-47f1d597"
+ },
+ "p-4811b87b": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4811b87b"
+ },
+ "p-483e25a3": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-483e25a3"
+ },
+ "p-48cfee32": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-48cfee32"
+ },
+ "p-48ffc47a": {
+  "county": "Santa Barbara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-48ffc47a"
+ },
+ "p-49b00c6f": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-49b00c6f"
+ },
+ "p-49c6d4e6": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-49c6d4e6"
+ },
+ "p-4a3660b4": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4a3660b4"
+ },
+ "p-4a4e1120": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4a4e1120"
+ },
+ "p-4aaa0001": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4aaa0001"
+ },
+ "p-4b3f60a8": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4b3f60a8"
+ },
+ "p-4bc6b4b1": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4bc6b4b1"
+ },
+ "p-4bf9098f": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4bf9098f"
+ },
+ "p-4ce8d9c2": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-4ce8d9c2"
+ },
+ "p-4d6e2a95": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4d6e2a95"
+ },
+ "p-4dbe6dc4": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4dbe6dc4"
+ },
+ "p-4e3a6f7b": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4e3a6f7b"
+ },
+ "p-4eae15cd": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4eae15cd"
+ },
+ "p-4ec7c8f0": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4ec7c8f0"
+ },
+ "p-4f083ce3": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4f083ce3"
+ },
+ "p-4f899403": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-4f899403"
+ },
+ "p-50493d0f": {
+  "county": "San Luis Obispo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-50493d0f"
+ },
+ "p-505be3d9": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-505be3d9"
+ },
+ "p-509de27d": {
+  "county": "Merced",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-509de27d"
+ },
+ "p-50a071ca": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-50a071ca"
+ },
+ "p-50ad813c": {
+  "county": "Butte",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-50ad813c"
+ },
+ "p-50b95daa": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-50b95daa"
+ },
+ "p-50d49eaf": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-50d49eaf"
+ },
+ "p-5107a1a0": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5107a1a0"
+ },
+ "p-515490a5": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-515490a5"
+ },
+ "p-515e182e": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-515e182e"
+ },
+ "p-51a285b2": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-51a285b2"
+ },
+ "p-51b91092": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-51b91092"
+ },
+ "p-51c5ced0": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-51c5ced0"
+ },
+ "p-51ffec06": {
+  "county": "Santa Cruz",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-51ffec06"
+ },
+ "p-520e6e72": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-520e6e72"
+ },
+ "p-5224d174": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5224d174"
+ },
+ "p-5241d531": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5241d531"
+ },
+ "p-52890ca4": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-52890ca4"
+ },
+ "p-52ae36c9": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-52ae36c9"
+ },
+ "p-531e04b6": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-531e04b6"
+ },
+ "p-5346bc0e": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5346bc0e"
+ },
+ "p-53d9c078": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-53d9c078"
+ },
+ "p-541c815b": {
+  "county": "Merced",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-541c815b"
+ },
+ "p-543b01b0": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-543b01b0"
+ },
+ "p-545d9709": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-545d9709"
+ },
+ "p-54e00e9a": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-54e00e9a"
+ },
+ "p-55133401": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-55133401"
+ },
+ "p-55454546": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-55454546"
+ },
+ "p-5570fb09": {
+  "county": "Yuba",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5570fb09"
+ },
+ "p-557e2cbb": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-557e2cbb"
+ },
+ "p-55f0eb52": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-55f0eb52"
+ },
+ "p-55f3907f": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-55f3907f"
+ },
+ "p-56258afc": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-56258afc"
+ },
+ "p-5652f8d4": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5652f8d4"
+ },
+ "p-56a83e71": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-56a83e71"
+ },
+ "p-56c63f3e": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-56c63f3e"
+ },
+ "p-56f9aa9c": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-56f9aa9c"
+ },
+ "p-56fb59d9": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-56fb59d9"
+ },
+ "p-571b7a8b": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-571b7a8b"
+ },
+ "p-580c9794": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-580c9794"
+ },
+ "p-583ab65e": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-583ab65e"
+ },
+ "p-58419e9c": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-58419e9c"
+ },
+ "p-58665887": {
+  "county": "Butte",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-58665887"
+ },
+ "p-5883f5be": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5883f5be"
+ },
+ "p-588ffcae": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-588ffcae"
+ },
+ "p-58ade662": {
+  "county": "Solano",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-58ade662"
+ },
+ "p-590dbe87": {
+  "county": "Imperial",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-590dbe87"
+ },
+ "p-595c1b2e": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-595c1b2e"
+ },
+ "p-59bf3bd3": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-59bf3bd3"
+ },
+ "p-5a6e53e7": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5a6e53e7"
+ },
+ "p-5a7fc168": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5a7fc168"
+ },
+ "p-5b74100e": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5b74100e"
+ },
+ "p-5ba0a3f3": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5ba0a3f3"
+ },
+ "p-5bcd499f": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5bcd499f"
+ },
+ "p-5bde0701": {
+  "county": "Kings",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5bde0701"
+ },
+ "p-5c39a9da": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5c39a9da"
+ },
+ "p-5c4fe487": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5c4fe487"
+ },
+ "p-5c8956ba": {
+  "county": "Imperial",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5c8956ba"
+ },
+ "p-5c92da33": {
+  "county": "Butte",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5c92da33"
+ },
+ "p-5ccc84a9": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5ccc84a9"
+ },
+ "p-5d77f297": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5d77f297"
+ },
+ "p-5de127b1": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5de127b1"
+ },
+ "p-5e688e99": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5e688e99"
+ },
+ "p-5e754ba8": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5e754ba8"
+ },
+ "p-5e7ebf2c": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5e7ebf2c"
+ },
+ "p-5e96a8ce": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5e96a8ce"
+ },
+ "p-5efaa97c": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5efaa97c"
+ },
+ "p-5f717f67": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5f717f67"
+ },
+ "p-5fb3b9bc": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-5fb3b9bc"
+ },
+ "p-5fd603dd": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-5fd603dd"
+ },
+ "p-6047419c": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6047419c"
+ },
+ "p-606fc820": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-606fc820"
+ },
+ "p-60807554": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-60807554"
+ },
+ "p-60af8ed1": {
+  "county": "Imperial",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-60af8ed1"
+ },
+ "p-60dc2a3a": {
+  "county": "Yolo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-60dc2a3a"
+ },
+ "p-6111a518": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6111a518"
+ },
+ "p-6142e354": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6142e354"
+ },
+ "p-61a7ccc9": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-61a7ccc9"
+ },
+ "p-61c5163b": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-61c5163b"
+ },
+ "p-61f0d3ca": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-61f0d3ca"
+ },
+ "p-62311c63": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-62311c63"
+ },
+ "p-6261590d": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6261590d"
+ },
+ "p-62660772": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-62660772"
+ },
+ "p-6275db11": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6275db11"
+ },
+ "p-6275deb4": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6275deb4"
+ },
+ "p-628cc530": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-628cc530"
+ },
+ "p-62dc11a2": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-62dc11a2"
+ },
+ "p-62f60bdb": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-62f60bdb"
+ },
+ "p-62faaba8": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-62faaba8"
+ },
+ "p-63469bf1": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-63469bf1"
+ },
+ "p-63ca8664": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-63ca8664"
+ },
+ "p-63f00385": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-63f00385"
+ },
+ "p-63f4d267": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-63f4d267"
+ },
+ "p-6415b890": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6415b890"
+ },
+ "p-6482017e": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6482017e"
+ },
+ "p-64950a0b": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-64950a0b"
+ },
+ "p-64a65d4c": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-64a65d4c"
+ },
+ "p-64b4fd5b": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-64b4fd5b"
+ },
+ "p-64d261e3": {
+  "county": "Nevada",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-64d261e3"
+ },
+ "p-64e8aba8": {
+  "county": "Merced",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-64e8aba8"
+ },
+ "p-6536fb7b": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6536fb7b"
+ },
+ "p-6550f07d": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6550f07d"
+ },
+ "p-6579ece3": {
+  "county": "Merced",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6579ece3"
+ },
+ "p-65c4ede4": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-65c4ede4"
+ },
+ "p-6775ae25": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6775ae25"
+ },
+ "p-688dfcd4": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-688dfcd4"
+ },
+ "p-689549f5": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-689549f5"
+ },
+ "p-68df5c5a": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-68df5c5a"
+ },
+ "p-68ed51d8": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-68ed51d8"
+ },
+ "p-6902c7bb": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6902c7bb"
+ },
+ "p-6923f921": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6923f921"
+ },
+ "p-6947148b": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6947148b"
+ },
+ "p-6948b05e": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6948b05e"
+ },
+ "p-69a4d3c5": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-69a4d3c5"
+ },
+ "p-69d45375": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-69d45375"
+ },
+ "p-6a16bdcc": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-6a16bdcc"
+ },
+ "p-6aed9210": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6aed9210"
+ },
+ "p-6b3a4e2a": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6b3a4e2a"
+ },
+ "p-6bb007b9": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6bb007b9"
+ },
+ "p-6bc4cd5d": {
+  "county": "Madera",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6bc4cd5d"
+ },
+ "p-6bd8b4d0": {
+  "county": "Humboldt",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6bd8b4d0"
+ },
+ "p-6bdc3615": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6bdc3615"
+ },
+ "p-6c091b3c": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6c091b3c"
+ },
+ "p-6c0ad5e9": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6c0ad5e9"
+ },
+ "p-6c30a7ac": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6c30a7ac"
+ },
+ "p-6c56f201": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6c56f201"
+ },
+ "p-6c73cd66": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6c73cd66"
+ },
+ "p-6ce11d31": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6ce11d31"
+ },
+ "p-6d9dc108": {
+  "county": "San Luis Obispo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6d9dc108"
+ },
+ "p-6de3fef5": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6de3fef5"
+ },
+ "p-6dfcf4c2": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6dfcf4c2"
+ },
+ "p-6e0dea40": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6e0dea40"
+ },
+ "p-6e174f7c": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6e174f7c"
+ },
+ "p-6e6a4d89": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6e6a4d89"
+ },
+ "p-6f1bffec": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6f1bffec"
+ },
+ "p-6f422ce6": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6f422ce6"
+ },
+ "p-6f45f2e9": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6f45f2e9"
+ },
+ "p-6f704cbd": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6f704cbd"
+ },
+ "p-6fb08dad": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-6fb08dad"
+ },
+ "p-6fb2e20a": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6fb2e20a"
+ },
+ "p-6fbddf55": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6fbddf55"
+ },
+ "p-6fc11c55": {
+  "county": "Madera",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-6fc11c55"
+ },
+ "p-7019c958": {
+  "county": "El Dorado",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7019c958"
+ },
+ "p-705c10e3": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-705c10e3"
+ },
+ "p-70f66395": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-70f66395"
+ },
+ "p-715724a5": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-715724a5"
+ },
+ "p-71618ae8": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-71618ae8"
+ },
+ "p-71bade63": {
+  "county": "San Luis Obispo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-71bade63"
+ },
+ "p-73501c39": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-73501c39"
+ },
+ "p-73e4529c": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-73e4529c"
+ },
+ "p-740ee37e": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-740ee37e"
+ },
+ "p-746511b0": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-746511b0"
+ },
+ "p-74730a78": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-74730a78"
+ },
+ "p-75067a17": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-75067a17"
+ },
+ "p-7512bbb4": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7512bbb4"
+ },
+ "p-75422a41": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-75422a41"
+ },
+ "p-754d8162": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-754d8162"
+ },
+ "p-757aa994": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-757aa994"
+ },
+ "p-75c74f90": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-75c74f90"
+ },
+ "p-75d6a35c": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-75d6a35c"
+ },
+ "p-75ed7c26": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-75ed7c26"
+ },
+ "p-76306a5a": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-76306a5a"
+ },
+ "p-76876964": {
+  "county": "Humboldt",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-76876964"
+ },
+ "p-76a1559f": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-76a1559f"
+ },
+ "p-76a5927f": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-76a5927f"
+ },
+ "p-76b20010": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-76b20010"
+ },
+ "p-76c2aca3": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-76c2aca3"
+ },
+ "p-7756280d": {
+  "county": "Santa Barbara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7756280d"
+ },
+ "p-777cc353": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-777cc353"
+ },
+ "p-7811dc30": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7811dc30"
+ },
+ "p-78d16510": {
+  "county": "Santa Barbara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-78d16510"
+ },
+ "p-79011278": {
+  "county": "Butte",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-79011278"
+ },
+ "p-79021b82": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-79021b82"
+ },
+ "p-7a272748": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7a272748"
+ },
+ "p-7aab8cea": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7aab8cea"
+ },
+ "p-7b04ab97": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7b04ab97"
+ },
+ "p-7b06ee52": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7b06ee52"
+ },
+ "p-7b321d35": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7b321d35"
+ },
+ "p-7b7389cb": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7b7389cb"
+ },
+ "p-7b809a81": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7b809a81"
+ },
+ "p-7bbb8846": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7bbb8846"
+ },
+ "p-7bdcc7a4": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7bdcc7a4"
+ },
+ "p-7bdd30f5": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7bdd30f5"
+ },
+ "p-7c913488": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7c913488"
+ },
+ "p-7c9b01e3": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7c9b01e3"
+ },
+ "p-7cfa80d2": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7cfa80d2"
+ },
+ "p-7d4093b3": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7d4093b3"
+ },
+ "p-7e2e8efa": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7e2e8efa"
+ },
+ "p-7e5ef194": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7e5ef194"
+ },
+ "p-7e9f22be": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7e9f22be"
+ },
+ "p-7ed7a9f1": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7ed7a9f1"
+ },
+ "p-7eea611a": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7eea611a"
+ },
+ "p-7eeabe6a": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7eeabe6a"
+ },
+ "p-7f50d0ba": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7f50d0ba"
+ },
+ "p-7f513333": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7f513333"
+ },
+ "p-7f84006a": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7f84006a"
+ },
+ "p-7feffb5f": {
+  "county": "Merced",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-7feffb5f"
+ },
+ "p-807344f2": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-807344f2"
+ },
+ "p-80744a28": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-80744a28"
+ },
+ "p-80ea990b": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-80ea990b"
+ },
+ "p-811b3aac": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-811b3aac"
+ },
+ "p-815e3b61": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-815e3b61"
+ },
+ "p-82312251": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-82312251"
+ },
+ "p-828e8ab2": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-828e8ab2"
+ },
+ "p-82b25eea": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-82b25eea"
+ },
+ "p-82e8875f": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-82e8875f"
+ },
+ "p-82ec1b7a": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-82ec1b7a"
+ },
+ "p-831291fd": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-831291fd"
+ },
+ "p-831ecb97": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-831ecb97"
+ },
+ "p-838aa331": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-838aa331"
+ },
+ "p-83cf6620": {
+  "county": "Santa Barbara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-83cf6620"
+ },
+ "p-84417c0d": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-84417c0d"
+ },
+ "p-846dca41": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-846dca41"
+ },
+ "p-847988f9": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-847988f9"
+ },
+ "p-84a9e26a": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-84a9e26a"
+ },
+ "p-84ee9557": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-84ee9557"
+ },
+ "p-85009e2d": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-85009e2d"
+ },
+ "p-8508d703": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8508d703"
+ },
+ "p-85120612": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-85120612"
+ },
+ "p-852adf58": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-852adf58"
+ },
+ "p-8580a690": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8580a690"
+ },
+ "p-8635d560": {
+  "county": "Butte",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8635d560"
+ },
+ "p-869668f8": {
+  "county": "Placer",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-869668f8"
+ },
+ "p-86ad0b8d": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-86ad0b8d"
+ },
+ "p-86fac348": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-86fac348"
+ },
+ "p-8724b50f": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8724b50f"
+ },
+ "p-87c87bbc": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-87c87bbc"
+ },
+ "p-880f6337": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-880f6337"
+ },
+ "p-881541c0": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-881541c0"
+ },
+ "p-88639eaa": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-88639eaa"
+ },
+ "p-88d9f932": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-88d9f932"
+ },
+ "p-89080f3e": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-89080f3e"
+ },
+ "p-890caa08": {
+  "county": "Marin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-890caa08"
+ },
+ "p-89737a96": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-89737a96"
+ },
+ "p-89957a82": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-89957a82"
+ },
+ "p-8999188f": {
+  "county": "Madera",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8999188f"
+ },
+ "p-89e977dc": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-89e977dc"
+ },
+ "p-8a378120": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-8a378120"
+ },
+ "p-8af9d5d7": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8af9d5d7"
+ },
+ "p-8b8f1e13": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8b8f1e13"
+ },
+ "p-8b967c2a": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8b967c2a"
+ },
+ "p-8bc636bb": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8bc636bb"
+ },
+ "p-8c15cab2": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8c15cab2"
+ },
+ "p-8c8ada4e": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8c8ada4e"
+ },
+ "p-8c9658c1": {
+  "county": "Butte",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8c9658c1"
+ },
+ "p-8cc81fed": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8cc81fed"
+ },
+ "p-8d062ee1": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8d062ee1"
+ },
+ "p-8e0ca061": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8e0ca061"
+ },
+ "p-8e358a6e": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8e358a6e"
+ },
+ "p-8e6f1056": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8e6f1056"
+ },
+ "p-8e841c11": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8e841c11"
+ },
+ "p-8ef235bb": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8ef235bb"
+ },
+ "p-8f60b8eb": {
+  "county": "Shasta",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8f60b8eb"
+ },
+ "p-8f65985d": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8f65985d"
+ },
+ "p-8fcba208": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-8fcba208"
+ },
+ "p-900239ad": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-900239ad"
+ },
+ "p-902020e2": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-902020e2"
+ },
+ "p-902f4727": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-902f4727"
+ },
+ "p-905d3fd1": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-905d3fd1"
+ },
+ "p-9096ceff": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9096ceff"
+ },
+ "p-90cc6828": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-90cc6828"
+ },
+ "p-90ef36c4": {
+  "county": "Imperial",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-90ef36c4"
+ },
+ "p-90fc8e82": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-90fc8e82"
+ },
+ "p-9116ecc2": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9116ecc2"
+ },
+ "p-914c5786": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-914c5786"
+ },
+ "p-9164a852": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9164a852"
+ },
+ "p-91b62291": {
+  "county": "Mendocino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-91b62291"
+ },
+ "p-91f05dd0": {
+  "county": "Yolo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-91f05dd0"
+ },
+ "p-922fb35e": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-922fb35e"
+ },
+ "p-9255b577": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9255b577"
+ },
+ "p-92683f03": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-92683f03"
+ },
+ "p-926a9af2": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-926a9af2"
+ },
+ "p-9291fd88": {
+  "county": "Napa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9291fd88"
+ },
+ "p-929fdbf9": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-929fdbf9"
+ },
+ "p-92af1769": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-92af1769"
+ },
+ "p-92cc1dc9": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-92cc1dc9"
+ },
+ "p-92cf63a9": {
+  "county": "Solano",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-92cf63a9"
+ },
+ "p-92d32bde": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-92d32bde"
+ },
+ "p-93a4ee80": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-93a4ee80"
+ },
+ "p-941f4546": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-941f4546"
+ },
+ "p-9432ec87": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9432ec87"
+ },
+ "p-94753cea": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-94753cea"
+ },
+ "p-947c82ee": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-947c82ee"
+ },
+ "p-94d461ea": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-94d461ea"
+ },
+ "p-95504355": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-95504355"
+ },
+ "p-955dbe2e": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-955dbe2e"
+ },
+ "p-9596033e": {
+  "county": "Marin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9596033e"
+ },
+ "p-9618b67f": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9618b67f"
+ },
+ "p-9661a432": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9661a432"
+ },
+ "p-96a88082": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-96a88082"
+ },
+ "p-96b128de": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-96b128de"
+ },
+ "p-96b6d552": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-96b6d552"
+ },
+ "p-96e4667e": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-96e4667e"
+ },
+ "p-96e7ccff": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-96e7ccff"
+ },
+ "p-9701b6ed": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9701b6ed"
+ },
+ "p-9718855b": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9718855b"
+ },
+ "p-9738e59f": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-9738e59f"
+ },
+ "p-97a7a416": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-97a7a416"
+ },
+ "p-982750f4": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-982750f4"
+ },
+ "p-9832fd60": {
+  "county": "San Benito",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9832fd60"
+ },
+ "p-98343291": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-98343291"
+ },
+ "p-983c70e3": {
+  "county": "Sutter",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-983c70e3"
+ },
+ "p-989701a8": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-989701a8"
+ },
+ "p-989ac671": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-989ac671"
+ },
+ "p-994d6249": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-994d6249"
+ },
+ "p-99851a74": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-99851a74"
+ },
+ "p-99d263f7": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-99d263f7"
+ },
+ "p-9a3c3c60": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9a3c3c60"
+ },
+ "p-9a574a84": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9a574a84"
+ },
+ "p-9a879aa7": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9a879aa7"
+ },
+ "p-9b05f0f2": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9b05f0f2"
+ },
+ "p-9b1e4fde": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9b1e4fde"
+ },
+ "p-9bdd8be4": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9bdd8be4"
+ },
+ "p-9c5fc104": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9c5fc104"
+ },
+ "p-9cb2ac4b": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9cb2ac4b"
+ },
+ "p-9d0941e4": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9d0941e4"
+ },
+ "p-9d3551b7": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9d3551b7"
+ },
+ "p-9d361982": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9d361982"
+ },
+ "p-9d6a1668": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9d6a1668"
+ },
+ "p-9d7ea7c3": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9d7ea7c3"
+ },
+ "p-9dbbd1cc": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9dbbd1cc"
+ },
+ "p-9dc02e0c": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9dc02e0c"
+ },
+ "p-9e5e1b2a": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9e5e1b2a"
+ },
+ "p-9e81dd6c": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9e81dd6c"
+ },
+ "p-9f10defe": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9f10defe"
+ },
+ "p-9f162fed": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9f162fed"
+ },
+ "p-9f5f10b1": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9f5f10b1"
+ },
+ "p-9f736313": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9f736313"
+ },
+ "p-9f988e19": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9f988e19"
+ },
+ "p-9f9a042e": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9f9a042e"
+ },
+ "p-9fec6b77": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-9fec6b77"
+ },
+ "p-a017bfbe": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a017bfbe"
+ },
+ "p-a025492d": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a025492d"
+ },
+ "p-a05202c2": {
+  "county": "Santa Barbara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a05202c2"
+ },
+ "p-a060ad2b": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a060ad2b"
+ },
+ "p-a0884917": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a0884917"
+ },
+ "p-a0b78942": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a0b78942"
+ },
+ "p-a0c03c21": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a0c03c21"
+ },
+ "p-a0f5efbc": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a0f5efbc"
+ },
+ "p-a10701bd": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a10701bd"
+ },
+ "p-a122abe2": {
+  "county": "Marin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a122abe2"
+ },
+ "p-a190b534": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a190b534"
+ },
+ "p-a1ca0d37": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a1ca0d37"
+ },
+ "p-a1e4d5b0": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a1e4d5b0"
+ },
+ "p-a203c138": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a203c138"
+ },
+ "p-a296a2ba": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a296a2ba"
+ },
+ "p-a2b08197": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a2b08197"
+ },
+ "p-a2fb233f": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a2fb233f"
+ },
+ "p-a30db668": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a30db668"
+ },
+ "p-a31c8fbc": {
+  "county": "Madera",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a31c8fbc"
+ },
+ "p-a31eb0ed": {
+  "county": "San Luis Obispo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a31eb0ed"
+ },
+ "p-a343f027": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a343f027"
+ },
+ "p-a366a3e0": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a366a3e0"
+ },
+ "p-a3b31db7": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a3b31db7"
+ },
+ "p-a3b5bb04": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a3b5bb04"
+ },
+ "p-a475675c": {
+  "county": "Solano",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a475675c"
+ },
+ "p-a4991aa1": {
+  "county": "Kings",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a4991aa1"
+ },
+ "p-a4bff8f8": {
+  "county": "Placer",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a4bff8f8"
+ },
+ "p-a4c84a04": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a4c84a04"
+ },
+ "p-a56f7570": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a56f7570"
+ },
+ "p-a58d68de": {
+  "county": "Solano",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a58d68de"
+ },
+ "p-a61aaeb8": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a61aaeb8"
+ },
+ "p-a62a973c": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a62a973c"
+ },
+ "p-a63936e9": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a63936e9"
+ },
+ "p-a66ac766": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a66ac766"
+ },
+ "p-a71f9d8c": {
+  "county": "Marin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a71f9d8c"
+ },
+ "p-a79d2d29": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a79d2d29"
+ },
+ "p-a7b1943e": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a7b1943e"
+ },
+ "p-a7d8d5ec": {
+  "county": "Humboldt",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a7d8d5ec"
+ },
+ "p-a8113386": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a8113386"
+ },
+ "p-a87f5c0f": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a87f5c0f"
+ },
+ "p-a8c03f84": {
+  "county": "Shasta",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a8c03f84"
+ },
+ "p-a8d7e12a": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a8d7e12a"
+ },
+ "p-a91b8c87": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a91b8c87"
+ },
+ "p-a9b9bd2b": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a9b9bd2b"
+ },
+ "p-a9cfce0c": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-a9cfce0c"
+ },
+ "p-aa07ed35": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-aa07ed35"
+ },
+ "p-aa20b461": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-aa20b461"
+ },
+ "p-aa3310ee": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-aa3310ee"
+ },
+ "p-aa384bf6": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-aa384bf6"
+ },
+ "p-aa5eb6df": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-aa5eb6df"
+ },
+ "p-aa5fba77": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-aa5fba77"
+ },
+ "p-aa616abe": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-aa616abe"
+ },
+ "p-ab49adef": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ab49adef"
+ },
+ "p-abb043bc": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-abb043bc"
+ },
+ "p-ac25c3c2": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ac25c3c2"
+ },
+ "p-ac679580": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ac679580"
+ },
+ "p-acb5f9fa": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-acb5f9fa"
+ },
+ "p-acc0c2da": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-acc0c2da"
+ },
+ "p-acef2454": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-acef2454"
+ },
+ "p-ad27f9cb": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ad27f9cb"
+ },
+ "p-ada42309": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ada42309"
+ },
+ "p-aea84148": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-aea84148"
+ },
+ "p-aeb5310c": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-aeb5310c"
+ },
+ "p-aee7bbe1": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-aee7bbe1"
+ },
+ "p-af000698": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-af000698"
+ },
+ "p-af07d7bb": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-af07d7bb"
+ },
+ "p-af558a2f": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-af558a2f"
+ },
+ "p-affb0758": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-affb0758"
+ },
+ "p-b022b48d": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b022b48d"
+ },
+ "p-b030e4fd": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b030e4fd"
+ },
+ "p-b0671e21": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b0671e21"
+ },
+ "p-b077e9d0": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b077e9d0"
+ },
+ "p-b08cd82f": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b08cd82f"
+ },
+ "p-b116b69b": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b116b69b"
+ },
+ "p-b1ceaebb": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b1ceaebb"
+ },
+ "p-b1d5fa44": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b1d5fa44"
+ },
+ "p-b1d83b24": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b1d83b24"
+ },
+ "p-b20b52c7": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b20b52c7"
+ },
+ "p-b211445d": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b211445d"
+ },
+ "p-b247d724": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b247d724"
+ },
+ "p-b25487ce": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b25487ce"
+ },
+ "p-b274b53d": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b274b53d"
+ },
+ "p-b27ee48d": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b27ee48d"
+ },
+ "p-b29d1f23": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b29d1f23"
+ },
+ "p-b2a15b27": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b2a15b27"
+ },
+ "p-b2a1c196": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b2a1c196"
+ },
+ "p-b2a9b73f": {
+  "county": "Marin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b2a9b73f"
+ },
+ "p-b2fcda71": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b2fcda71"
+ },
+ "p-b3116437": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b3116437"
+ },
+ "p-b329ef8d": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b329ef8d"
+ },
+ "p-b3f6f86c": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b3f6f86c"
+ },
+ "p-b41565d2": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b41565d2"
+ },
+ "p-b45a3b41": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b45a3b41"
+ },
+ "p-b47b258f": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b47b258f"
+ },
+ "p-b48ad5b7": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b48ad5b7"
+ },
+ "p-b491f7a5": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b491f7a5"
+ },
+ "p-b498abf6": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b498abf6"
+ },
+ "p-b4de9023": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b4de9023"
+ },
+ "p-b54dbcf4": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b54dbcf4"
+ },
+ "p-b5616304": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b5616304"
+ },
+ "p-b57a3ee0": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b57a3ee0"
+ },
+ "p-b5924e84": {
+  "county": "Placer",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b5924e84"
+ },
+ "p-b5c0d0ff": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b5c0d0ff"
+ },
+ "p-b5ee0b3b": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b5ee0b3b"
+ },
+ "p-b60f1445": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b60f1445"
+ },
+ "p-b66ca153": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b66ca153"
+ },
+ "p-b678942d": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b678942d"
+ },
+ "p-b69192ed": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b69192ed"
+ },
+ "p-b6a1cac9": {
+  "county": "Solano",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b6a1cac9"
+ },
+ "p-b73f5258": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b73f5258"
+ },
+ "p-b7493ffd": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b7493ffd"
+ },
+ "p-b7d36224": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b7d36224"
+ },
+ "p-b7ed3321": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b7ed3321"
+ },
+ "p-b85a172f": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b85a172f"
+ },
+ "p-b87e25cd": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b87e25cd"
+ },
+ "p-b8be3742": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b8be3742"
+ },
+ "p-b97cb293": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-b97cb293"
+ },
+ "p-b9ad3cfb": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b9ad3cfb"
+ },
+ "p-b9aec9d8": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b9aec9d8"
+ },
+ "p-b9b70ff7": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b9b70ff7"
+ },
+ "p-b9e042d0": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-b9e042d0"
+ },
+ "p-ba1b42b4": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ba1b42b4"
+ },
+ "p-ba3d8a0c": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ba3d8a0c"
+ },
+ "p-ba3fd53a": {
+  "county": "Santa Barbara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ba3fd53a"
+ },
+ "p-ba419d35": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ba419d35"
+ },
+ "p-ba467ad8": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ba467ad8"
+ },
+ "p-ba5962cc": {
+  "county": "Placer",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ba5962cc"
+ },
+ "p-ba7d8565": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-ba7d8565"
+ },
+ "p-bac9901c": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bac9901c"
+ },
+ "p-baf8830f": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-baf8830f"
+ },
+ "p-bb027d17": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bb027d17"
+ },
+ "p-bbad496a": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bbad496a"
+ },
+ "p-bc304f26": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bc304f26"
+ },
+ "p-bc689e78": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bc689e78"
+ },
+ "p-bc7a57a5": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bc7a57a5"
+ },
+ "p-bc81cea5": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bc81cea5"
+ },
+ "p-bcd6dbd5": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bcd6dbd5"
+ },
+ "p-bcec5d06": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bcec5d06"
+ },
+ "p-bcfc568d": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bcfc568d"
+ },
+ "p-bd351084": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bd351084"
+ },
+ "p-bd699d4b": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bd699d4b"
+ },
+ "p-bdd48699": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bdd48699"
+ },
+ "p-bec25def": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bec25def"
+ },
+ "p-bedafc44": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bedafc44"
+ },
+ "p-bf6b88b4": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bf6b88b4"
+ },
+ "p-bf7ccf0a": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bf7ccf0a"
+ },
+ "p-bfcea0d0": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bfcea0d0"
+ },
+ "p-bfcf7fd4": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bfcf7fd4"
+ },
+ "p-bff3cec1": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bff3cec1"
+ },
+ "p-bff9d9d5": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-bff9d9d5"
+ },
+ "p-c053e996": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c053e996"
+ },
+ "p-c0554a7b": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c0554a7b"
+ },
+ "p-c05e19e0": {
+  "county": "Mendocino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c05e19e0"
+ },
+ "p-c0a47dee": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c0a47dee"
+ },
+ "p-c0bc7b97": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c0bc7b97"
+ },
+ "p-c10cc155": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c10cc155"
+ },
+ "p-c20e3ef0": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c20e3ef0"
+ },
+ "p-c25c016a": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c25c016a"
+ },
+ "p-c2692e65": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c2692e65"
+ },
+ "p-c2736bc2": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c2736bc2"
+ },
+ "p-c299c7b8": {
+  "county": "Merced",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c299c7b8"
+ },
+ "p-c29ada1b": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c29ada1b"
+ },
+ "p-c307b408": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c307b408"
+ },
+ "p-c39f716d": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c39f716d"
+ },
+ "p-c3b90e3a": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-c3b90e3a"
+ },
+ "p-c3c29b35": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c3c29b35"
+ },
+ "p-c44159a3": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c44159a3"
+ },
+ "p-c46215b0": {
+  "county": "El Dorado",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c46215b0"
+ },
+ "p-c4a5de61": {
+  "county": "Marin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c4a5de61"
+ },
+ "p-c507ce58": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c507ce58"
+ },
+ "p-c50c30a2": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c50c30a2"
+ },
+ "p-c527d951": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c527d951"
+ },
+ "p-c53d3c4b": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c53d3c4b"
+ },
+ "p-c5aa5fd9": {
+  "county": "Tehama",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c5aa5fd9"
+ },
+ "p-c5e76e9e": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c5e76e9e"
+ },
+ "p-c646b648": {
+  "county": "Butte",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c646b648"
+ },
+ "p-c66e4f6a": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c66e4f6a"
+ },
+ "p-c67c76e1": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c67c76e1"
+ },
+ "p-c6814385": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c6814385"
+ },
+ "p-c6fe6252": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c6fe6252"
+ },
+ "p-c779d3fe": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c779d3fe"
+ },
+ "p-c8056106": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c8056106"
+ },
+ "p-c83b0bca": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c83b0bca"
+ },
+ "p-c86c400e": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c86c400e"
+ },
+ "p-c8962ab1": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c8962ab1"
+ },
+ "p-c8c9fa57": {
+  "county": "Humboldt",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c8c9fa57"
+ },
+ "p-c8ed5439": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c8ed5439"
+ },
+ "p-c9585d7a": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c9585d7a"
+ },
+ "p-c958c27a": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-c958c27a"
+ },
+ "p-cb45c886": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cb45c886"
+ },
+ "p-cb684266": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-cb684266"
+ },
+ "p-cc1ac2c1": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cc1ac2c1"
+ },
+ "p-cc2db4f4": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cc2db4f4"
+ },
+ "p-cca127d2": {
+  "county": "San Luis Obispo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cca127d2"
+ },
+ "p-ccd0ca16": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ccd0ca16"
+ },
+ "p-cce9a1a8": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cce9a1a8"
+ },
+ "p-cd8b093f": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cd8b093f"
+ },
+ "p-cdca3d57": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cdca3d57"
+ },
+ "p-cde60205": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cde60205"
+ },
+ "p-cdf9f16d": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cdf9f16d"
+ },
+ "p-ce44621f": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ce44621f"
+ },
+ "p-ce86c570": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ce86c570"
+ },
+ "p-ceeea1a1": {
+  "county": "Mendocino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ceeea1a1"
+ },
+ "p-cf22cde5": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cf22cde5"
+ },
+ "p-cf33d965": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cf33d965"
+ },
+ "p-cf418f8d": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cf418f8d"
+ },
+ "p-cf848cd7": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cf848cd7"
+ },
+ "p-cf94f3e6": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cf94f3e6"
+ },
+ "p-cff7375d": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-cff7375d"
+ },
+ "p-d003cf24": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d003cf24"
+ },
+ "p-d0195bf7": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d0195bf7"
+ },
+ "p-d036db86": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d036db86"
+ },
+ "p-d03fa130": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d03fa130"
+ },
+ "p-d0acb108": {
+  "county": "Placer",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d0acb108"
+ },
+ "p-d10eb4f8": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d10eb4f8"
+ },
+ "p-d1281ff9": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d1281ff9"
+ },
+ "p-d15b23ed": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d15b23ed"
+ },
+ "p-d16c167f": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d16c167f"
+ },
+ "p-d1f0b456": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d1f0b456"
+ },
+ "p-d20bc0bc": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d20bc0bc"
+ },
+ "p-d225bff0": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d225bff0"
+ },
+ "p-d25deaa9": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d25deaa9"
+ },
+ "p-d2a36b49": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d2a36b49"
+ },
+ "p-d2b83791": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d2b83791"
+ },
+ "p-d2bfeab4": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d2bfeab4"
+ },
+ "p-d3727ff2": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d3727ff2"
+ },
+ "p-d3ca81a4": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d3ca81a4"
+ },
+ "p-d3cb6736": {
+  "county": "Napa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d3cb6736"
+ },
+ "p-d3cd07ef": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d3cd07ef"
+ },
+ "p-d42ce7a3": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d42ce7a3"
+ },
+ "p-d4345950": {
+  "county": "Imperial",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d4345950"
+ },
+ "p-d460615c": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d460615c"
+ },
+ "p-d46159cf": {
+  "county": "Kings",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d46159cf"
+ },
+ "p-d4c52864": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d4c52864"
+ },
+ "p-d56d5655": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d56d5655"
+ },
+ "p-d5757f6a": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d5757f6a"
+ },
+ "p-d57841fa": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d57841fa"
+ },
+ "p-d5ccc11b": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d5ccc11b"
+ },
+ "p-d6154158": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d6154158"
+ },
+ "p-d63c35f5": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d63c35f5"
+ },
+ "p-d70173c0": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d70173c0"
+ },
+ "p-d707c8f8": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d707c8f8"
+ },
+ "p-d71037ea": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d71037ea"
+ },
+ "p-d7859536": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d7859536"
+ },
+ "p-d7e2d35b": {
+  "county": "Kern",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d7e2d35b"
+ },
+ "p-d7ffc709": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d7ffc709"
+ },
+ "p-d81ef100": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d81ef100"
+ },
+ "p-d81fa205": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d81fa205"
+ },
+ "p-d84eb792": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d84eb792"
+ },
+ "p-d87332a0": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d87332a0"
+ },
+ "p-d8a11f55": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d8a11f55"
+ },
+ "p-d8f31ad7": {
+  "county": "Yuba",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d8f31ad7"
+ },
+ "p-d95116a7": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d95116a7"
+ },
+ "p-d957d599": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d957d599"
+ },
+ "p-d97cc771": {
+  "county": "Solano",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d97cc771"
+ },
+ "p-d9ac2d36": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d9ac2d36"
+ },
+ "p-d9e261ae": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d9e261ae"
+ },
+ "p-d9e462ed": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-d9e462ed"
+ },
+ "p-dad2e18e": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-dad2e18e"
+ },
+ "p-dae75b2d": {
+  "county": "Merced",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dae75b2d"
+ },
+ "p-daf01155": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-daf01155"
+ },
+ "p-daf656dc": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-daf656dc"
+ },
+ "p-db0b5a3f": {
+  "county": "Monterey",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-db0b5a3f"
+ },
+ "p-db462af1": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-db462af1"
+ },
+ "p-dc1e06e6": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dc1e06e6"
+ },
+ "p-dc26e201": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dc26e201"
+ },
+ "p-dc9acf7c": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dc9acf7c"
+ },
+ "p-dccda9f6": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dccda9f6"
+ },
+ "p-dce20b69": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dce20b69"
+ },
+ "p-dcfce45d": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dcfce45d"
+ },
+ "p-dd7b8a1e": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dd7b8a1e"
+ },
+ "p-dd7be1e2": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dd7be1e2"
+ },
+ "p-dd9da64b": {
+  "county": "Tehama",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dd9da64b"
+ },
+ "p-de1bfe03": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-de1bfe03"
+ },
+ "p-de4b5837": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-de4b5837"
+ },
+ "p-deb162bf": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-deb162bf"
+ },
+ "p-dee27dcc": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-dee27dcc"
+ },
+ "p-df049450": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-df049450"
+ },
+ "p-df11de69": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-df11de69"
+ },
+ "p-df2f3ddb": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-df2f3ddb"
+ },
+ "p-e02012dc": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e02012dc"
+ },
+ "p-e12ccbe4": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e12ccbe4"
+ },
+ "p-e1d102cb": {
+  "county": "Yolo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e1d102cb"
+ },
+ "p-e2169663": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e2169663"
+ },
+ "p-e23e4bbc": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e23e4bbc"
+ },
+ "p-e2887371": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e2887371"
+ },
+ "p-e3203e31": {
+  "county": "San Luis Obispo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e3203e31"
+ },
+ "p-e33d2ece": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e33d2ece"
+ },
+ "p-e3955833": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e3955833"
+ },
+ "p-e3dedd75": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e3dedd75"
+ },
+ "p-e414e73c": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-e414e73c"
+ },
+ "p-e42e50b4": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e42e50b4"
+ },
+ "p-e43f4fa7": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e43f4fa7"
+ },
+ "p-e4b58982": {
+  "county": "Merced",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e4b58982"
+ },
+ "p-e4f66655": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e4f66655"
+ },
+ "p-e5280b6f": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e5280b6f"
+ },
+ "p-e528ce89": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e528ce89"
+ },
+ "p-e53b7cd9": {
+  "county": "San Mateo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e53b7cd9"
+ },
+ "p-e58df2c1": {
+  "county": "Stanislaus",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e58df2c1"
+ },
+ "p-e5cb5486": {
+  "county": "Glenn",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e5cb5486"
+ },
+ "p-e5e161b4": {
+  "county": "Santa Barbara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e5e161b4"
+ },
+ "p-e632520a": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e632520a"
+ },
+ "p-e6d68fb3": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e6d68fb3"
+ },
+ "p-e717c24e": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e717c24e"
+ },
+ "p-e74367bd": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e74367bd"
+ },
+ "p-e753f96c": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e753f96c"
+ },
+ "p-e7888b45": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e7888b45"
+ },
+ "p-e78d61ea": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e78d61ea"
+ },
+ "p-e7b1983a": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e7b1983a"
+ },
+ "p-e7b73b5f": {
+  "county": "Placer",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e7b73b5f"
+ },
+ "p-e897c312": {
+  "county": "Contra Costa",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e897c312"
+ },
+ "p-e89af71d": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e89af71d"
+ },
+ "p-e89c9e74": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e89c9e74"
+ },
+ "p-e8d4132c": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e8d4132c"
+ },
+ "p-e919f7d2": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e919f7d2"
+ },
+ "p-e91b38e7": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e91b38e7"
+ },
+ "p-e98d5eef": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e98d5eef"
+ },
+ "p-e9bbe168": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e9bbe168"
+ },
+ "p-e9ca0b18": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e9ca0b18"
+ },
+ "p-e9cefaa0": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e9cefaa0"
+ },
+ "p-e9d6a6eb": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-e9d6a6eb"
+ },
+ "p-ea923aa8": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ea923aa8"
+ },
+ "p-ea9c475a": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ea9c475a"
+ },
+ "p-eb28610f": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-eb28610f"
+ },
+ "p-eb5910f1": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-eb5910f1"
+ },
+ "p-eb7c43b6": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-eb7c43b6"
+ },
+ "p-eb8bdc3c": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-eb8bdc3c"
+ },
+ "p-eb9de5be": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-eb9de5be"
+ },
+ "p-ebb5a8b0": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ebb5a8b0"
+ },
+ "p-ebb64509": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ebb64509"
+ },
+ "p-ec2a8059": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ec2a8059"
+ },
+ "p-ecd4f3b6": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ecd4f3b6"
+ },
+ "p-ed0d9ac4": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ed0d9ac4"
+ },
+ "p-ed97ff75": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ed97ff75"
+ },
+ "p-ee3b5fff": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ee3b5fff"
+ },
+ "p-ee81f36e": {
+  "county": "Tulare",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ee81f36e"
+ },
+ "p-eec4d4f2": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-eec4d4f2"
+ },
+ "p-eed0e7bb": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-eed0e7bb"
+ },
+ "p-eed50a92": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-eed50a92"
+ },
+ "p-ef17b6ee": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ef17b6ee"
+ },
+ "p-efee922f": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-efee922f"
+ },
+ "p-f03965f5": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f03965f5"
+ },
+ "p-f09bda7a": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f09bda7a"
+ },
+ "p-f1698104": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f1698104"
+ },
+ "p-f1bb1b85": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f1bb1b85"
+ },
+ "p-f2ce4c4c": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f2ce4c4c"
+ },
+ "p-f2e46f22": {
+  "county": "Sonoma",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f2e46f22"
+ },
+ "p-f32a088b": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f32a088b"
+ },
+ "p-f3b2ce9b": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f3b2ce9b"
+ },
+ "p-f3f77876": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f3f77876"
+ },
+ "p-f407b03b": {
+  "county": "Ventura",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f407b03b"
+ },
+ "p-f417fcb8": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f417fcb8"
+ },
+ "p-f43d9ec2": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f43d9ec2"
+ },
+ "p-f4809c1d": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f4809c1d"
+ },
+ "p-f48d79b2": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f48d79b2"
+ },
+ "p-f4923c94": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f4923c94"
+ },
+ "p-f4a77c96": {
+  "county": "Kings",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f4a77c96"
+ },
+ "p-f5e82b3b": {
+  "county": "San Francisco",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f5e82b3b"
+ },
+ "p-f6551cf2": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f6551cf2"
+ },
+ "p-f6905ed0": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f6905ed0"
+ },
+ "p-f69d4317": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f69d4317"
+ },
+ "p-f6ab80e0": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f6ab80e0"
+ },
+ "p-f6b337b0": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f6b337b0"
+ },
+ "p-f6ec5be2": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f6ec5be2"
+ },
+ "p-f6ec8388": {
+  "county": "Placer",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f6ec8388"
+ },
+ "p-f75caf9c": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f75caf9c"
+ },
+ "p-f75f7812": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f75f7812"
+ },
+ "p-f7adc5f3": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f7adc5f3"
+ },
+ "p-f81f969d": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f81f969d"
+ },
+ "p-f83a2cb7": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f83a2cb7"
+ },
+ "p-f844016a": {
+  "county": "Sacramento",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f844016a"
+ },
+ "p-f8a5baf9": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f8a5baf9"
+ },
+ "p-f8ad92da": {
+  "county": "San Luis Obispo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f8ad92da"
+ },
+ "p-f8edcca4": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f8edcca4"
+ },
+ "p-f95a6723": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f95a6723"
+ },
+ "p-f99a18f9": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f99a18f9"
+ },
+ "p-f9dd6522": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-f9dd6522"
+ },
+ "p-fa14931f": {
+  "county": "Santa Clara",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fa14931f"
+ },
+ "p-fa26d14b": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fa26d14b"
+ },
+ "p-fa7f6b5d": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fa7f6b5d"
+ },
+ "p-fad7c91b": {
+  "county": "Humboldt",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fad7c91b"
+ },
+ "p-fb50bcb9": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fb50bcb9"
+ },
+ "p-fb8dece5": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fb8dece5"
+ },
+ "p-fc2798ca": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fc2798ca"
+ },
+ "p-fc4a1a62": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fc4a1a62"
+ },
+ "p-fd118bfc": {
+  "county": "San Luis Obispo",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fd118bfc"
+ },
+ "p-fdd3d5e1": {
+  "county": "Alameda",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fdd3d5e1"
+ },
+ "p-fe8ce897": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fe8ce897"
+ },
+ "p-fe97136b": {
+  "county": "San Diego",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-fe97136b"
+ },
+ "p-febdc17b": {
+  "county": "San Bernardino",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-febdc17b"
+ },
+ "p-ff1a9e12": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ff1a9e12"
+ },
+ "p-ff3fcae9": {
+  "county": "San Joaquin",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ff3fcae9"
+ },
+ "p-ff57fcaf": {
+  "county": "Los Angeles",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ff57fcaf"
+ },
+ "p-ff599795": {
+  "county": "Riverside",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ff599795"
+ },
+ "p-ffdd5df8": {
+  "county": "Orange",
+  "hardship": false,
+  "reason": null,
+  "record_id": "cty-ffdd5df8"
+ },
+ "p-ffec08f0": {
+  "county": "Fresno",
+  "hardship": true,
+  "reason": "Unemployment above 150% of the national rate (synthetic)",
+  "record_id": "cty-ffec08f0"
+ }
+}

@@ -1,0 +1,165 @@
+{
+ "patient_id": "p-56258afc",
+ "facts": {
+  "monthly_income": {
+   "value": 1657,
+   "holders": [
+    "state_wage_records",
+    "patient"
+   ],
+   "state_visible": true
+  },
+  "hours_per_month": {
+   "value": 100,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "enrolled_half_time_school": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "snap_tanf_work_compliant": {
+   "value": false,
+   "holders": [],
+   "state_visible": false
+  },
+  "in_sud_treatment": {
+   "value": false,
+   "holders": [
+    "clinician",
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "released_incarceration_days": {
+   "value": null,
+   "holders": [],
+   "state_visible": false
+  },
+  "dependent_child_13_or_under": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "caregiver_disabled_person": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "pregnant_or_postpartum": {
+   "value": false,
+   "holders": [
+    "clinician",
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "ai_an": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": true
+  },
+  "veteran_total_disability": {
+   "value": false,
+   "holders": [],
+   "state_visible": false
+  },
+  "former_foster_youth": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "county_hardship": {
+   "value": false,
+   "holders": [
+    "county"
+   ],
+   "state_visible": false
+  },
+  "qualifying_condition": {
+   "value": true,
+   "holders": [
+    "clinician"
+   ],
+   "state_visible": false
+  },
+  "significantly_impairs": {
+   "value": true,
+   "holders": [
+    "clinician",
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "limitation_attested": {
+   "value": true,
+   "holders": [
+    "clinician"
+   ],
+   "state_visible": false
+  },
+  "standing_tolerance_minutes": {
+   "value": 5,
+   "holders": [
+    "patient",
+    "clinician"
+   ],
+   "state_visible": false
+  }
+ },
+ "frail_groups": [
+  {
+   "group": "chronic_pain",
+   "category": "physical_disability",
+   "condition": "chronic pain",
+   "physical": true,
+   "codes": [
+    "203082005",
+    "278860009",
+    "82423001"
+   ],
+   "impairs": false,
+   "documentation": "unstated"
+  },
+  {
+   "group": "ckd_advanced",
+   "category": "serious_complex_medical",
+   "condition": "chronic kidney disease",
+   "physical": true,
+   "codes": [
+    "431857002",
+    "433144002",
+    "46177005",
+    "698306007"
+   ],
+   "impairs": true,
+   "documentation": "positive"
+  }
+ ],
+ "function_normal_note": false,
+ "sud_treatment_documented": false,
+ "wage_monthly": 1657,
+ "snap_enrolled": false,
+ "school_status": null,
+ "release_days_ago": null,
+ "va_rating": null,
+ "exempt_or_compliant": true,
+ "reasons": [
+  "hours",
+  "income",
+  "medically_frail"
+ ]
+}

@@ -1,0 +1,170 @@
+{
+ "patient_id": "p-5ba0a3f3",
+ "facts": {
+  "monthly_income": {
+   "value": 1306,
+   "holders": [
+    "state_wage_records",
+    "patient"
+   ],
+   "state_visible": true
+  },
+  "hours_per_month": {
+   "value": 79,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "enrolled_half_time_school": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "snap_tanf_work_compliant": {
+   "value": false,
+   "holders": [],
+   "state_visible": false
+  },
+  "in_sud_treatment": {
+   "value": false,
+   "holders": [
+    "clinician",
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "released_incarceration_days": {
+   "value": null,
+   "holders": [],
+   "state_visible": false
+  },
+  "dependent_child_13_or_under": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "caregiver_disabled_person": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "pregnant_or_postpartum": {
+   "value": false,
+   "holders": [
+    "clinician",
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "ai_an": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": true
+  },
+  "veteran_total_disability": {
+   "value": false,
+   "holders": [],
+   "state_visible": false
+  },
+  "former_foster_youth": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "county_hardship": {
+   "value": false,
+   "holders": [
+    "county"
+   ],
+   "state_visible": false
+  },
+  "qualifying_condition": {
+   "value": true,
+   "holders": [
+    "clinician"
+   ],
+   "state_visible": false
+  },
+  "significantly_impairs": {
+   "value": true,
+   "holders": [
+    "clinician",
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "limitation_attested": {
+   "value": true,
+   "holders": [
+    "clinician"
+   ],
+   "state_visible": false
+  },
+  "standing_tolerance_minutes": {
+   "value": 240,
+   "holders": [
+    "patient",
+    "clinician"
+   ],
+   "state_visible": false
+  }
+ },
+ "frail_groups": [
+  {
+   "group": "chronic_pain",
+   "category": "physical_disability",
+   "condition": "chronic pain",
+   "physical": true,
+   "codes": [
+    "82423001"
+   ],
+   "impairs": false,
+   "documentation": "unstated"
+  },
+  {
+   "group": "migraine",
+   "category": "serious_complex_medical",
+   "condition": "chronic migraine",
+   "physical": false,
+   "codes": [
+    "124171000119105"
+   ],
+   "impairs": false,
+   "documentation": "unstated"
+  },
+  {
+   "group": "sud",
+   "category": "sud",
+   "condition": "substance use disorder",
+   "physical": false,
+   "codes": [
+    "6525002"
+   ],
+   "impairs": true,
+   "documentation": "unstated"
+  }
+ ],
+ "function_normal_note": false,
+ "sud_treatment_documented": false,
+ "wage_monthly": 1306,
+ "snap_enrolled": false,
+ "school_status": null,
+ "release_days_ago": null,
+ "va_rating": null,
+ "exempt_or_compliant": true,
+ "reasons": [
+  "income",
+  "medically_frail"
+ ]
+}

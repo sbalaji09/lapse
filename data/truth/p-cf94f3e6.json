@@ -1,0 +1,123 @@
+{
+ "patient_id": "p-cf94f3e6",
+ "facts": {
+  "monthly_income": {
+   "value": 1800,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "hours_per_month": {
+   "value": 150,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "enrolled_half_time_school": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "snap_tanf_work_compliant": {
+   "value": false,
+   "holders": [],
+   "state_visible": false
+  },
+  "in_sud_treatment": {
+   "value": false,
+   "holders": [
+    "clinician",
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "released_incarceration_days": {
+   "value": null,
+   "holders": [],
+   "state_visible": false
+  },
+  "dependent_child_13_or_under": {
+   "value": true,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "caregiver_disabled_person": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "pregnant_or_postpartum": {
+   "value": false,
+   "holders": [
+    "clinician",
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "ai_an": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": true
+  },
+  "veteran_total_disability": {
+   "value": false,
+   "holders": [],
+   "state_visible": false
+  },
+  "former_foster_youth": {
+   "value": false,
+   "holders": [
+    "patient"
+   ],
+   "state_visible": false
+  },
+  "county_hardship": {
+   "value": false,
+   "holders": [
+    "county"
+   ],
+   "state_visible": false
+  },
+  "qualifying_condition": {
+   "value": false,
+   "holders": [],
+   "state_visible": false
+  },
+  "significantly_impairs": {
+   "value": false,
+   "holders": [],
+   "state_visible": false
+  },
+  "limitation_attested": {
+   "value": false,
+   "holders": [
+    "clinician"
+   ],
+   "state_visible": false
+  }
+ },
+ "frail_groups": [],
+ "function_normal_note": false,
+ "sud_treatment_documented": false,
+ "wage_monthly": null,
+ "snap_enrolled": false,
+ "school_status": null,
+ "release_days_ago": null,
+ "va_rating": null,
+ "exempt_or_compliant": true,
+ "reasons": [
+  "hours",
+  "income",
+  "parent_caretaker"
+ ]
+}
