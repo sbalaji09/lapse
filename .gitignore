@@ -1,0 +1,7 @@
+data/synthea/
+data/synthea_run.log
+tools/*.jar
+.cache/
+.env
+*.sqlite
+.DS_Store
