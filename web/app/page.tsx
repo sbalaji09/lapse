@@ -75,6 +75,10 @@ export default function QueuePage() {
           </p>
         </section>
 
+        <p className={q.revealNote}>
+          Both steps show results from the most recent full run over all members, so they appear instantly. The
+          accuracy of each is measured on the Accuracy tab, and every figure is re-checked on the Verification tab.
+        </p>
         <section className={q.reveal} aria-label="The state's check, then the notes">
           <div className={`${q.step} ${q.stepState}`}>
             <div className={q.stepTop}>
@@ -83,6 +87,10 @@ export default function QueuePage() {
                 {running === "state" ? "Running…" : state ? "Run again" : "Run the state's check →"}
               </button>
             </div>
+            <p className={q.help}>
+              The state&apos;s own check, as it runs today, over every member: primary billing codes and the
+              state&apos;s own databases only. Nothing from clinical notes.
+            </p>
             <div className={q.counters} aria-live="polite">
               <div className={q.counter}>
                 <div className={`${q.big} ${state ? "" : q.bigDim}`}><AnimatedNumber value={state?.cohort ?? null} /></div>
@@ -107,6 +115,10 @@ export default function QueuePage() {
                 {running === "notes" ? "Reading…" : evidence ? "Read again" : "Read the notes →"}
               </button>
             </div>
+            <p className={q.help}>
+              Adds what the clinical notes prove, sentence by sentence, and what databases confirm without contacting
+              anyone. Every sentence was found by the evidence finder and confirmed by an independent verifier.
+            </p>
             <div className={q.counters} aria-live="polite">
               <div className={q.counter}>
                 <div className={`${q.big} ${evidence ? "" : q.bigDim}`}><AnimatedNumber value={evidence?.final_exempt ?? null} /></div>

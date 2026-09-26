@@ -6,6 +6,8 @@
 Set LAPSE_BACKEND=aws for Bedrock; local uses OpenAI as the explicit fallback.
 Cache: .cache/llm/{sha256(provider model + system + user + schema)}.json. A hit makes no network call.
 Set LAPSE_OFFLINE=1 to turn a cache miss into an error instead of a request (use it for demo runs).
+Set LAPSE_LLM_CACHE_DIR to use a different cache folder: an empty one forces every call to the live model
+without touching the recorded demo cache (the live model tests do this).
 Responses use provider-native structured outputs.
 """
 import asyncio
@@ -17,6 +19,7 @@ import re
 import tempfile
 import time
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from engine import config
 from engine.config import LLM_CACHE_DIR
@@ -84,16 +87,22 @@ def _key(model: str, system: str, user: str, schema: dict) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()
 
 
+def _cache_dir() -> Path:
+    override = os.environ.get("LAPSE_LLM_CACHE_DIR")
+    return Path(override) if override else LLM_CACHE_DIR
+
+
 def cached(model: str, system: str, user: str, schema: dict) -> dict | None:
-    path = LLM_CACHE_DIR / f"{_key(model, system, user, schema)}.json"
+    path = _cache_dir() / f"{_key(model, system, user, schema)}.json"
     if path.exists():
         return json.loads(path.read_text())["response"]
     return None
 
 
 def _store(model: str, system: str, user: str, schema: dict, response: dict) -> None:
-    LLM_CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    path = LLM_CACHE_DIR / f"{_key(model, system, user, schema)}.json"
+    cache_dir = _cache_dir()
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    path = cache_dir / f"{_key(model, system, user, schema)}.json"
     body = json.dumps({
         "provider": _provider(),
         "model": _effective_model(model),
@@ -101,7 +110,7 @@ def _store(model: str, system: str, user: str, schema: dict, response: dict) -> 
         "user": user,
         "response": response,
     }, ensure_ascii=False)
-    with tempfile.NamedTemporaryFile("w", dir=LLM_CACHE_DIR, delete=False, suffix=".tmp") as f:
+    with tempfile.NamedTemporaryFile("w", dir=cache_dir, delete=False, suffix=".tmp") as f:
         f.write(body)
     os.replace(f.name, path)     # atomic: a crash never leaves a half-written cache entry
 

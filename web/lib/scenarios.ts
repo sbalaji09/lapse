@@ -386,14 +386,30 @@ export interface EngineTest {
   message: string;
 }
 
+export interface LiveReport {
+  provider: string;
+  models: { extraction: string; verifier: string };
+  calls: number;
+  replayed: number;
+  cost_usd: number;
+  seconds: number;
+  sample_members?: Record<string, string>;
+  sample_notes?: {
+    notes: number; evidence_labels: number; found: number; precision: number; recall: number;
+    distractors: number; distractors_counted: number; dropped_by_verifier: number;
+  };
+}
+
 export interface EngineRun {
   ok: boolean;
+  mode: "offline" | "live";
   seconds: number;
   passed: number;
   failed: number;
   error: number;
   skipped: number;
   tests: EngineTest[];
+  live: LiveReport | null;
   summary: string;
 }
 
@@ -411,6 +427,8 @@ export const SUITE_AREAS: Record<string, string> = {
   "test_track_b_integration.py": "End-to-end workflow",
   "test_b5_appeal.py": "Appeal evidence packet",
   "test_b5_voice.py": "Voice calls for members who do not reply",
+  "test_voice_lambda.py": "Voice call service",
+  "test_live_llm.py": "Live language model",
 };
 
-export const runEngineSuite = () => post<EngineRun>("/api/dev/tests");
+export const runEngineSuite = (mode: "offline" | "live") => post<EngineRun>(`/api/dev/tests?mode=${mode}`);
