@@ -66,6 +66,11 @@ def _provider() -> str:
     return "bedrock" if os.environ.get("LAPSE_BACKEND", config.LAPSE_BACKEND) == "aws" else "openai"
 
 
+def provider() -> str:
+    """The provider selected for new, uncached requests."""
+    return _provider()
+
+
 def _effective_model(model: str) -> str:
     """Map the engine's fast/verifier roles to their configured Bedrock model IDs."""
     if _provider() != "bedrock":
@@ -260,11 +265,11 @@ async def _with_backoff(make_call):
             await asyncio.sleep(retry_after(e, attempt))
 
 
-async def _batch(calls: list[dict], concurrency: int) -> list[dict]:
+async def _batch(calls: list[dict], concurrency: int, use_cache: bool = True) -> list[dict]:
     results = [None] * len(calls)
     pending = []
     for index, call in enumerate(calls):
-        hit = cached(call["model"], call["system"], call["user"], call["schema"])
+        hit = cached(call["model"], call["system"], call["user"], call["schema"]) if use_cache else None
         if hit is not None:
             stats.hits += 1
             results[index] = hit
@@ -335,9 +340,18 @@ async def _batch(calls: list[dict], concurrency: int) -> list[dict]:
         await client.close()
 
 
-def run_batch(calls: list[dict], concurrency: int = CONCURRENCY) -> list[dict]:
-    """Run many calls concurrently; results come back in input order. Cached calls cost nothing."""
-    return asyncio.run(_batch(calls, concurrency))
+async def run_batch_async(
+    calls: list[dict],
+    concurrency: int = CONCURRENCY,
+    use_cache: bool = True,
+) -> list[dict]:
+    """Async batch entry point for streaming jobs."""
+    return await _batch(calls, concurrency, use_cache=use_cache)
+
+
+def run_batch(calls: list[dict], concurrency: int = CONCURRENCY, use_cache: bool = True) -> list[dict]:
+    """Run many calls concurrently in input order. Set use_cache=False for an explicitly live run."""
+    return asyncio.run(run_batch_async(calls, concurrency, use_cache=use_cache))
 
 
 def uncached(calls: list[dict]) -> list[dict]:

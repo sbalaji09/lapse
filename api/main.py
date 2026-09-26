@@ -3,11 +3,11 @@ from datetime import date
 
 from fastapi import APIRouter, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import Response
+from fastapi.responses import Response, StreamingResponse
 from pydantic import BaseModel
 
 from api.dev import router as dev_router
-from engine import guardrails, store
+from engine import guardrails, live_notes, store
 from engine.config import ACTIVE_RULE_PACK, AS_OF_DATE, DATA_DIR
 from engine.rulepack import load_pack
 from engine.loop.database import check_database
@@ -96,7 +96,24 @@ def run_state():
 
 @router.post("/run/evidence")
 def run_evidence():
-    return summary_dict(store.list_cases())
+    try:
+        return live_notes.start()
+    except RuntimeError as error:
+        raise HTTPException(status_code=400, detail=str(error))
+
+
+@router.get("/run/evidence/status")
+def evidence_status():
+    return live_notes.status()
+
+
+@router.get("/run/evidence/stream")
+def evidence_stream(run_id: str):
+    return StreamingResponse(
+        live_notes.event_stream(run_id),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
 
 
 @router.get("/queue")
@@ -115,6 +132,9 @@ def get_queue(bucket: str | None = None, window_days: int | None = None):
             "bucket": c.bucket.value,
             "fragile": c.fragile,
             "status": c.status.value,
+            "state_status": c.determination_a.status,
+            "state_rule_ids": c.determination_a.rule_ids,
+            "verified_spans": len(c.claims),
             "clinician_name": c.clinician_name,
             "top_missing_fact": {
                 "key": top_missing.key,

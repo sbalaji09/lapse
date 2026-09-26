@@ -57,6 +57,11 @@ show the safe guidance. Rosa never sees the app or the blocked draft: the
 clinic worker uses this screen, and the demonstration never sends a message or
 changes her case.
 
+On the queue, **Read the charts live** deliberately bypasses the LLM response
+cache. It streams each patient from waiting to reading to ready as the evidence
+finder and verifier complete real Bedrock calls. Completed patient charts can
+be opened while the rest of the run continues.
+
 ## Optional command-line check
 
 ```bash
