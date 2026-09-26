@@ -1,8 +1,10 @@
 """Global settings for the Lapse engines. Everything time-dependent reads AS_OF_DATE, never the wall clock."""
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 AS_OF_DATE = date(2027, 2, 15)
+# Timestamp stamped on every fact the batch pipeline records ("the overnight run before the demo morning").
+PIPELINE_RUN_AT = datetime(2027, 2, 15, 6, 0, 0)
 # Start of the 12-month window that notes are generated over. Channel A reads its own window from the rule pack.
 LOOKBACK_START = date(2026, 2, 15)
 

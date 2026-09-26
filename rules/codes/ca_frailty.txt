@@ -1,6 +1,29 @@
-# State medical-frailty code list (SNOMED CT, as coded by Synthea). One code per line, "#" = plain name.
-# Starter list from T0a covering the golden patients; A2 completes it from codes that appear in the cohort.
+# California medical-frailty code list for the ex parte check (SNOMED CT, as coded by Synthea).
+# Read against PRIMARY diagnoses only. Built from the TRACK_A category list, restricted to codes that
+# appear in the cohort. Deliberately not listed: chronic pain, osteoarthritis, neuropathy, CKD 1-3,
+# asthma, anxiety, migraine, epilepsy, HIV - common reasons someone is truly frail that a code list misses.
+
+# Chronic kidney disease stage 4-5
 431857002  # Chronic kidney disease stage 4
-370143000  # Major depressive disorder
+46177005   # End-stage renal disease
+698306007  # Awaiting transplantation of kidney (dialysis-dependent)
+# Heart failure
+88805009   # Chronic congestive heart failure
+# COPD
 185086009  # Chronic obstructive bronchitis
 87433001   # Pulmonary emphysema
+# Serious mental illness
+370143000  # Major depressive disorder
+# Substance use disorder
+6525002    # Dependent drug abuse
+5602001    # Opioid abuse
+7200002    # Alcoholism
+# Intellectual / developmental disability, paralysis, dementia
+110359009  # Intellectual disability
+128188000  # Cerebral palsy
+230265002  # Familial Alzheimer's disease of early onset
+# Cancer (active)
+254837009  # Malignant neoplasm of breast
+363406005  # Malignant neoplasm of colon
+93761005   # Primary malignant neoplasm of colon
+109838007  # Overlapping malignant neoplasm of colon

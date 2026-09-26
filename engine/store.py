@@ -13,7 +13,7 @@ from pathlib import Path
 from engine.checks import check_case
 from engine.cohort import Patient
 from engine.config import AS_OF_DATE, DB_PATH, FIXTURES_PATH
-from engine.models import Bucket, Case, CaseStatus, Note
+from engine.models import Bucket, Case, CaseStatus, Determination, Fact, Note
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS cases (
@@ -36,6 +36,13 @@ CREATE INDEX IF NOT EXISTS notes_patient ON notes (patient_id);
 CREATE TABLE IF NOT EXISTS patients (
     id   TEXT PRIMARY KEY,
     data TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS channel_runs (
+    patient_id TEXT NOT NULL,
+    channel    TEXT NOT NULL,
+    status     TEXT NOT NULL,
+    data       TEXT NOT NULL,
+    PRIMARY KEY (patient_id, channel)
 );
 """
 
@@ -124,6 +131,39 @@ def list_patients() -> list[Patient]:
     with connect() as conn:
         rows = conn.execute("SELECT data FROM patients ORDER BY id").fetchall()
     return [Patient.model_validate_json(r[0]) for r in rows]
+
+
+def save_channel_runs(channel: str, runs: list[tuple[Determination, list[Fact]]]) -> None:
+    """Replace every stored result for one channel ("A", "B", ...) in one transaction."""
+    with connect() as conn:
+        conn.execute("DELETE FROM channel_runs WHERE channel = ?", (channel,))
+        conn.executemany(
+            "INSERT INTO channel_runs VALUES (?, ?, ?, ?)",
+            [(d.patient_id, channel, d.status,
+              json.dumps({"determination": d.model_dump(mode="json"), "facts": [f.model_dump(mode="json") for f in fs]}))
+             for d, fs in runs],
+        )
+
+
+def get_channel_run(patient_id: str, channel: str) -> tuple[Determination, list[Fact]] | None:
+    with connect() as conn:
+        row = conn.execute("SELECT data FROM channel_runs WHERE patient_id = ? AND channel = ?",
+                           (patient_id, channel)).fetchone()
+    if not row:
+        return None
+    data = json.loads(row[0])
+    return Determination.model_validate(data["determination"]), [Fact.model_validate(f) for f in data["facts"]]
+
+
+def list_channel_runs(channel: str) -> dict[str, tuple[Determination, list[Fact]]]:
+    with connect() as conn:
+        rows = conn.execute("SELECT data FROM channel_runs WHERE channel = ? ORDER BY patient_id", (channel,)).fetchall()
+    out = {}
+    for (raw,) in rows:
+        data = json.loads(raw)
+        d = Determination.model_validate(data["determination"])
+        out[d.patient_id] = (d, [Fact.model_validate(f) for f in data["facts"]])
+    return out
 
 
 def read_fixtures(path: Path = FIXTURES_PATH) -> list[tuple[Case, list[Note]]]:

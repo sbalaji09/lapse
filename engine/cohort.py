@@ -13,11 +13,14 @@ import re
 import unicodedata
 from concurrent.futures import ProcessPoolExecutor
 from datetime import date, timedelta
+from functools import cache
 from pathlib import Path
 
+import yaml
 from pydantic import BaseModel
 
-from engine.config import AS_OF_DATE, CITY_COUNTY_PATH, CLINICS, LOOKBACK_START, SEED, SYNTHEA_DIR
+from engine.config import (AS_OF_DATE, CITY_COUNTY_PATH, CLINICS, LOOKBACK_START, QUALIFYING_CONDITIONS_PATH, SEED,
+                           SYNTHEA_DIR)
 
 COHORT_SIZE = 1000
 SPANISH_TARGET = 0.25
@@ -86,7 +89,7 @@ class Patient(BaseModel):
     renewal_date: date
     conditions: list[Condition]
     encounters: list[Encounter]     # lookback window only
-    claims: list[BilledClaim]       # with at least one diagnosis, last 2 years
+    claims: list[BilledClaim]       # visit claims (no pharmacy), last 2 years; see _billed
     military_service: bool = False
     criminal_record: bool = False
     golden: bool = False
@@ -120,6 +123,56 @@ def age_on(birth: date, day: date) -> int:
     return day.year - birth.year - ((day.month, day.day) < (birth.month, birth.day))
 
 
+# Chronic problems a coder would typically carry onto a visit claim as secondary diagnoses.
+BENIGN_CHRONIC = {"59621000": "Essential hypertension", "55822004": "Hyperlipidemia", "714628002": "Prediabetes",
+                  "162864005": "Obesity", "271737000": "Anemia", "40055000": "Chronic sinusitis",
+                  "302870006": "Hypertriglyceridemia", "237602007": "Metabolic syndrome",
+                  "235595009": "Gastroesophageal reflux disease", "83664006": "Hypothyroidism",
+                  "78275009": "Obstructive sleep apnea", "446096008": "Allergic rhinitis", "90560007": "Gout",
+                  "44054006": "Type 2 diabetes", "64859006": "Osteoporosis"}
+P_SECONDARY = 0.6        # chance a coder lists a given active chronic condition on a visit claim
+MAX_DX_PER_CLAIM = 4
+
+
+@cache
+def _qualifying_codes() -> frozenset[str]:
+    groups = yaml.safe_load(QUALIFYING_CONDITIONS_PATH.read_text())["groups"]
+    return frozenset(code for g in groups.values() for code in g["codes"])
+
+
+def _billed(claim: dict, by_url: dict, conditions: list[Condition]) -> BilledClaim:
+    """A Synthea claim as it would reach the state, with two billing-realism repairs.
+
+    Synthea only attaches a diagnosis to the visit where a condition was first found, so ~60% of visit
+    claims carry none (dialysis and SUD-treatment visits included). Real claims cannot be submitted without
+    a primary diagnosis, so:
+      1. no diagnosis -> the visit's reason (or, failing that, the visit type) becomes the primary diagnosis;
+      2. active chronic conditions are added as secondary diagnoses, each with a seeded chance.
+    Both make the state's primary-diagnosis check stronger, never weaker. The state still reads only sequence 1.
+    """
+    day = _day(claim["billablePeriod"]["start"])
+    dxs = []
+    for dx in sorted(claim.get("diagnosis", []), key=lambda x: x["sequence"]):
+        cond = by_url.get(dx.get("diagnosisReference", {}).get("reference"))
+        if cond is not None:
+            c = cond["code"]["coding"][0]
+            dxs.append((c["code"], _clean_display(c["display"])))
+    if not dxs:
+        enc = by_url.get(claim["item"][0].get("encounter", [{}])[0].get("reference", "")) if claim.get("item") else None
+        if enc:
+            coding = (enc.get("reasonCode") or enc["type"])[0]["coding"][0]
+            dxs.append((coding["code"], _clean_display(coding["display"])))
+    chronic = _qualifying_codes() | BENIGN_CHRONIC.keys()
+    for cond in sorted(conditions, key=lambda c: c.code):
+        if len(dxs) >= MAX_DX_PER_CLAIM:
+            break
+        if cond.code in chronic and cond.active_on(day) and cond.code not in {c for c, _ in dxs} \
+                and _unit("secondary", claim["id"], cond.code) < P_SECONDARY:
+            dxs.append((cond.code, cond.display))
+    return BilledClaim(id=claim["id"], date=day, kind=claim["type"]["coding"][0]["code"],
+                       diagnoses=[Dx(code=c, display=d, sequence=i + 1) for i, (c, d) in enumerate(dxs)])
+
+
 def parse_bundle(path: Path) -> dict | None:
     """One Synthea bundle -> Patient fields, or None for patients who died in the simulation."""
     entries = json.loads(Path(path).read_text())["entry"]
@@ -144,7 +197,7 @@ def parse_bundle(path: Path) -> dict | None:
     phone = next((t["value"] for t in p.get("telecom", []) if t["system"] == "phone"), None)
 
     conditions, cond_codes = [], set()
-    encounters, claims = [], []
+    encounters, raw_claims = [], []
     for r in by_url.values():
         kind = r["resourceType"]
         if kind == "Condition":
@@ -160,21 +213,12 @@ def parse_bundle(path: Path) -> dict | None:
                                             type=_clean_display(r["type"][0]["coding"][0]["display"]),
                                             reason_code=reason.get("code"),
                                             reason=_clean_display(reason["display"]) if reason.get("display") else None))
-        elif kind == "Claim" and r.get("diagnosis"):
+        elif kind == "Claim" and r["type"]["coding"][0]["code"] != "pharmacy":
             d = _day(r["billablePeriod"]["start"])
-            if not (CLAIM_HISTORY_START <= d <= AS_OF_DATE):
-                continue
-            dxs = []
-            for dx in r["diagnosis"]:
-                cond = by_url.get(dx.get("diagnosisReference", {}).get("reference"))
-                if cond is None:
-                    continue
-                c = cond["code"]["coding"][0]
-                dxs.append(Dx(code=c["code"], display=_clean_display(c["display"]), sequence=dx["sequence"]))
-            if dxs:
-                claims.append(BilledClaim(id=r["id"], date=d, kind=r["type"]["coding"][0]["code"],
-                                          diagnoses=sorted(dxs, key=lambda x: x.sequence)))
+            if CLAIM_HISTORY_START <= d <= AS_OF_DATE:
+                raw_claims.append(r)
 
+    claims = [c for c in (_billed(r, by_url, conditions) for r in raw_claims) if c.diagnoses]
     birth = date.fromisoformat(p["birthDate"])
     return {
         "source_id": p["id"],

@@ -1,0 +1,5 @@
+# Diagnoses that establish a current or recent pregnancy (SNOMED CT, as coded by Synthea). Any sequence.
+72892002   # Normal pregnancy
+398254007  # Pre-eclampsia
+198992004  # Eclampsia in pregnancy
+609496007  # Complication occurring during pregnancy

@@ -1,6 +1,7 @@
 """Runs the Lapse engines and writes results to the store. Idempotent; every stage is deterministic or cached.
 
-    python -m engine.pipeline --stage cohort   # A1: cohort, truth, notes, labels, external databases
+    python -m engine.pipeline --stage cohort      # A1: cohort, truth, notes, labels, external databases
+    python -m engine.pipeline --stage channel_a   # A2: the state's ex parte check, zero LLM
     python -m engine.pipeline                  # everything implemented so far
 
 Later stages (A2 channel_a, A3 channel_b + verifier, A4 final/buckets/solver) register themselves in STAGES.
@@ -12,7 +13,9 @@ import time
 from engine import external, notes as notegen, store
 from engine.cohort import COHORT_SIZE, Patient, load_cohort
 from engine.golden import BUILDERS
-from engine.truth import Truth, generate as generate_truth, write_truth
+from engine.channel_a import run_channel_a
+from engine.rulepack import load_pack
+from engine.truth import Truth, generate as generate_truth, load_truth, write_truth
 
 GOLDEN_IDS = {f"g-{b.__name__}" for b in BUILDERS}
 
@@ -92,7 +95,34 @@ def print_truth_rates(patients: list[Patient], truths: list[Truth], labels) -> N
     print("  languages:", ", ".join(f"{k} {v}" for k, v in langs.most_common(5)))
 
 
-STAGES = {"cohort": stage_cohort}
+def stage_channel_a() -> None:
+    t0 = time.time()
+    pack = load_pack()
+    patients = store.list_patients()
+    if not patients:
+        raise RuntimeError("no patients in the store; run --stage cohort first")
+    runs = [run_channel_a(p, pack) for p in patients]
+    store.save_channel_runs("A", runs)
+
+    n = len(runs)
+    status = collections.Counter(d.status for d, _ in runs)
+    rules = collections.Counter(r for d, _ in runs for r in d.rule_ids)
+    print(f"channel A ({pack.version}): {n} patients in {time.time() - t0:.2f}s, zero LLM calls")
+    for s in ("compliant", "exempt", "not_determined"):
+        print(f"  a_{s:<16}{status[s]:5d}  {100 * status[s] / n:5.1f}%")
+    print("  rules satisfied:", ", ".join(f"{r} {c}" for r, c in rules.most_common()))
+
+    # Sanity against the answer key (the full eval is A5): how many the state's method drops.
+    truth = {p.id: load_truth(p.id) for p in patients}
+    safe = {d.patient_id for d, _ in runs if d.status != "not_determined"}
+    really = {pid for pid, t in truth.items() if t.exempt_or_compliant}
+    print(f"  truly exempt or compliant: {len(really)}; state clears {len(safe & really)} of them "
+          f"({100 * len(safe & really) / len(really):.1f}% recall); "
+          f"state clears {len(safe - really)} who truly are not")
+    print(f"  -> {len(really - safe)} people who already qualify would get a notice")
+
+
+STAGES = {"cohort": stage_cohort, "channel_a": stage_channel_a}
 
 
 def main() -> None:

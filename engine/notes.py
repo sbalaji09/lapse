@@ -15,7 +15,7 @@ from functools import cache
 import yaml
 from pydantic import BaseModel
 
-from engine.cohort import Encounter, Patient, _unit
+from engine.cohort import BENIGN_CHRONIC, Encounter, Patient, _unit
 from engine.config import CLINICS, IMPAIRMENT_LIBRARY_PATH, LABELS_PATH, LOOKBACK_START
 from engine.golden import locate
 from engine.models import Note
@@ -241,12 +241,7 @@ REASON_KINDS = [
 ]
 
 # Non-qualifying chronic problems a template may name, with the phrase used in the note.
-BENIGN = {"59621000": "Essential hypertension", "55822004": "Hyperlipidemia", "714628002": "Prediabetes",
-          "162864005": "Obesity", "271737000": "Anemia", "40055000": "Chronic sinusitis",
-          "302870006": "Hypertriglyceridemia", "237602007": "Metabolic syndrome",
-          "235595009": "Gastroesophageal reflux disease", "83664006": "Hypothyroidism",
-          "78275009": "Obstructive sleep apnea", "446096008": "Allergic rhinitis", "90560007": "Gout",
-          "44054006": "Type 2 diabetes", "64859006": "Osteoporosis"}
+BENIGN = BENIGN_CHRONIC
 
 
 @cache

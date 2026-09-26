@@ -6,21 +6,46 @@ lookback_months: 12
 renewal_cadence_months: 6
 notice_response_days: 30
 self_attestation_allowed: {medically_frail: true}
+
+# state_ex_parte: how the state checks a rule from data it already holds (engine/channel_a.py methods).
+# A rule without it is one the state cannot verify ex parte; it has to send a notice.
+# Every source a method reads must be listed in state_visible_sources, or the pack fails to load.
 compliance:
-  - {id: hours,  requires: ["hours_per_month >= 80"]}
-  - {id: income, requires: ["monthly_income >= 580"]}
-  - {id: school, requires: ["enrolled_half_time_school"]}
+  - id: hours
+    requires: ["hours_per_month >= 80"]
+  - id: income
+    requires: ["monthly_income >= 580"]
+    state_ex_parte: {method: database, db: state_wage_records, field: monthly_income, fact: monthly_income}
+  - id: school
+    requires: ["enrolled_half_time_school"]
 exemptions:
   - id: medically_frail
+    # Primary diagnosis only, against the state code list: the state treats a listed code as meeting
+    # both tests. Secondary diagnoses and notes are never read. This is the flaw Lapse exists to cover.
     state_ex_parte: {method: primary_dx_only, code_list: codes/ca_frailty.txt}
     requires: [qualifying_condition, significantly_impairs]
   - {id: parent_caretaker, requires: ["dependent_child_13_or_under | caregiver_disabled_person"]}
-  - {id: pregnant_postpartum, requires: [pregnant_or_postpartum]}
-  - {id: ai_an, requires: [ai_an]}
+  - id: pregnant_postpartum
+    requires: [pregnant_or_postpartum]
+    # Any pregnancy diagnosis in the last 12 months (postpartum coverage runs 12 months). Men: known false.
+    state_ex_parte: {method: dx_any_sequence, code_list: codes/ca_pregnancy.txt, lookback_days: 365,
+                     fact: pregnant_or_postpartum, false_if_sex: male}
+  - id: ai_an
+    requires: [ai_an]
+    state_ex_parte: {method: structured_record, field: race_ai_an, fact: ai_an}
   - {id: veteran_disability, requires: [veteran_total_disability]}
-  - {id: snap_tanf, requires: [snap_tanf_work_compliant]}
+  - id: snap_tanf
+    requires: [snap_tanf_work_compliant]
+    state_ex_parte: {method: database, db: snap, field: work_requirement_met, fact: snap_tanf_work_compliant,
+                     no_record: false}
   - {id: sud_treatment, requires: [in_sud_treatment]}
-  - {id: recent_release, requires: ["released_incarceration_days <= 90"]}
-  - {id: foster_youth, requires: [former_foster_youth]}
+  - id: recent_release
+    requires: ["released_incarceration_days <= 90"]
+    state_ex_parte: {method: database, db: corrections, field: release_date, transform: days_since,
+                     fact: released_incarceration_days, no_record: none}
+  - id: foster_youth
+    requires: [former_foster_youth]
+    # The exemption ends at 26; the state knows everyone's age, so older members are known not to qualify.
+    state_ex_parte: {method: age_limit, max_age: 25, fact: former_foster_youth}
   - {id: hardship_county, requires: [county_hardship]}
 state_visible_sources: [billing_code, structured_record, snap, state_wage_records, corrections]
