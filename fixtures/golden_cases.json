@@ -1,0 +1,1193 @@
+[
+  {
+    "patient_id": "g-rosa",
+    "display_name": "Rosa Delgado",
+    "age": 52,
+    "language": "es",
+    "email": "rosa.delgado@example.com",
+    "phone": "+1-555-0101",
+    "clinic_id": "clinic-mission",
+    "clinician_name": "Dr. Anita Patel",
+    "renewal_date": "2027-03-04",
+    "bucket": "ONE_AWAY",
+    "fragile": false,
+    "status": "needs_action",
+    "determination_a": {
+      "patient_id": "g-rosa",
+      "channel": "A",
+      "status": "not_determined",
+      "rule_ids": [],
+      "fact_ids": [
+        "f-rosa-1"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "determination_final": {
+      "patient_id": "g-rosa",
+      "channel": "final",
+      "status": "not_determined",
+      "rule_ids": [],
+      "fact_ids": [
+        "f-rosa-1",
+        "f-rosa-2"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "claims": [
+      {
+        "id": "c-rosa-1",
+        "patient_id": "g-rosa",
+        "note_id": "n-rosa-2",
+        "category": "physical_disability",
+        "condition": "diabetic peripheral neuropathy",
+        "qualifying_category": true,
+        "significantly_impairs": "unknown",
+        "quote": "Type 2 diabetes mellitus with diabetic peripheral neuropathy",
+        "start": 472,
+        "end": 532,
+        "verified": true,
+        "verifier_reason": null
+      },
+      {
+        "id": "c-rosa-2",
+        "patient_id": "g-rosa",
+        "note_id": "n-rosa-2",
+        "category": "physical_disability",
+        "condition": "diabetic peripheral neuropathy",
+        "qualifying_category": true,
+        "significantly_impairs": "unknown",
+        "quote": "Reports numbness and burning in both feet, worse at night, present for over a year.",
+        "start": 111,
+        "end": 194,
+        "verified": true,
+        "verifier_reason": null
+      },
+      {
+        "id": "c-rosa-3",
+        "patient_id": "g-rosa",
+        "note_id": "n-rosa-3",
+        "category": "physical_disability",
+        "condition": "diabetic peripheral neuropathy",
+        "qualifying_category": true,
+        "significantly_impairs": "unknown",
+        "quote": "Diabetic peripheral neuropathy on gabapentin",
+        "start": 474,
+        "end": 518,
+        "verified": true,
+        "verifier_reason": null
+      }
+    ],
+    "dropped_claims": [],
+    "facts": [
+      {
+        "id": "f-rosa-1",
+        "patient_id": "g-rosa",
+        "key": "ai_an",
+        "value": false,
+        "source": "structured_record",
+        "source_ref": {
+          "resource": "Patient",
+          "field": "race"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-rosa-2",
+        "patient_id": "g-rosa",
+        "key": "qualifying_condition",
+        "value": true,
+        "source": "note_span",
+        "source_ref": {
+          "note_id": "n-rosa-2",
+          "start": 472,
+          "end": 532,
+          "claim_id": "c-rosa-1"
+        },
+        "quote": "Type 2 diabetes mellitus with diabetic peripheral neuropathy",
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      }
+    ],
+    "missing": [
+      {
+        "id": "m-rosa-1",
+        "patient_id": "g-rosa",
+        "key": "standing_tolerance_minutes",
+        "holder": "patient",
+        "database": null,
+        "unlocks_rule": "medically_frail",
+        "why": "Neuropathy is in her notes, but nothing says how it limits her. If she can't stand for long, she qualifies as medically frail.",
+        "question": {
+          "en": "How long can you stand before you need to sit down?",
+          "es": "¿Cuánto tiempo puede estar de pie antes de necesitar sentarse?"
+        },
+        "status": "open"
+      },
+      {
+        "id": "m-rosa-2",
+        "patient_id": "g-rosa",
+        "key": "limitation_attested",
+        "holder": "clinician",
+        "database": null,
+        "unlocks_rule": "medically_frail",
+        "why": "Once Rosa describes her limits, Dr. Patel confirms the record supports them.",
+        "question": {
+          "en": "Does the record support that diabetic peripheral neuropathy limits Rosa's ability to work?"
+        },
+        "status": "open"
+      }
+    ],
+    "billed_dx_12mo": [
+      {
+        "claim_id": "cl-rosa-1",
+        "date": "2026-04-08",
+        "code": "10509002",
+        "system": "SNOMED",
+        "display": "Acute bronchitis",
+        "sequence": 1
+      },
+      {
+        "claim_id": "cl-rosa-1",
+        "date": "2026-04-08",
+        "code": "44054006",
+        "system": "SNOMED",
+        "display": "Diabetes mellitus type 2",
+        "sequence": 2
+      },
+      {
+        "claim_id": "cl-rosa-2",
+        "date": "2026-08-19",
+        "code": "49727002",
+        "system": "SNOMED",
+        "display": "Cough",
+        "sequence": 1
+      },
+      {
+        "claim_id": "cl-rosa-2",
+        "date": "2026-08-19",
+        "code": "368581000119106",
+        "system": "SNOMED",
+        "display": "Neuropathy due to type 2 diabetes mellitus",
+        "sequence": 2
+      },
+      {
+        "claim_id": "cl-rosa-3",
+        "date": "2026-12-02",
+        "code": "49727002",
+        "system": "SNOMED",
+        "display": "Cough",
+        "sequence": 1
+      }
+    ],
+    "events": [
+      {
+        "at": "2027-02-15T06:00:00",
+        "kind": "pipeline_run",
+        "detail": "State check could not determine: no primary diagnosis on the code list. Neuropathy found in notes; how it limits her is not described."
+      }
+    ],
+    "notes": [
+      {
+        "id": "n-rosa-1",
+        "patient_id": "g-rosa",
+        "date": "2026-04-08",
+        "author": "Anita Patel, MD",
+        "text": "S: 52-year-old woman presents with 9 days of productive cough, low-grade fevers, and chest tightness. Spanish-speaking; visit conducted with an in-person interpreter. No known sick contacts. Never smoker. History of type 2 diabetes on metformin.\nO: T 37.9 C, HR 92, BP 134/82, SpO2 96% on room air. Scattered rhonchi bilaterally, no focal consolidation. No accessory muscle use. Pharynx mildly injected.\nA: Acute bronchitis, likely viral. No signs of pneumonia on exam. Type 2 diabetes, last A1c above goal.\nP: Supportive care with fluids and honey. Albuterol inhaler as needed for chest tightness. Return precautions reviewed: fever above 39 C, shortness of breath, or cough beyond 3 more weeks. Recheck A1c at next visit. Interpreter used for the entire visit."
+      },
+      {
+        "id": "n-rosa-2",
+        "patient_id": "g-rosa",
+        "date": "2026-08-19",
+        "author": "Anita Patel, MD",
+        "text": "S: Follow-up for lingering cough after bronchitis in the spring, now mostly resolved. Also reviewing diabetes. Reports numbness and burning in both feet, worse at night, present for over a year. Taking metformin 1000 mg twice daily; admits missing evening doses about half the time.\nO: BP 138/84, BMI 31. Lungs clear. Monofilament sensation absent at 6 of 10 sites bilaterally. Vibration sense decreased at both great toes. Pedal pulses 2+. No foot ulcers or calluses.\nA: Type 2 diabetes mellitus with diabetic peripheral neuropathy, A1c 8.4%. Resolving post-bronchitic cough.\nP: Start gabapentin 300 mg at bedtime, titrate as tolerated. Discussed metformin adherence and a weekly pill organizer. Podiatry referral for diabetic foot care. Daily foot checks reviewed with patient via interpreter. Return in 3 months."
+      },
+      {
+        "id": "n-rosa-3",
+        "patient_id": "g-rosa",
+        "date": "2026-12-02",
+        "author": "Anita Patel, MD",
+        "text": "S: Returns with 5 days of dry cough and sore throat after a family member had a cold. No fever at home. Diabetes follow-up deferred to next visit at patient request. Gabapentin helping with night-time foot pain, though her feet still feel numb most of the day.\nO: T 37.2 C, SpO2 98% on room air. Mild pharyngeal erythema, no exudate. Lungs clear to auscultation. Feet: skin intact, no ulcers, dry skin at both heels.\nA: Cough, likely post-viral upper respiratory infection. Diabetic peripheral neuropathy on gabapentin, pain improved.\nP: Supportive care. Continue gabapentin 300 mg nightly. Emollient for heels. Keep podiatry appointment in January. Return in 6 weeks for diabetes visit with A1c. Interpreter used for the entire visit."
+      }
+    ]
+  },
+  {
+    "patient_id": "g-marcus",
+    "display_name": "Marcus Webb",
+    "age": 58,
+    "language": "en",
+    "email": "marcus.webb@example.com",
+    "phone": "+1-555-0102",
+    "clinic_id": "clinic-eastside",
+    "clinician_name": "Dr. James Okafor",
+    "renewal_date": "2027-02-26",
+    "bucket": "PROVABLE",
+    "fragile": false,
+    "status": "needs_action",
+    "determination_a": {
+      "patient_id": "g-marcus",
+      "channel": "A",
+      "status": "not_determined",
+      "rule_ids": [],
+      "fact_ids": [
+        "f-marcus-1"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "determination_final": {
+      "patient_id": "g-marcus",
+      "channel": "final",
+      "status": "exempt",
+      "rule_ids": [
+        "medically_frail"
+      ],
+      "fact_ids": [
+        "f-marcus-1",
+        "f-marcus-2",
+        "f-marcus-3"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "claims": [
+      {
+        "id": "c-marcus-1",
+        "patient_id": "g-marcus",
+        "note_id": "n-marcus-2",
+        "category": "serious_complex_medical",
+        "condition": "severe COPD",
+        "qualifying_category": true,
+        "significantly_impairs": "unknown",
+        "quote": "Severe COPD, GOLD stage 3, with frequent exacerbations and exertional hypoxemia.",
+        "start": 501,
+        "end": 581,
+        "verified": true,
+        "verifier_reason": null
+      },
+      {
+        "id": "c-marcus-2",
+        "patient_id": "g-marcus",
+        "note_id": "n-marcus-2",
+        "category": "serious_complex_medical",
+        "condition": "severe COPD",
+        "qualifying_category": true,
+        "significantly_impairs": "true",
+        "quote": "Reports shortness of breath with minimal exertion such as dressing or showering.",
+        "start": 78,
+        "end": 158,
+        "verified": true,
+        "verifier_reason": null
+      },
+      {
+        "id": "c-marcus-3",
+        "patient_id": "g-marcus",
+        "note_id": "n-marcus-2",
+        "category": "serious_complex_medical",
+        "condition": "severe COPD",
+        "qualifying_category": true,
+        "significantly_impairs": "true",
+        "quote": "Cannot walk more than half a block without stopping to rest.",
+        "start": 159,
+        "end": 219,
+        "verified": true,
+        "verifier_reason": null
+      }
+    ],
+    "dropped_claims": [],
+    "facts": [
+      {
+        "id": "f-marcus-1",
+        "patient_id": "g-marcus",
+        "key": "ai_an",
+        "value": false,
+        "source": "structured_record",
+        "source_ref": {
+          "resource": "Patient",
+          "field": "race"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-marcus-2",
+        "patient_id": "g-marcus",
+        "key": "qualifying_condition",
+        "value": true,
+        "source": "note_span",
+        "source_ref": {
+          "note_id": "n-marcus-2",
+          "start": 501,
+          "end": 581,
+          "claim_id": "c-marcus-1"
+        },
+        "quote": "Severe COPD, GOLD stage 3, with frequent exacerbations and exertional hypoxemia.",
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-marcus-3",
+        "patient_id": "g-marcus",
+        "key": "significantly_impairs",
+        "value": true,
+        "source": "note_span",
+        "source_ref": {
+          "note_id": "n-marcus-2",
+          "start": 159,
+          "end": 219,
+          "claim_id": "c-marcus-3"
+        },
+        "quote": "Cannot walk more than half a block without stopping to rest.",
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      }
+    ],
+    "missing": [
+      {
+        "id": "m-marcus-1",
+        "patient_id": "g-marcus",
+        "key": "limitation_attested",
+        "holder": "clinician",
+        "database": null,
+        "unlocks_rule": "medically_frail",
+        "why": "His notes already show severe COPD that stops him walking half a block. Dr. Okafor only needs to confirm and sign.",
+        "question": {
+          "en": "Does the record support that severe COPD limits Marcus's ability to work?"
+        },
+        "status": "open"
+      }
+    ],
+    "billed_dx_12mo": [
+      {
+        "claim_id": "cl-marcus-1",
+        "date": "2026-06-11",
+        "code": "44465007",
+        "system": "SNOMED",
+        "display": "Sprain of ankle",
+        "sequence": 1
+      },
+      {
+        "claim_id": "cl-marcus-1",
+        "date": "2026-06-11",
+        "code": "185086009",
+        "system": "SNOMED",
+        "display": "Chronic obstructive bronchitis",
+        "sequence": 2
+      },
+      {
+        "claim_id": "cl-marcus-2",
+        "date": "2026-08-27",
+        "code": "44465007",
+        "system": "SNOMED",
+        "display": "Sprain of ankle",
+        "sequence": 1
+      },
+      {
+        "claim_id": "cl-marcus-2",
+        "date": "2026-08-27",
+        "code": "185086009",
+        "system": "SNOMED",
+        "display": "Chronic obstructive bronchitis",
+        "sequence": 2
+      }
+    ],
+    "events": [
+      {
+        "at": "2027-02-15T06:00:00",
+        "kind": "pipeline_run",
+        "detail": "State check could not determine: primary diagnosis was an ankle sprain. Notes show severe COPD limiting walking; ready for clinician signature."
+      }
+    ],
+    "notes": [
+      {
+        "id": "n-marcus-1",
+        "patient_id": "g-marcus",
+        "date": "2026-06-11",
+        "author": "James Okafor, MD",
+        "text": "S: 58-year-old man twisted his right ankle stepping off a curb two days ago. Able to bear weight with pain. History of COPD on tiotropium and albuterol; former smoker, 40 pack-years, quit in 2021.\nO: Right lateral ankle swelling and ecchymosis, tender over the anterior talofibular ligament. No bony tenderness at the malleoli or base of the fifth metatarsal; Ottawa rules negative. Lungs with prolonged expiration and scattered wheeze. SpO2 93% on room air.\nA: Right ankle sprain, grade 1 to 2. COPD, chronic, reported by patient as at baseline.\nP: Rest, ice, compression, elevation. Lace-up ankle brace. Ibuprofen as needed with food. No imaging needed. Continue inhalers and reviewed inhaler technique. Overdue for spirometry; schedule combined ankle recheck and COPD visit in 10 weeks."
+      },
+      {
+        "id": "n-marcus-2",
+        "patient_id": "g-marcus",
+        "date": "2026-08-27",
+        "author": "James Okafor, MD",
+        "text": "S: Ankle recheck and COPD follow-up. Ankle pain resolved, brace discontinued. Reports shortness of breath with minimal exertion such as dressing or showering. Cannot walk more than half a block without stopping to rest. Two exacerbations in the past year treated with prednisone. Using albuterol 4 to 5 times daily.\nO: Right ankle nontender, full range of motion. SpO2 91% at rest, 86% after walking 40 feet in the hallway. Diffuse expiratory wheeze. Spirometry: FEV1 42% predicted, FEV1/FVC 0.52.\nA: Severe COPD, GOLD stage 3, with frequent exacerbations and exertional hypoxemia. Ankle sprain, resolved.\nP: Add inhaled corticosteroid to current LAMA/LABA. Refer for ambulatory oxygen evaluation and pulmonary rehabilitation. Pneumococcal vaccine given today. Written exacerbation action plan provided and reviewed. Return in 6 weeks."
+      },
+      {
+        "id": "n-marcus-3",
+        "patient_id": "g-marcus",
+        "date": "2026-11-19",
+        "author": "Dana Whitfield, RN",
+        "text": "Telephone encounter. Patient called to report that his oxygen concentrator was delivered and he is using it with exertion and overnight. Asked about the pulmonary rehab schedule; first session confirmed for December 3. He states getting to the bus stop leaves him too winded, so his daughter will drive him to sessions. Denies fever, chest pain, or change in sputum color. Using albuterol about 3 times daily, fewer than at his last visit. Reviewed the exacerbation action plan: start the prednisone pack on hand and call the clinic if sputum turns green or breathing worsens over 24 hours. Reminded him to bring all inhalers to the first rehab session. Patient verbalized understanding and repeated the plan back. Routed to Dr. Okafor for review."
+      }
+    ]
+  },
+  {
+    "patient_id": "g-deshawn",
+    "display_name": "Deshawn Price",
+    "age": 23,
+    "language": "en",
+    "email": "deshawn.price@example.com",
+    "phone": "+1-555-0103",
+    "clinic_id": "clinic-valley",
+    "clinician_name": "Dr. Maria Reyes",
+    "renewal_date": "2027-03-10",
+    "bucket": "ONE_AWAY",
+    "fragile": false,
+    "status": "needs_action",
+    "determination_a": {
+      "patient_id": "g-deshawn",
+      "channel": "A",
+      "status": "not_determined",
+      "rule_ids": [],
+      "fact_ids": [
+        "f-deshawn-1",
+        "f-deshawn-2"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "determination_final": {
+      "patient_id": "g-deshawn",
+      "channel": "final",
+      "status": "not_determined",
+      "rule_ids": [],
+      "fact_ids": [
+        "f-deshawn-1",
+        "f-deshawn-2",
+        "f-deshawn-3"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "claims": [],
+    "dropped_claims": [],
+    "facts": [
+      {
+        "id": "f-deshawn-1",
+        "patient_id": "g-deshawn",
+        "key": "ai_an",
+        "value": false,
+        "source": "structured_record",
+        "source_ref": {
+          "resource": "Patient",
+          "field": "race"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-deshawn-2",
+        "patient_id": "g-deshawn",
+        "key": "monthly_income",
+        "value": 0,
+        "source": "external_db",
+        "source_ref": {
+          "db": "state_wage_records",
+          "record_id": "wr-deshawn-2027-01"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-deshawn-3",
+        "patient_id": "g-deshawn",
+        "key": "former_foster_youth",
+        "value": false,
+        "source": "external_db",
+        "source_ref": {
+          "db": "child_welfare",
+          "record_id": "cw-deshawn"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      }
+    ],
+    "missing": [
+      {
+        "id": "m-deshawn-1",
+        "patient_id": "g-deshawn",
+        "key": "enrolled_half_time_school",
+        "holder": "database",
+        "database": "student_enrollment",
+        "unlocks_rule": "school",
+        "why": "No work hours or wages on file, but he may be in school. The student enrollment database can confirm it without contacting him.",
+        "question": {
+          "en": "Is Deshawn enrolled at least half time in school?"
+        },
+        "status": "open"
+      }
+    ],
+    "billed_dx_12mo": [
+      {
+        "claim_id": "cl-deshawn-1",
+        "date": "2026-05-02",
+        "code": "70704007",
+        "system": "SNOMED",
+        "display": "Sprain of wrist",
+        "sequence": 1
+      },
+      {
+        "claim_id": "cl-deshawn-2",
+        "date": "2026-09-14",
+        "code": "444814009",
+        "system": "SNOMED",
+        "display": "Viral sinusitis",
+        "sequence": 1
+      }
+    ],
+    "events": [
+      {
+        "at": "2027-02-15T06:00:00",
+        "kind": "pipeline_run",
+        "detail": "State check could not determine: no wages, hours or exemption on file. Student enrollment not yet checked."
+      }
+    ],
+    "notes": [
+      {
+        "id": "n-deshawn-1",
+        "patient_id": "g-deshawn",
+        "date": "2026-05-02",
+        "author": "Maria Reyes, MD",
+        "text": "S: 23-year-old man injured his left wrist yesterday falling on an outstretched hand during pickup basketball. Pain on the thumb side, worse with gripping. No numbness or tingling. Right-hand dominant. No prior wrist injuries. No medications, no allergies.\nO: Mild swelling dorsal left wrist. No snuffbox tenderness. Full range of motion with pain at extremes of extension. Grip strength slightly reduced on the left. Radial pulse 2+, sensation intact.\nA: Left wrist sprain. Low suspicion for scaphoid fracture given exam; no imaging today.\nP: Wrist splint for comfort for 1 week. Ice and ibuprofen as needed. Return if snuffbox tenderness develops or pain is not improving in 10 days, in which case obtain wrist x-rays. Discussed warm-up and wrist taping before games."
+      },
+      {
+        "id": "n-deshawn-2",
+        "patient_id": "g-deshawn",
+        "date": "2026-09-14",
+        "author": "Maria Reyes, MD",
+        "text": "S: Five days of nasal congestion, clear rhinorrhea, facial pressure, and mild headache. No fever. Roommate had similar symptoms last week. Wrist fully healed, playing basketball again without pain.\nO: T 37.0 C. Nasal mucosa edematous with clear discharge. Mild maxillary tenderness. Tympanic membranes normal. Lungs clear.\nA: Viral sinusitis. Symptoms under 10 days without worsening, so antibiotics are not indicated.\nP: Saline irrigation, intranasal steroid spray, and acetaminophen as needed. Return if symptoms last beyond 10 days, worsen after initial improvement, or fever above 39 C develops. Demonstrated saline irrigation technique and advised using distilled or boiled water. Flu vaccine offered and given today. Nonsmoker, no alcohol concerns. Discussed hand hygiene and staying home while febrile. Due for routine physical next year."
+      }
+    ]
+  },
+  {
+    "patient_id": "g-linh",
+    "display_name": "Linh Tran",
+    "age": 41,
+    "language": "vi",
+    "email": "linh.tran@example.com",
+    "phone": "+1-555-0104",
+    "clinic_id": "clinic-valley",
+    "clinician_name": "Dr. Maria Reyes",
+    "renewal_date": "2027-03-22",
+    "bucket": "SAFE",
+    "fragile": false,
+    "status": "no_action",
+    "determination_a": {
+      "patient_id": "g-linh",
+      "channel": "A",
+      "status": "exempt",
+      "rule_ids": [
+        "medically_frail"
+      ],
+      "fact_ids": [
+        "f-linh-1",
+        "f-linh-2",
+        "f-linh-3"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "determination_final": {
+      "patient_id": "g-linh",
+      "channel": "final",
+      "status": "exempt",
+      "rule_ids": [
+        "medically_frail"
+      ],
+      "fact_ids": [
+        "f-linh-1",
+        "f-linh-2",
+        "f-linh-3",
+        "f-linh-4",
+        "f-linh-5"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "claims": [
+      {
+        "id": "c-linh-1",
+        "patient_id": "g-linh",
+        "note_id": "n-linh-1",
+        "category": "serious_complex_medical",
+        "condition": "chronic kidney disease stage 4",
+        "qualifying_category": true,
+        "significantly_impairs": "unknown",
+        "quote": "Chronic kidney disease stage 4, eGFR 22, secondary to hypertensive nephropathy.",
+        "start": 461,
+        "end": 540,
+        "verified": true,
+        "verifier_reason": null
+      },
+      {
+        "id": "c-linh-2",
+        "patient_id": "g-linh",
+        "note_id": "n-linh-1",
+        "category": "serious_complex_medical",
+        "condition": "chronic kidney disease stage 4",
+        "qualifying_category": true,
+        "significantly_impairs": "true",
+        "quote": "Reports fatigue limiting her to about two hours of light activity before she must lie down.",
+        "start": 78,
+        "end": 169,
+        "verified": true,
+        "verifier_reason": null
+      }
+    ],
+    "dropped_claims": [],
+    "facts": [
+      {
+        "id": "f-linh-1",
+        "patient_id": "g-linh",
+        "key": "qualifying_condition",
+        "value": true,
+        "source": "billing_code",
+        "source_ref": {
+          "claim_id": "cl-linh-3",
+          "code": "431857002",
+          "sequence": 1
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-linh-2",
+        "patient_id": "g-linh",
+        "key": "significantly_impairs",
+        "value": true,
+        "source": "billing_code",
+        "source_ref": {
+          "claim_id": "cl-linh-3",
+          "code": "431857002",
+          "sequence": 1
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-linh-3",
+        "patient_id": "g-linh",
+        "key": "ai_an",
+        "value": false,
+        "source": "structured_record",
+        "source_ref": {
+          "resource": "Patient",
+          "field": "race"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-linh-4",
+        "patient_id": "g-linh",
+        "key": "qualifying_condition",
+        "value": true,
+        "source": "note_span",
+        "source_ref": {
+          "note_id": "n-linh-1",
+          "start": 461,
+          "end": 540,
+          "claim_id": "c-linh-1"
+        },
+        "quote": "Chronic kidney disease stage 4, eGFR 22, secondary to hypertensive nephropathy.",
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-linh-5",
+        "patient_id": "g-linh",
+        "key": "significantly_impairs",
+        "value": true,
+        "source": "note_span",
+        "source_ref": {
+          "note_id": "n-linh-1",
+          "start": 78,
+          "end": 169,
+          "claim_id": "c-linh-2"
+        },
+        "quote": "Reports fatigue limiting her to about two hours of light activity before she must lie down.",
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      }
+    ],
+    "missing": [],
+    "billed_dx_12mo": [
+      {
+        "claim_id": "cl-linh-1",
+        "date": "2026-03-30",
+        "code": "431857002",
+        "system": "SNOMED",
+        "display": "Chronic kidney disease stage 4",
+        "sequence": 1
+      },
+      {
+        "claim_id": "cl-linh-1",
+        "date": "2026-03-30",
+        "code": "59621000",
+        "system": "SNOMED",
+        "display": "Essential hypertension",
+        "sequence": 2
+      },
+      {
+        "claim_id": "cl-linh-2",
+        "date": "2026-07-20",
+        "code": "431857002",
+        "system": "SNOMED",
+        "display": "Chronic kidney disease stage 4",
+        "sequence": 1
+      },
+      {
+        "claim_id": "cl-linh-3",
+        "date": "2026-11-16",
+        "code": "431857002",
+        "system": "SNOMED",
+        "display": "Chronic kidney disease stage 4",
+        "sequence": 1
+      }
+    ],
+    "events": [
+      {
+        "at": "2027-02-15T06:00:00",
+        "kind": "pipeline_run",
+        "detail": "State exempts on primary diagnosis: chronic kidney disease stage 4. Notes support it. No action needed."
+      }
+    ],
+    "notes": [
+      {
+        "id": "n-linh-1",
+        "patient_id": "g-linh",
+        "date": "2026-07-20",
+        "author": "Maria Reyes, MD",
+        "text": "S: 41-year-old woman here for kidney follow-up with a Vietnamese interpreter. Reports fatigue limiting her to about two hours of light activity before she must lie down. She stopped her job at a nail salon in the spring because she could not get through a shift. Mild ankle swelling by evening. Adherent to amlodipine and losartan.\nO: BP 146/90. Trace bilateral ankle edema. Conjunctival pallor. Labs: creatinine 2.9, eGFR 22, potassium 5.1, hemoglobin 9.8.\nA: Chronic kidney disease stage 4, eGFR 22, secondary to hypertensive nephropathy. Anemia of chronic kidney disease. Hypertension, above goal.\nP: Increase amlodipine to 10 mg. Low-potassium diet teaching with interpreter. Refer to nephrology for dialysis planning and transplant evaluation. Avoid NSAIDs. Recheck labs in 6 weeks."
+      },
+      {
+        "id": "n-linh-2",
+        "patient_id": "g-linh",
+        "date": "2026-11-16",
+        "author": "Maria Reyes, MD",
+        "text": "S: Follow-up after nephrology visit. Transplant evaluation started. Still tires quickly and needs to rest in the afternoon most days. Appetite fair. No shortness of breath or confusion. Vietnamese interpreter present.\nO: BP 132/84. Trace ankle edema. Labs: creatinine 3.3, eGFR 19, potassium 4.8, hemoglobin 9.4.\nA: Chronic kidney disease stage 4, declining, eGFR 19. Anemia of chronic kidney disease, starting treatment per nephrology. Hypertension, improved on current regimen.\nP: Continue amlodipine and losartan. Erythropoiesis-stimulating agent per nephrology. Arteriovenous fistula planning discussed; she prefers to begin with the left arm. Hepatitis B vaccine series started. Reviewed low-potassium and low-phosphorus food choices with the interpreter and gave a printed list in Vietnamese. Advised to avoid NSAIDs and herbal supplements. Return in 2 months with labs."
+      }
+    ]
+  },
+  {
+    "patient_id": "g-karen",
+    "display_name": "Karen Hollis",
+    "age": 47,
+    "language": "en",
+    "email": "karen.hollis@example.com",
+    "phone": "+1-555-0105",
+    "clinic_id": "clinic-eastside",
+    "clinician_name": "Dr. James Okafor",
+    "renewal_date": "2027-04-02",
+    "bucket": "SAFE",
+    "fragile": true,
+    "status": "no_action",
+    "determination_a": {
+      "patient_id": "g-karen",
+      "channel": "A",
+      "status": "exempt",
+      "rule_ids": [
+        "medically_frail"
+      ],
+      "fact_ids": [
+        "f-karen-1",
+        "f-karen-2",
+        "f-karen-3"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "determination_final": {
+      "patient_id": "g-karen",
+      "channel": "final",
+      "status": "exempt",
+      "rule_ids": [
+        "medically_frail"
+      ],
+      "fact_ids": [
+        "f-karen-1",
+        "f-karen-2",
+        "f-karen-3"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "claims": [
+      {
+        "id": "c-karen-1",
+        "patient_id": "g-karen",
+        "note_id": "n-karen-1",
+        "category": "serious_mental_illness",
+        "condition": "major depressive disorder",
+        "qualifying_category": true,
+        "significantly_impairs": "false",
+        "quote": "Major depressive disorder, recurrent, in sustained remission on sertraline 100 mg daily.",
+        "start": 333,
+        "end": 421,
+        "verified": true,
+        "verifier_reason": null
+      }
+    ],
+    "dropped_claims": [],
+    "facts": [
+      {
+        "id": "f-karen-1",
+        "patient_id": "g-karen",
+        "key": "qualifying_condition",
+        "value": true,
+        "source": "billing_code",
+        "source_ref": {
+          "claim_id": "cl-karen-2",
+          "code": "370143000",
+          "sequence": 1
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-karen-2",
+        "patient_id": "g-karen",
+        "key": "significantly_impairs",
+        "value": true,
+        "source": "billing_code",
+        "source_ref": {
+          "claim_id": "cl-karen-2",
+          "code": "370143000",
+          "sequence": 1
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-karen-3",
+        "patient_id": "g-karen",
+        "key": "ai_an",
+        "value": false,
+        "source": "structured_record",
+        "source_ref": {
+          "resource": "Patient",
+          "field": "race"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      }
+    ],
+    "missing": [],
+    "billed_dx_12mo": [
+      {
+        "claim_id": "cl-karen-1",
+        "date": "2026-05-12",
+        "code": "370143000",
+        "system": "SNOMED",
+        "display": "Major depressive disorder",
+        "sequence": 1
+      },
+      {
+        "claim_id": "cl-karen-2",
+        "date": "2026-10-08",
+        "code": "370143000",
+        "system": "SNOMED",
+        "display": "Major depressive disorder",
+        "sequence": 1
+      }
+    ],
+    "events": [
+      {
+        "at": "2027-02-15T06:00:00",
+        "kind": "pipeline_run",
+        "detail": "State exempts on primary diagnosis: major depressive disorder. No sentence in 2 notes supports an impairment. Flagged fragile."
+      }
+    ],
+    "notes": [
+      {
+        "id": "n-karen-1",
+        "patient_id": "g-karen",
+        "date": "2026-05-12",
+        "author": "James Okafor, MD",
+        "text": "S: 47-year-old woman here for medication check. Mood good, sleeping 7 hours, enjoying time with her sister and her garden. Working full time as a dental office manager. No thoughts of self-harm. Tolerating sertraline without side effects.\nO: Well groomed, good eye contact, euthymic affect, linear thought process. PHQ-9 score 3.\nA: Major depressive disorder, recurrent, in sustained remission on sertraline 100 mg daily.\nP: Continue sertraline 100 mg daily. Discussed that she would like to stay on medication through the winter, given past seasonal relapses; will revisit tapering in the spring. Continue therapy check-ins every other month. Reviewed early warning signs of relapse, including sleep changes and withdrawal from activities, and how to reach the clinic. Return in 5 months, sooner if mood changes."
+      },
+      {
+        "id": "n-karen-2",
+        "patient_id": "g-karen",
+        "date": "2026-10-08",
+        "author": "James Okafor, MD",
+        "text": "S: Routine follow-up before winter. Mood stable. Recently promoted at work and continues working full time. Exercising 3 times a week. Sleep and appetite normal. No thoughts of self-harm. Continues therapy check-ins and finds them helpful. No alcohol use. Taking sertraline every morning without missed doses.\nO: Well groomed, euthymic, reactive affect, organized thoughts, good insight. PHQ-9 score 2, GAD-7 score 1. BP 118/76, weight stable.\nA: Major depressive disorder, recurrent, in remission. Stable on current dose.\nP: Continue sertraline 100 mg daily through the winter. Light box use discussed for the darker months. Flu vaccine given. Plan to discuss a gradual taper at the spring visit if mood remains stable. Crisis line number reconfirmed in her phone. Return in 6 months."
+      }
+    ]
+  },
+  {
+    "patient_id": "g-omar",
+    "display_name": "Omar Haddad",
+    "age": 35,
+    "language": "en",
+    "email": "omar.haddad@example.com",
+    "phone": "+1-555-0106",
+    "clinic_id": "clinic-mission",
+    "clinician_name": "Dr. Anita Patel",
+    "renewal_date": "2027-04-08",
+    "bucket": "SAFE",
+    "fragile": false,
+    "status": "no_action",
+    "determination_a": {
+      "patient_id": "g-omar",
+      "channel": "A",
+      "status": "compliant",
+      "rule_ids": [
+        "income"
+      ],
+      "fact_ids": [
+        "f-omar-1",
+        "f-omar-2"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "determination_final": {
+      "patient_id": "g-omar",
+      "channel": "final",
+      "status": "compliant",
+      "rule_ids": [
+        "income"
+      ],
+      "fact_ids": [
+        "f-omar-1",
+        "f-omar-2"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "claims": [],
+    "dropped_claims": [],
+    "facts": [
+      {
+        "id": "f-omar-1",
+        "patient_id": "g-omar",
+        "key": "monthly_income",
+        "value": 920,
+        "source": "external_db",
+        "source_ref": {
+          "db": "state_wage_records",
+          "record_id": "wr-omar-2027-01"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-omar-2",
+        "patient_id": "g-omar",
+        "key": "ai_an",
+        "value": false,
+        "source": "structured_record",
+        "source_ref": {
+          "resource": "Patient",
+          "field": "race"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      }
+    ],
+    "missing": [],
+    "billed_dx_12mo": [
+      {
+        "claim_id": "cl-omar-1",
+        "date": "2026-07-01",
+        "code": "444814009",
+        "system": "SNOMED",
+        "display": "Viral sinusitis",
+        "sequence": 1
+      }
+    ],
+    "events": [
+      {
+        "at": "2027-02-15T06:00:00",
+        "kind": "pipeline_run",
+        "detail": "Meets the requirement through income: state wage records show $920/month. Never contacted."
+      }
+    ],
+    "notes": [
+      {
+        "id": "n-omar-1",
+        "patient_id": "g-omar",
+        "date": "2026-03-03",
+        "author": "Anita Patel, MD",
+        "text": "S: 35-year-old man here for an annual physical. Works part time as a delivery driver and plays soccer on weekends. No complaints. Nonsmoker, drinks 2 to 3 beers per week. No family history of early heart disease. No medications.\nO: BP 122/78, HR 64, BMI 26. Heart regular, lungs clear, abdomen soft. Skin exam normal.\nA: Healthy adult. Overweight by BMI.\nP: Fasting lipid panel and A1c ordered. Tetanus booster given. Discussed diet, fewer sugary drinks during delivery shifts, and continuing regular exercise. Sunscreen use for time outdoors while driving. Seat belt use and phone-free driving encouraged. Dental visit recommended; last cleaning over two years ago. Hepatitis C and HIV screening offered once; patient accepted, drawn with other labs. Return in one year or as needed."
+      },
+      {
+        "id": "n-omar-2",
+        "patient_id": "g-omar",
+        "date": "2026-07-01",
+        "author": "Anita Patel, MD",
+        "text": "S: Four days of nasal congestion, sneezing, and sinus pressure. No fever, cough, or ear pain. Two coworkers had colds last week. Lipid panel and A1c from March were normal. Still driving deliveries part time. Has tried an over-the-counter decongestant with some relief.\nO: T 36.9 C, HR 68. Boggy nasal mucosa with clear discharge. No sinus tenderness. Tympanic membranes normal. Oropharynx clear. Lungs clear. No cervical lymphadenopathy.\nA: Viral sinusitis. No features of bacterial infection.\nP: Saline rinses and intranasal steroid spray. Acetaminophen as needed. Limit decongestant to 3 days. Return if symptoms last beyond 10 days, worsen after improving, or fever develops. No work restrictions needed. Hand hygiene reviewed with patient. Fluids and rest encouraged. Routine physical due again next March."
+      }
+    ]
+  },
+  {
+    "patient_id": "g-bea",
+    "display_name": "Bea Knox",
+    "age": 60,
+    "language": "en",
+    "email": "bea.knox@example.com",
+    "phone": "+1-555-0107",
+    "clinic_id": "clinic-mission",
+    "clinician_name": "Dr. Anita Patel",
+    "renewal_date": "2027-03-15",
+    "bucket": "NO_PATH",
+    "fragile": false,
+    "status": "no_action",
+    "determination_a": {
+      "patient_id": "g-bea",
+      "channel": "A",
+      "status": "not_determined",
+      "rule_ids": [],
+      "fact_ids": [
+        "f-bea-1",
+        "f-bea-2",
+        "f-bea-3",
+        "f-bea-4"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "determination_final": {
+      "patient_id": "g-bea",
+      "channel": "final",
+      "status": "not_determined",
+      "rule_ids": [],
+      "fact_ids": [
+        "f-bea-1",
+        "f-bea-2",
+        "f-bea-3",
+        "f-bea-4"
+      ],
+      "rule_pack_version": "ca-2027.02-demo"
+    },
+    "claims": [],
+    "dropped_claims": [
+      {
+        "id": "c-bea-1",
+        "patient_id": "g-bea",
+        "note_id": "n-bea-1",
+        "category": "physical_disability",
+        "condition": "severe arthritis",
+        "qualifying_category": true,
+        "significantly_impairs": "unknown",
+        "quote": "Patient's mother has severe arthritis",
+        "start": 140,
+        "end": 177,
+        "verified": false,
+        "verifier_reason": "The span describes the patient's mother, not the patient."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f-bea-1",
+        "patient_id": "g-bea",
+        "key": "ai_an",
+        "value": false,
+        "source": "structured_record",
+        "source_ref": {
+          "resource": "Patient",
+          "field": "race"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-bea-2",
+        "patient_id": "g-bea",
+        "key": "monthly_income",
+        "value": 0,
+        "source": "external_db",
+        "source_ref": {
+          "db": "state_wage_records",
+          "record_id": "wr-bea-2027-01"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-bea-3",
+        "patient_id": "g-bea",
+        "key": "snap_tanf_work_compliant",
+        "value": false,
+        "source": "external_db",
+        "source_ref": {
+          "db": "snap",
+          "record_id": "snap-bea"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      },
+      {
+        "id": "f-bea-4",
+        "patient_id": "g-bea",
+        "key": "dependent_child_13_or_under",
+        "value": false,
+        "source": "structured_record",
+        "source_ref": {
+          "resource": "Household",
+          "field": "members"
+        },
+        "quote": null,
+        "recorded_at": "2027-02-15T06:00:00",
+        "rule_pack_version": "ca-2027.02-demo"
+      }
+    ],
+    "missing": [],
+    "billed_dx_12mo": [
+      {
+        "claim_id": "cl-bea-1",
+        "date": "2026-04-22",
+        "code": "59621000",
+        "system": "SNOMED",
+        "display": "Essential hypertension",
+        "sequence": 1
+      },
+      {
+        "claim_id": "cl-bea-2",
+        "date": "2026-10-14",
+        "code": "59621000",
+        "system": "SNOMED",
+        "display": "Essential hypertension",
+        "sequence": 1
+      },
+      {
+        "claim_id": "cl-bea-2",
+        "date": "2026-10-14",
+        "code": "714628002",
+        "system": "SNOMED",
+        "display": "Prediabetes",
+        "sequence": 2
+      }
+    ],
+    "events": [
+      {
+        "at": "2027-02-15T06:00:00",
+        "kind": "pipeline_run",
+        "detail": "No exemption within one fact. Verifier dropped 1 claim about a relative. Needs help reporting hours."
+      }
+    ],
+    "notes": [
+      {
+        "id": "n-bea-1",
+        "patient_id": "g-bea",
+        "date": "2026-04-22",
+        "author": "Anita Patel, MD",
+        "text": "S: 60-year-old woman here for blood pressure follow-up. Checking readings at home, mostly 130s over 80s. Retired from retail two years ago. Patient's mother has severe arthritis and now lives in an assisted living facility nearby; patient visits her on weekends. No chest pain, headaches, or vision changes. Takes lisinopril each morning and rarely misses a dose. Nonsmoker, no alcohol.\nO: BP 132/82, HR 70, BMI 28. Heart regular, no murmurs. Lungs clear. No edema.\nA: Essential hypertension, controlled on lisinopril. Family history of arthritis, noted.\nP: Continue lisinopril 10 mg daily. Basic metabolic panel today. Encouraged continued home monitoring with a log to bring to visits, and reduced sodium intake. A1c ordered given family history of diabetes. Return in 6 months."
+      },
+      {
+        "id": "n-bea-2",
+        "patient_id": "g-bea",
+        "date": "2026-10-14",
+        "author": "Anita Patel, MD",
+        "text": "S: Blood pressure and prediabetes follow-up. Walks 30 minutes most mornings with a neighbor. Denies joint pain or difficulty walking. Recent A1c 6.0. Eating more vegetables since the last visit and cooking at home more often. Home blood pressure log shows readings in the 120s over 70s. No medication side effects.\nO: BP 128/80, HR 68, BMI 27.5, down 2 pounds. Heart and lungs normal. Feet with intact sensation and normal pulses.\nA: Essential hypertension, controlled. Prediabetes, stable.\nP: Continue lisinopril 10 mg daily. Diabetes prevention program information provided; she will call to enroll. Repeat A1c in 6 months. Flu and shingles vaccines given today. Colonoscopy due; referral placed. Mammogram up to date. Next blood pressure check with the nurse in 3 months. Return in 6 months."
+      }
+    ]
+  }
+]
