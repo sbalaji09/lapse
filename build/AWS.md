@@ -14,6 +14,7 @@ Do the sections in order; each one is shippable on its own.
 - **HIPAA-eligible services only.** We are synthetic today, but the whole point of the product is real patients later.
   Only use services on the AWS HIPAA Eligible Services list, and sign the AWS BAA (via AWS Artifact) before a single real record touches the account.
 - **Boring over clever.** Containers on Fargate and a Postgres database, not a mesh of Lambdas.
+  Agents only where the task is open-ended and a human reviews the output (see the Agents section).
   Lambda only where AWS hands us an event (inbound email).
 - **One region.** `us-west-2` for everything (California program, Bedrock model availability).
   No cross-region data.
@@ -54,6 +55,7 @@ Do the sections in order; each one is shippable on its own.
 | `make web` on a laptop | AWS Amplify Hosting | `web/` | Native Next.js App Router hosting from the git repo |
 | `make pipeline` by hand | EventBridge Scheduler -> Fargate task | `engine/pipeline.py` | Renewals are rolling; the queue must refresh daily without anyone pressing a button |
 | `.env` | AWS Secrets Manager | `engine/config.py` settings loader | No keys in images or environment files |
+| Case copilot, reply interpreter, appeal assembler | Strands Agents on Bedrock AgentCore | `engine/agents/` (new) | Open-ended, tool-choosing tasks; see the Agents section |
 | Voice call (stretch) | Amazon Connect + Polly + Transcribe | `engine/loop/` voice | Outbound call in the patient's language; transcript lands as a `patient_reply` fact |
 
 ---
@@ -259,6 +261,112 @@ A call to a test phone number resolves `standing_tolerance_minutes` for a copy o
 
 ---
 
+## Agents - where we need them, and where we must not use them
+
+### Short answer
+The core of Lapse should not be an agent.
+Channel A, the buckets and the counterfactual solver are deterministic on purpose: "zero LLM, rule pack compiled to code" is the honesty claim the whole pitch rests on.
+The verifier must stay a single, context-starved call that sees only (claim, quoted span); giving it tools or memory would destroy the reason it exists.
+Channel B is extraction with offsets, which is one structured call per note, not a loop.
+
+Agents earn their place only where the task is open-ended, needs to pick among tools, and a human reviews the result before it matters.
+We have three of those, and Strands Agents (AWS's open-source Python agent SDK, Bedrock by default) fits all three.
+
+### Where an agent fits
+| Agent | Job | Tools (all read-only unless noted) | Why it is an agent and not a call |
+|---|---|---|---|
+| **Case copilot** (operator) | Answers the enrollment worker's questions about one case: "why is Rosa ONE_AWAY?", "what if she's a caregiver?", "what did the state actually see?" | `get_case`, `get_notes`, `get_rule(rule_id)`, `what_if(patient_id, key, value)` (runs the real solver on a copy), `search_policy` (Knowledge Base) | It decides which tools to call and chains them; every answer must cite spans or rule ids the tools returned |
+| **Reply interpreter** (patient loop) | Turns a free-text reply ("I can stand maybe ten minutes, and I watch my grandson after school") into typed facts, including side facts we did not ask about | `get_open_missing_facts`, `get_fact_registry`, `check_quote(text, start, end)`, `propose_fact(key, value, quote)` (writes to a pending list, never to the case directly) | Replies are messy and multi-fact; the agent loops until every proposed quote passes `check_quote`, then `engine/loop/inbound.py` applies them deterministically |
+| **Appeal packet assembler** (B5 stretch) | For a terminated case, gathers every supporting fact and span across notes, replies, attestations and databases, and drafts the cover letter | `get_case`, `get_notes`, `get_attestation`, `get_rule`, `build_pdf` | Open-ended evidence gathering across sources; a human signs before anything is sent |
+
+Replace the keyword parser in `engine/loop/inbound.py` with the reply interpreter only after it beats the parser on a labelled set of replies (write 50, en + es, into `data/truth/replies.jsonl`).
+
+### Where an agent must not go
+- Channel A, `buckets`, `solver`: deterministic code only.
+- The verifier: one call, no tools, no memory, no conversation.
+- Anything that talks to a patient: the outbound question is a fixed template from the fact registry; no agent composes free text to a patient.
+- Anything that writes a determination: agents propose facts, deterministic code decides.
+
+### Strands shape (sketch, check against the current Strands docs)
+```python
+from strands import Agent, tool
+from strands.models import BedrockModel
+
+from engine import config, solver, store
+
+@tool
+def what_if(patient_id: str, key: str, value: str) -> dict:
+    """Re-run the real solver on a copy of the case with one extra fact. Never saves."""
+    return solver.what_if(store.get_case(patient_id), key, value)
+
+copilot = Agent(
+    model=BedrockModel(
+        model_id=config.MODEL_COPILOT,
+        guardrail_id=config.GUARDRAIL_ID,
+        guardrail_version=config.GUARDRAIL_VERSION,
+    ),
+    system_prompt=COPILOT_PROMPT,   # cite a span or rule id for every claim; never state eligibility
+    tools=[get_case, get_notes, get_rule, what_if, search_policy],
+)
+```
+Agents live in `engine/agents/` (new, Track A) with tools as thin wrappers over existing engine functions, so there is one source of truth for every rule.
+Every agent run is cached by the same key scheme as `engine/llm.py`, so the demo still replays offline.
+
+---
+
+## AWS8 - Getting the most out of Bedrock
+
+### Goal
+Use Bedrock features that do real work for the product, each tied to one of our hard rules, so every one of them is a line in the demo rather than a logo on a slide.
+Judges give credit for a feature that visibly enforces something; they discount features bolted on for the checklist.
+
+### The features, ranked by payoff for us
+1. **Guardrails, denied topics: enforce "never tell a patient they are eligible".**
+   Define a denied topic for eligibility and coverage determinations and attach the guardrail to every model call that can reach a patient or the copilot.
+   Demo line: ask the copilot to "tell Rosa she's exempt" and show the guardrail block.
+2. **Guardrails, contextual grounding check: a second, independent verifier.**
+   Run Channel B claims through the grounding check with the note as the source and the claim as the response, alongside our LLM verifier.
+   Report both on `/eval` (kept, dropped, agreement between the two).
+   Bea's bait sentence should be dropped by both.
+3. **Guardrails, Automated Reasoning checks: prove explanations match the rule pack.**
+   Build an Automated Reasoning policy from the rule text in `rules/ca.yaml` and the statute, and validate every copilot explanation against it.
+   This is the strongest possible fit: our product is "the rules, applied exactly", and this feature is formal verification of rule statements.
+   Confirm it is available in `us-west-2` before committing to it.
+4. **Knowledge Bases: cited policy answers.**
+   Index the statute text, CMS guidance and each state's rule pack notes into a Knowledge Base (S3 source, managed vector store).
+   The copilot's `search_policy` tool uses it, and every answer carries the source passage, keeping "never a claim without a source" true for policy as well as notes.
+5. **AgentCore to run the Strands agents.**
+   Runtime hosts the copilot and reply interpreter (session isolation per case), Gateway exposes our engine tools over MCP, Memory keeps a patient's email and voice turns in one thread, Identity carries the operator's login, and Observability traces every tool call to CloudWatch.
+   The traces double as the audit log a clinic's compliance officer will ask for.
+6. **Model evaluation: prove the model choice with our own ground truth.**
+   Export `data/truth/labels.jsonl` as a Bedrock evaluation dataset and run the same Channel B prompt on two or three models (a Claude model for the verifier, an Amazon Nova model for cheap extraction).
+   Pick per task by F1 and cost, and put the comparison on `/eval`.
+7. **Batch inference and prompt caching: cost.**
+   Batch for the nightly full-cohort run (AWS2), prompt caching for the long shared system prompt and rule text on live calls.
+   Show cost per patient on the buyer view.
+8. **Nova Sonic for the voice call (AWS7).**
+   Speech-to-speech in the patient's language instead of Polly + Transcribe glue; the transcript still enters through the same reply handler.
+9. **Prompt Management: provenance for prompts.**
+   Version every prompt in Bedrock Prompt Management and store the prompt version next to `rule_pack_version` on each fact produced by an LLM, so a fact can be traced to the exact prompt that made it.
+   Adding a `prompt_version` field to `Fact` is a contract change; agree it with Track B first.
+10. **Bedrock Data Automation (later): documents from patients.**
+    A patient replies with a photo of a school enrollment letter or a VA rating letter; Data Automation extracts the fact and the image becomes its evidence.
+    This needs a new `Source` value, so it is a contract change too.
+
+### What not to do for points
+- Do not put the solver, buckets or Channel A behind a model to "use more Bedrock"; the deterministic baseline is the product.
+- Do not use cross-region inference profiles that route outside the US; if throughput needs it, use a US geographic profile and update the "one region" principle explicitly.
+- Do not use Intelligent Prompt Routing on the verifier; its model must be fixed and recorded.
+
+### Pulling this into the hackathon
+PROJECT.md says "Bedrock is a config swap", so items 1, 2 and the Bedrock switch for Channel B are the cheap wins if an AWS judge is on the panel.
+Anything that changes the stack line in PROJECT.md needs both people to agree before either track starts on it.
+
+### Done when
+The demo shows, in order: a guardrail blocking an eligibility statement, the grounding check and the LLM verifier agreeing on dropped claims on `/eval`, and the copilot answering "why is Rosa ONE_AWAY?" with a cited span, a rule id and an Automated Reasoning "valid" result.
+
+---
+
 ## Cost notes (dev, rough)
 - Fixed monthly floor is the ALB, RDS (single-AZ small instance in dev) and NAT or VPC endpoints; expect this to dominate while traffic is tiny.
 - Bedrock cost scales with cohort size times notes per patient; batch inference and the S3 cache mean an unchanged patient costs nothing on re-run.
@@ -266,5 +374,6 @@ A call to a test phone number resolves `standing_tolerance_minutes` for a copy o
 
 ## Open questions (decide before AWS1)
 - Postgres on RDS versus Aurora Serverless v2: RDS is the default here; revisit only if load is spiky enough to justify Aurora.
-- Does each clinic get its own deployment (data isolation by account) or one multi-tenant deployment with `clinic_id` scoping? This changes AWS0 and the auth design.
+- Does each clinic get its own deployment (data isolation by account) or one multi-tenant deployment with `clinic_id` scoping?
+  This changes AWS0 and the auth design.
 - Which states' rule packs ship first, and does any state require data to stay in a specific region?
