@@ -22,7 +22,7 @@ import yaml
 
 from engine import buckets, external
 from engine.config import FACT_REGISTRY_PATH
-from engine.models import Bucket, Case, CaseStatus, Claim, Fact, Holder, MissingFact, Source, Tri
+from engine.models import Bucket, Case, CaseStatus, Fact, Holder, MissingFact, Source, Tri
 from engine.rulepack import RulePack, load_pack
 
 HOLDER_COST = {Holder.database: 0, Holder.clinician: 1, Holder.patient: 2}

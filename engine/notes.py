@@ -8,7 +8,6 @@ are complete: a claim Channel B finds that matches no label is a false positive.
 
 What a note says is decided by the truth (engine/truth.py), never by the other way round.
 """
-import json
 from datetime import timedelta
 from functools import cache
 
@@ -337,7 +336,6 @@ def generate(p: Patient, truth: Truth) -> tuple[list[Note], list[Label]]:
     lib = library()
     slots = _slots(p)
     n = len(slots)
-    pick = lambda key, options: options[int(_unit("notes", p.id, key) * len(options))]   # noqa: E731
     where = lambda key: int(_unit("where", p.id, key) * n)                                # noqa: E731
 
     # What each note must say, decided from the truth: (note index, section, sentence, label).

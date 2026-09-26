@@ -1,13 +1,22 @@
-.PHONY: api web pipeline reset
+.PHONY: api web pipeline eval test reset
 
+PYTHON ?= python3
+
+# Run from the repo root so `engine` is importable by the API.
 api:
-	cd api && uvicorn main:app --reload --port 8000
+	$(PYTHON) -m uvicorn api.main:app --reload --port 8000
 
 web:
 	cd web && npm run dev
 
 pipeline:
-	python -m engine.pipeline
+	$(PYTHON) -m engine.pipeline
+
+eval:
+	$(PYTHON) -m engine.eval
+
+test:
+	$(PYTHON) -m pytest -q tests
 
 reset:
 	curl -X POST http://localhost:8000/api/demo/reset

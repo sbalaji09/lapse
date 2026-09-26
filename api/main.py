@@ -1,3 +1,4 @@
+import json
 from datetime import date
 
 from fastapi import APIRouter, FastAPI, HTTPException
@@ -6,6 +7,8 @@ from fastapi.responses import Response
 from pydantic import BaseModel
 
 from engine import store
+from engine.config import ACTIVE_RULE_PACK, AS_OF_DATE, DATA_DIR
+from engine.rulepack import load_pack
 from engine.loop.clinician import case_for_token, sign_clinician
 from engine.loop.inbound import handle_reply
 from engine.loop.outbound import send_ask
@@ -38,23 +41,26 @@ class DecisionBody(BaseModel):
 
 def summary_dict(cases, channel_a_only: bool = False) -> dict:
     cohort = len(cases)
-    a_exempt = sum(1 for c in cases if c.determination_a.status == "exempt")
+    # "Cleared" = compliant OR exempt: people who meet the hours/income rule are never contacted either.
+    a_exempt = sum(1 for c in cases if c.determination_a.status != "not_determined")
     a_not_determined = sum(1 for c in cases if c.determination_a.status == "not_determined")
     result = {
         "cohort": cohort,
         "a_exempt": a_exempt,
         "a_not_determined": a_not_determined,
-        "rule_pack": ACTIVE_RULE_PACK,
+        "rule_pack": load_pack(ACTIVE_RULE_PACK).version,
     }
     if channel_a_only:
         return result
     result.update({
-        "final_exempt": sum(1 for c in cases if c.determination_final.status == "exempt"),
+        "final_exempt": sum(1 for c in cases if c.determination_final.status != "not_determined"),
         "provable": sum(1 for c in cases if c.bucket.value == "PROVABLE"),
         "one_away": sum(1 for c in cases if c.bucket.value == "ONE_AWAY"),
         "no_path": sum(1 for c in cases if c.bucket.value == "NO_PATH"),
         "fragile": sum(1 for c in cases if c.fragile),
-        "recovered": sum(1 for c in cases for m in c.missing if m.status == "resolved_true"),
+        # People the state would have dropped whom Lapse has cleared (chart, databases, replies, signatures).
+        "recovered": sum(1 for c in cases if c.determination_a.status == "not_determined"
+                         and c.determination_final.status != "not_determined"),
         "verifier_dropped": sum(len(c.dropped_claims) for c in cases),
     })
     return result
@@ -185,7 +191,11 @@ def case_appeal_pdf(id: str, termination_date: date):
 
 @router.get("/eval")
 def get_eval():
-    not_implemented()
+    # Written by `python -m engine.eval` (Track A); measured against labels we wrote on synthetic data.
+    path = DATA_DIR / "eval.json"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="no eval yet; run `make eval`")
+    return json.loads(path.read_text())
 
 
 @router.get("/fragile")
