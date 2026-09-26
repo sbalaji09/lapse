@@ -1,0 +1,464 @@
+{
+ "label": "Measured against labels we wrote on synthetic data.",
+ "generated_at": "2026-09-26T12:17:02",
+ "patient_level": {
+  "a": {
+   "p": 0.968,
+   "r": 0.469,
+   "f1": 0.631
+  },
+  "final": {
+   "p": 0.976,
+   "r": 0.653,
+   "f1": 0.782
+  },
+  "after_outreach": {
+   "p": 0.98,
+   "r": 0.764,
+   "f1": 0.859,
+   "simulated": true,
+   "note": "Every ONE_AWAY question answered from the synthetic truth, then re-evaluated."
+  },
+  "confusion": {
+   "a": {
+    "tp": 298,
+    "fp": 10,
+    "fn": 338,
+    "tn": 354
+   },
+   "final": {
+    "tp": 415,
+    "fp": 10,
+    "fn": 221,
+    "tn": 354
+   },
+   "after_outreach": {
+    "tp": 486,
+    "fp": 10,
+    "fn": 150,
+    "tn": 354
+   }
+  },
+  "truly_qualify": 636
+ },
+ "claim_level": {
+  "p": 0.993,
+  "r": 0.925,
+  "f1": 0.958,
+  "impairment": {
+   "p": 0.993,
+   "r": 0.925,
+   "f1": 0.958,
+   "predicted": 137,
+   "labels": 147
+  },
+  "condition": {
+   "p": 0.984,
+   "r": 0.953,
+   "f1": 0.968,
+   "predicted": 1319,
+   "labels": 1362
+  }
+ },
+ "verifier": {
+  "kept": 1345,
+  "dropped": 49,
+  "dropped_correctly": 42,
+  "dropped_real_evidence": 7,
+  "extraction_precision_before_verifier": 0.95,
+  "precision_after_verifier": 0.979
+ },
+ "one_away": {
+  "count": 248,
+  "truly_qualify": 118,
+  "cleared_after_simulated_outreach": 71
+ },
+ "fragile": [
+  {
+   "patient_id": "p-cc2db4f4",
+   "name": "Lesia Bergstrom",
+   "renewal_date": "2027-02-16",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "cc2db4f4-86f6-676b-a322-9919cbc078f5",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-9291fd88",
+   "name": "Cinthia Harvey",
+   "renewal_date": "2027-02-20",
+   "state_code": "230265002",
+   "state_code_display": "Familial Alzheimer's disease of early onset",
+   "claim_id": "9291fd88-398c-6212-8693-54e7880a7530",
+   "finding": "No supporting sentence found in 3 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-075c319c",
+   "name": "Colin Hand",
+   "renewal_date": "2027-03-02",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "075c319c-5d10-4b7a-c2e9-3e08d10ccbf3",
+   "finding": "No supporting sentence found in 3 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-a0b78942",
+   "name": "Ernesto Sep\u00falveda",
+   "renewal_date": "2027-03-10",
+   "state_code": "363406005",
+   "state_code_display": "Malignant neoplasm of colon",
+   "claim_id": "a0b78942-e1f9-2bd4-0c74-cfe65f936780",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": false,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-94d461ea",
+   "name": "Ginny Stroman",
+   "renewal_date": "2027-03-20",
+   "state_code": "88805009",
+   "state_code_display": "Chronic congestive heart failure",
+   "claim_id": "94d461ea-a381-19fc-5689-e60344c06e45",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-71bade63",
+   "name": "Jimmy Torp",
+   "renewal_date": "2027-03-25",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "71bade63-ca24-38ec-a380-ba2d3354feea",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-61a7ccc9",
+   "name": "Fermin Hand",
+   "renewal_date": "2027-03-30",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "61a7ccc9-b42c-0380-07b1-809d94874bb3",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "g-karen",
+   "name": "Karen Hollis",
+   "renewal_date": "2027-04-02",
+   "state_code": "370143000",
+   "state_code_display": "Major depressive disorder",
+   "claim_id": "cl-karen-2",
+   "finding": "No supporting sentence found in 2 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-d46159cf",
+   "name": "Blanca Lemke",
+   "renewal_date": "2027-04-12",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "d46159cf-d215-2255-9266-14320c06ed41",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-e414e73c",
+   "name": "Cathey Durgan",
+   "renewal_date": "2027-04-15",
+   "state_code": "254837009",
+   "state_code_display": "Malignant neoplasm of breast",
+   "claim_id": "e414e73c-65ba-04b0-ea79-027b26da47aa",
+   "finding": "No supporting sentence found in 3 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-9dbbd1cc",
+   "name": "Samuel Fierro",
+   "renewal_date": "2027-04-22",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "9dbbd1cc-aca8-4398-e3b6-190ee7da2448",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-b5ee0b3b",
+   "name": "Elbert Ratke",
+   "renewal_date": "2027-04-22",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "b5ee0b3b-3b60-64aa-d49e-83063012288d",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-239ee417",
+   "name": "Elijah Lesch",
+   "renewal_date": "2027-04-26",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "239ee417-8147-4096-948c-872ad294e670",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-05d39322",
+   "name": "Florinda Lehner",
+   "renewal_date": "2027-05-02",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "05d39322-006c-95d6-ffb0-d4f92358b78d",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-42382f35",
+   "name": "Alaina Schaefer",
+   "renewal_date": "2027-05-09",
+   "state_code": "254837009",
+   "state_code_display": "Malignant neoplasm of breast",
+   "claim_id": "42382f35-21f1-11ca-c40a-aef0dfd4f366",
+   "finding": "No supporting sentence found in 3 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-b077e9d0",
+   "name": "Johnson Kerluke",
+   "renewal_date": "2027-05-12",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "b077e9d0-4634-9a50-3498-e41fc1324a9c",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-76a1559f",
+   "name": "Alethia Abernathy",
+   "renewal_date": "2027-05-24",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "76a1559f-a83a-59b9-f248-1b8dfb33c85b",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": false,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-82b25eea",
+   "name": "Stephan Goldner",
+   "renewal_date": "2027-06-01",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "82b25eea-fbe0-be3f-338f-8a5fffe5ab86",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": false,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-5e7ebf2c",
+   "name": "Rosalba Murray",
+   "renewal_date": "2027-06-03",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "5e7ebf2c-22ec-a89b-f1d6-4ad69366afe8",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-52890ca4",
+   "name": "Santos Bradtke",
+   "renewal_date": "2027-06-10",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "52890ca4-cae1-30a5-36b9-c7641e13ebf1",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": false,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-99851a74",
+   "name": "Lucas Luevano",
+   "renewal_date": "2027-06-11",
+   "state_code": "363406005",
+   "state_code_display": "Malignant neoplasm of colon",
+   "claim_id": "99851a74-01cc-d156-92f5-1a2b3f21188c",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-1dc844fd",
+   "name": "Irene Tovar",
+   "renewal_date": "2027-06-14",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "1dc844fd-6738-2f50-95a6-90369fbd3ada",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": false,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-b5924e84",
+   "name": "Tamika Kling",
+   "renewal_date": "2027-06-20",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "b5924e84-5d48-32f8-4ca7-e041519a2b38",
+   "finding": "No supporting sentence found in 2 notes.",
+   "truly_exempt_or_compliant": false,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-a4c84a04",
+   "name": "Pedro Rojo",
+   "renewal_date": "2027-06-27",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "a4c84a04-6ea9-c00c-45db-566eb146d524",
+   "finding": "No supporting sentence found in 2 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-880f6337",
+   "name": "Marco Antonio Rodarte",
+   "renewal_date": "2027-07-02",
+   "state_code": "46177005",
+   "state_code_display": "End-stage renal disease",
+   "claim_id": "880f6337-503c-307f-b532-62cb5c1d6f7e",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": false,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-b69192ed",
+   "name": "Elena Vega",
+   "renewal_date": "2027-07-02",
+   "state_code": "88805009",
+   "state_code_display": "Chronic congestive heart failure",
+   "claim_id": "b69192ed-5d6b-7e1f-ff9e-d91e8e2a9285",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": false,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-7e9f22be",
+   "name": "Millard Muller",
+   "renewal_date": "2027-07-07",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "7e9f22be-4a63-3512-908c-ac4e01fc9bb7",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-b7d36224",
+   "name": "Carl Altenwerth",
+   "renewal_date": "2027-07-20",
+   "state_code": "46177005",
+   "state_code_display": "End-stage renal disease",
+   "claim_id": "b7d36224-13de-0450-d1ff-c626c1f66137",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-7a272748",
+   "name": "Jody Witting",
+   "renewal_date": "2027-07-21",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "7a272748-5b0c-8308-ae85-507c1f1ec0cd",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": false,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-b9e042d0",
+   "name": "Guillermina Cotto",
+   "renewal_date": "2027-07-21",
+   "state_code": "254837009",
+   "state_code_display": "Malignant neoplasm of breast",
+   "claim_id": "b9e042d0-823d-0396-5c88-ebbef3cba17c",
+   "finding": "No supporting sentence found in 2 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-628cc530",
+   "name": "Faith Farrell",
+   "renewal_date": "2027-07-24",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "628cc530-9840-deaa-e2cf-b381f3760d17",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": false,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-8b967c2a",
+   "name": "Morton Hessel",
+   "renewal_date": "2027-07-31",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "8b967c2a-447d-bd04-a53f-fe746946dde0",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": false
+  },
+  {
+   "patient_id": "p-d25deaa9",
+   "name": "Sheldon Stoltenberg",
+   "renewal_date": "2027-08-10",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "d25deaa9-e42d-6346-6757-1e3742bfc16a",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  },
+  {
+   "patient_id": "p-c67c76e1",
+   "name": "Charity Hermiston",
+   "renewal_date": "2027-08-16",
+   "state_code": "6525002",
+   "state_code_display": "Dependent drug abuse",
+   "claim_id": "c67c76e1-668a-4cb5-34f9-295319fd1abe",
+   "finding": "No supporting sentence found in 4 notes.",
+   "truly_exempt_or_compliant": true,
+   "truly_medically_frail": true
+  }
+ ],
+ "pitch": {
+  "cohort": 1000,
+  "state_clears": 308,
+  "state_cannot_determine": 692,
+  "lapse_clears_before_outreach": 425,
+  "already_qualify_but_dropped_by_state": 338,
+  "recovered_from_chart_and_databases": 117,
+  "one_away": 248,
+  "provable": 82,
+  "fragile": 34,
+  "database_resolved_no_contact": 35
+ }
+}
