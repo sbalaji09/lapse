@@ -1,0 +1,199 @@
+.head {
+  padding: 36px 0 24px;
+}
+
+.label {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--clay);
+  color: #fff;
+  font-size: 15px;
+}
+
+.chartCard {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 22px 24px;
+  margin-bottom: 28px;
+}
+
+.legend {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 15px;
+  color: var(--ink-muted);
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.panelTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 22px;
+  margin: 0 0 2px;
+}
+
+.panelSub {
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin: 0 0 10px;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.axisText {
+  font-size: 12px;
+  fill: var(--ink-faint);
+}
+
+.catText {
+  font-size: 14px;
+  fill: var(--ink);
+}
+
+.valueText {
+  font-size: 14px;
+  fill: var(--ink);
+  font-weight: 600;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  max-width: 260px;
+  transform: translate(-50%, calc(-100% - 10px));
+  z-index: 2;
+}
+
+.tableToggle {
+  margin-top: 14px;
+  font-size: 15px;
+}
+
+.tableToggle summary {
+  cursor: pointer;
+  color: var(--ink-muted);
+}
+
+.dataTable {
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.dataTable th,
+.dataTable td {
+  text-align: left;
+  padding: 6px 14px 6px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.dataTable th {
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.row3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.matrix {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+  background: var(--card);
+}
+
+.matrixTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.cm {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.cm th {
+  font-weight: 500;
+  color: var(--ink-muted);
+  font-size: 13px;
+}
+
+.cm td {
+  padding: 10px 6px;
+  border-radius: 6px;
+  font-size: 18px;
+}
+
+.cmGood {
+  background: var(--sage);
+}
+
+.cmMiss {
+  background: var(--clay-soft);
+}
+
+.cmPlain {
+  background: rgba(30, 30, 30, 0.05);
+}
+
+.cmNote {
+  display: block;
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stat {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 44px;
+  line-height: 1;
+  margin: 8px 0;
+}
+
+@media (max-width: 900px) {
+  .panels,
+  .row3,
+  .two {
+    grid-template-columns: 1fr;
+  }
+}

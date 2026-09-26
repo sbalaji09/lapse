@@ -1,4 +1,62 @@
+:root {
+  --paper: #fff8ed;
+  --paper-deep: #f6ecdb;
+  --card: rgba(255, 255, 255, 0.55);
+  --ink: #1e1e1e;
+  --ink-muted: rgba(30, 30, 30, 0.66);
+  --ink-faint: rgba(30, 30, 30, 0.46);
+  --line: rgba(30, 30, 30, 0.14);
+  --grid: rgba(198, 187, 173, 0.28);
+  --sky: #c8dee0;
+  --sky-deep: #a9cad4;
+  --sun: #f2e36b;
+  --clay: #e0643a;
+  --clay-soft: #f4c7b4;
+  --stone: #cbc0b3;
+  --sage: #c6ccbb;
+  --pass: #3f6b4a;
+  --fail: #b8431d;
+  --highlight: #f7ec9a;
+  /* chart series, validated against --paper */
+  --series-state: #c4522a;
+  --series-lapse: #1f6fa3;
+}
+
 html,
 body {
   margin: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
+}
+
+a {
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

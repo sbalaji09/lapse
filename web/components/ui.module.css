@@ -1,0 +1,285 @@
+.wrap {
+  width: min(1320px, 100% - 32px);
+  margin: 0 auto;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.3px;
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  gap: 18px;
+}
+
+.links a {
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.links a:hover,
+.links a[aria-current="page"] {
+  color: var(--ink);
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.synthetic {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--clay);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Buttons */
+.btn,
+.btnDark,
+.btnQuiet {
+  font: inherit;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 7px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.btn {
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+
+.btnDark {
+  background: var(--ink);
+  color: #fff;
+  border: 1px solid var(--ink);
+}
+
+.btnQuiet {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-size: 15px;
+  padding: 5px 10px;
+}
+
+.btn:hover,
+.btnQuiet:hover {
+  background: var(--paper-deep);
+}
+
+.btnDark:hover {
+  background: #000;
+}
+
+.btn:active,
+.btnDark:active,
+.btnQuiet:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled,
+.btnDark:disabled,
+.btnQuiet:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+}
+
+/* Type */
+.eyebrow {
+  font-size: 15px;
+  color: var(--ink-muted);
+  margin: 0 0 8px;
+}
+
+.h1 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(36px, 4.4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin: 0 0 14px;
+}
+
+.h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+
+.muted {
+  color: var(--ink-muted);
+}
+
+.faint {
+  color: var(--ink-faint);
+  font-size: 14px;
+}
+
+/* Surfaces */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+/* Bucket tags: shape and fill both encode the bucket, so it survives a washed-out projector */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 6px;
+  border-radius: 999px;
+  font-size: 15px;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.tag svg {
+  flex-shrink: 0;
+}
+
+.tag-SAFE {
+  color: var(--ink-faint);
+  border-color: var(--line);
+}
+
+.tag-PROVABLE {
+  background: var(--sky);
+  border-color: rgba(30, 30, 30, 0.2);
+}
+
+.tag-ONE_AWAY {
+  background: var(--sun);
+  border-color: var(--ink);
+  font-weight: 600;
+}
+
+.tag-NO_PATH {
+  background: var(--stone);
+  border-color: rgba(30, 30, 30, 0.2);
+}
+
+.tagBig {
+  font-size: 17px;
+  padding: 5px 14px 5px 8px;
+}
+
+.flip {
+  animation: flip 900ms cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+@keyframes flip {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.fragile {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--fail);
+}
+
+/* Provenance marks */
+.mark {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid rgba(30, 30, 30, 0.3);
+  flex-shrink: 0;
+}
+
+.markRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.src-billing_code { background: var(--stone); }
+.src-structured_record { background: #fff; }
+.src-note_span { background: var(--sky); }
+.src-patient_reply { background: var(--sun); }
+.src-clinician_attestation { background: var(--sage); }
+.src-external_db { background: var(--clay-soft); }
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.footer {
+  padding: 28px 0 44px;
+  margin-top: 48px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-faint);
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .links {
+    display: none;
+  }
+}
