@@ -51,7 +51,7 @@ export default function PlanPage() {
       <Nav />
       <main className={u.wrap}>
         <section className={p.head}>
-          <p className={u.eyebrow}>For the plan</p>
+          <p className={u.eyebrow}>For health plans</p>
           <h1 className={u.h1}>Members you would lose to paperwork.</h1>
           <p className={p.lede}>
             Across the clinics&apos; {s?.cohort.toLocaleString() ?? "…"} members renewing in the next six months: who the

@@ -67,8 +67,12 @@ export default function QueuePage() {
       <Nav />
       <main className={u.wrap}>
         <section className={q.head}>
-          <p className={u.eyebrow}>Morning queue · Feb 15, 2027</p>
+          <p className={u.eyebrow}>Work queue · As of February 15, 2027</p>
           <h1 className={u.h1}>Your clinic&apos;s patients, before their renewal.</h1>
+          <p className={q.lede}>
+            Everyone whose Medicaid coverage comes up for renewal, what the state&apos;s check will conclude, and for
+            each person it cannot clear, the one action that keeps them covered.
+          </p>
         </section>
 
         <section className={q.reveal} aria-label="The state's check, then the notes">

@@ -19,10 +19,10 @@ function LogoMark() {
 }
 
 const LINKS = [
-  { href: "/", label: "Queue" },
-  { href: "/plan", label: "Plan" },
-  { href: "/eval", label: "Eval" },
-  { href: "/tests", label: "Tests" },
+  { href: "/", label: "Work queue", hint: "Members renewing soon, and the one action that keeps each covered" },
+  { href: "/plan", label: "For health plans", hint: "Totals, recovered members, and exemptions that would not survive an audit" },
+  { href: "/eval", label: "Accuracy", hint: "How Lapse compares with the state's check, measured on synthetic data" },
+  { href: "/tests", label: "Verification", hint: "Re-run every claim the product makes against the live system" },
 ];
 
 export function Nav({ right }: { right?: React.ReactNode }) {
@@ -47,12 +47,14 @@ export function Nav({ right }: { right?: React.ReactNode }) {
           <Link href="/" className={u.wordmark}><LogoMark />Lapse</Link>
           <div className={u.links}>
             {LINKS.map((l) => (
-              <Link key={l.href} href={l.href} aria-current={active(l.href) ? "page" : undefined}>{l.label}</Link>
+              <Link key={l.href} href={l.href} title={l.hint} aria-current={active(l.href) ? "page" : undefined}>
+                {l.label}
+              </Link>
             ))}
           </div>
         </div>
         <div className={u.navRight}>
-          <span className={u.synthetic}>Synthetic data</span>
+          <span className={u.synthetic} title="Every member on this site is synthetic">Synthetic data</span>
           {right}
         </div>
       </nav>
@@ -63,8 +65,8 @@ export function Nav({ right }: { right?: React.ReactNode }) {
 export function Footer() {
   return (
     <footer className={`${u.footer} ${u.wrap}`}>
-      <span>Synthetic data only. No PHI.</span>
-      <span>Lapse keeps eligible people covered.</span>
+      <span>Lapse. Keeping eligible Medicaid members covered through the work requirement.</span>
+      <span>All member data shown is synthetic. No real patient information is used.</span>
     </footer>
   );
 }

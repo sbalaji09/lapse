@@ -2,6 +2,13 @@
   padding: 36px 0 28px;
 }
 
+.lede {
+  max-width: 720px;
+  color: var(--ink-muted);
+  margin: 14px 0 0;
+  font-size: 18px;
+}
+
 .reveal {
   display: grid;
   grid-template-columns: 1fr 1fr;

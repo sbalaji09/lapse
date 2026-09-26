@@ -6,7 +6,10 @@ const display = Source_Serif_4({ subsets: ["latin"], weight: ["500", "600"], var
 const sans = Instrument_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-sans" });
 const hand = Caveat({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-hand" });
 
-export const metadata: Metadata = { title: "Lapse" };
+export const metadata: Metadata = {
+  title: "Lapse",
+  description: "Find the Medicaid members a billing-code check will wrongly drop, and the one fact that keeps each covered.",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
