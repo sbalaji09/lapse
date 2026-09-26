@@ -55,6 +55,10 @@ def test_rosa_full_loop(api):
     assert not [m for m in rosa["missing"] if m["status"] == "open"]
     pdf = api.get("/api/cases/g-rosa/attestation.pdf")
     assert pdf.status_code == 200 and pdf.content[:4] == b"%PDF"
+    from engine.loop.pdf import evidence_rows
+    rows = evidence_rows(store.get_case("g-rosa"))
+    assert [r["source"] for r in rows] == ["Billing code", "Clinical note", "Patient's own words", "Clinician attestation"]
+    assert "not read by the state" in rows[0]["record"] and b"Medical Exemption Attestation" in pdf.content
 
 
 def test_deshawn_cleared_by_one_database_click(api):
