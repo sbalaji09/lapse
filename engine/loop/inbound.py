@@ -54,7 +54,12 @@ def parse_side_facts(text: str) -> list[dict]:
     return []
 
 
-def handle_reply(case_id: str, text: str, message_id: str | None = None) -> dict:
+def handle_reply(
+    case_id: str,
+    text: str,
+    message_id: str | None = None,
+    source_ref: dict | None = None,
+) -> dict:
     case = store.get_case(case_id)
     if case is None:
         raise ValueError(f"no such case: {case_id}")
@@ -86,13 +91,15 @@ def handle_reply(case_id: str, text: str, message_id: str | None = None) -> dict
 
     parsed_items = [parsed] + parse_side_facts(text)
     for item in parsed_items:
+        ref = {"message_id": message_id} if message_id else {}
+        ref.update(source_ref or {})
         fact = Fact(
             id=f"fact-{case_id}-{item['key']}-{len(case.facts)}",
             patient_id=case_id,
             key=item["key"],
             value=item["value"],
             source=Source.patient_reply,
-            source_ref={"message_id": message_id} if message_id else {},
+            source_ref=ref,
             quote=item["quote"],
             recorded_at=datetime.now(timezone.utc),
             rule_pack_version=config.ACTIVE_RULE_PACK,
