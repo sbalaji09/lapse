@@ -4,4 +4,8 @@ tools/*.jar
 .cache/
 .env
 *.sqlite
+node_modules/
+.next/
+__pycache__/
+*.pyc
 .DS_Store
