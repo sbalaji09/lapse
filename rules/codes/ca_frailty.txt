@@ -1,0 +1,6 @@
+# State medical-frailty code list (SNOMED CT, as coded by Synthea). One code per line, "#" = plain name.
+# Starter list from T0a covering the golden patients; A2 completes it from codes that appear in the cohort.
+431857002  # Chronic kidney disease stage 4
+370143000  # Major depressive disorder
+185086009  # Chronic obstructive bronchitis
+87433001   # Pulmonary emphysema

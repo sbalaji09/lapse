@@ -1,0 +1,25 @@
+# Every fact key the rules or the solver can mention. Holder order is preference order;
+# the solver picks the first holder that is available for that patient.
+# Contract with Track B (PROJECT.md): add keys, never rename.
+standing_tolerance_minutes: {type: int, holders: [patient, clinician], impairs_if: "< 30",
+  question: {en: "How long can you stand before you need to sit down?", es: "¿Cuánto tiempo puede estar de pie antes de necesitar sentarse?"}}
+limitation_attested:        {type: bool, holders: [clinician],
+  question: {en: "Does the record support that {condition} limits {name}'s ability to work?"}}
+monthly_income:             {type: int, holders: [database, patient], database: state_wage_records}
+hours_per_month:            {type: int, holders: [patient]}
+enrolled_half_time_school:  {type: bool, holders: [database, patient], database: student_enrollment}
+snap_tanf_work_compliant:   {type: bool, holders: [database], database: snap}
+in_sud_treatment:           {type: bool, holders: [clinician, patient]}
+released_incarceration_days: {type: int, holders: [database], database: corrections}
+dependent_child_13_or_under: {type: bool, holders: [patient]}
+caregiver_disabled_person:  {type: bool, holders: [patient]}
+pregnant_or_postpartum:     {type: bool, holders: [clinician, patient]}
+ai_an:                      {type: bool, holders: [patient]}
+veteran_total_disability:   {type: bool, holders: [database], database: va}
+former_foster_youth:        {type: bool, holders: [database, patient], database: child_welfare}
+county_hardship:            {type: bool, holders: [database], database: county}
+
+# Added in T0a: the two medically-frail tests are facts in their own right (billing codes and
+# note spans both produce them). Kept as separate keys so a ruling on test (2) changes one rule, not the data.
+qualifying_condition:       {type: bool, holders: [clinician]}
+significantly_impairs:      {type: bool, holders: [clinician, patient]}

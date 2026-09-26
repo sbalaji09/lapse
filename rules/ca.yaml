@@ -1,0 +1,26 @@
+state: CA
+version: ca-2027.02-demo
+program: "Medi-Cal expansion adults 19-64"
+citation: "Pub. L. 119-21 §71119 (verify)"
+lookback_months: 12
+renewal_cadence_months: 6
+notice_response_days: 30
+self_attestation_allowed: {medically_frail: true}
+compliance:
+  - {id: hours,  requires: ["hours_per_month >= 80"]}
+  - {id: income, requires: ["monthly_income >= 580"]}
+  - {id: school, requires: ["enrolled_half_time_school"]}
+exemptions:
+  - id: medically_frail
+    state_ex_parte: {method: primary_dx_only, code_list: codes/ca_frailty.txt}
+    requires: [qualifying_condition, significantly_impairs]
+  - {id: parent_caretaker, requires: ["dependent_child_13_or_under | caregiver_disabled_person"]}
+  - {id: pregnant_postpartum, requires: [pregnant_or_postpartum]}
+  - {id: ai_an, requires: [ai_an]}
+  - {id: veteran_disability, requires: [veteran_total_disability]}
+  - {id: snap_tanf, requires: [snap_tanf_work_compliant]}
+  - {id: sud_treatment, requires: [in_sud_treatment]}
+  - {id: recent_release, requires: ["released_incarceration_days <= 90"]}
+  - {id: foster_youth, requires: [former_foster_youth]}
+  - {id: hardship_county, requires: [county_hardship]}
+state_visible_sources: [billing_code, structured_record, snap, state_wage_records, corrections]
