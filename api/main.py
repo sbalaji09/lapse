@@ -6,11 +6,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel
 
+from api.dev import router as dev_router
 from engine import store
 from engine.config import ACTIVE_RULE_PACK, AS_OF_DATE, DATA_DIR
 from engine.rulepack import load_pack
 from engine.loop.database import check_database
-from engine.loop.clinician import case_for_token, clinician_card, sign_clinician
+from engine.loop.clinician import case_for_token, clinician_card, clinician_token, sign_clinician
 from engine.loop.inbound import handle_reply
 from engine.loop.outbound import send_ask
 from engine.loop.pdf import build_appeal_pdf, build_attestation_pdf
@@ -92,7 +93,7 @@ def get_queue(bucket: str | None = None, window_days: int | None = None):
     cases = store.list_cases(bucket=bucket, window_days=window_days)
     out = []
     for c in cases:
-        top_missing = c.missing[0] if c.missing else None
+        top_missing = next((m for m in c.missing if m.status in ("open", "asked")), None)   # resolved steps are history, not work
         out.append({
             "id": c.patient_id,
             "name": c.display_name,
@@ -118,7 +119,8 @@ def get_case_detail(id: str):
     if case is None:
         raise HTTPException(status_code=404, detail="case not found")
     notes = store.get_notes(id)
-    return {**case.model_dump(mode="json"), "notes": [n.model_dump(mode="json") for n in notes]}
+    return {**case.model_dump(mode="json"), "notes": [n.model_dump(mode="json") for n in notes],
+            "clinician_url": f"/clinician/{clinician_token(id)}"}     # what "Send to Dr. X" opens
 
 
 @router.post("/cases/{id}/ask")
@@ -219,3 +221,4 @@ def demo_reset():
 
 
 app.include_router(router)
+app.include_router(dev_router)
