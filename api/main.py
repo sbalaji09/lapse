@@ -1,3 +1,5 @@
+from datetime import date
+
 from fastapi import APIRouter, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
@@ -7,7 +9,7 @@ from engine import store
 from engine.loop.clinician import case_for_token, sign_clinician
 from engine.loop.inbound import handle_reply
 from engine.loop.outbound import send_ask
-from engine.loop.pdf import build_attestation_pdf
+from engine.loop.pdf import build_appeal_pdf, build_attestation_pdf
 
 app = FastAPI()
 
@@ -168,6 +170,17 @@ def case_attestation_pdf(id: str):
     rule_id = case.determination_final.rule_ids[0] if case.determination_final.rule_ids else "unknown"
     pdf_bytes = build_attestation_pdf(case, rule_id, case.clinician_name)
     return Response(content=pdf_bytes, media_type="application/pdf")
+
+
+@router.get("/cases/{id}/appeal.pdf")
+def case_appeal_pdf(id: str, termination_date: date):
+    case = store.get_case(id)
+    if case is None:
+        raise HTTPException(status_code=404, detail="case not found")
+    return Response(
+        content=build_appeal_pdf(case, termination_date, case.clinician_name),
+        media_type="application/pdf",
+    )
 
 
 @router.get("/eval")

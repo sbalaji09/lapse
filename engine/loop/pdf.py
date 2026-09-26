@@ -1,5 +1,6 @@
-"""Assemble the clinician attestation PDF. Synthetic demo data only."""
+"""Assemble evidence PDFs. Synthetic demo data only."""
 import io
+from datetime import date, timedelta
 
 from reportlab.lib.pagesizes import LETTER
 from reportlab.pdfgen import canvas
@@ -19,9 +20,15 @@ _MARGIN = 72
 _BOTTOM = 72
 
 
-def build_attestation_pdf(case: Case, rule_id: str, clinician_name: str) -> bytes:
+def _build_evidence_pdf(
+    case: Case,
+    title: str,
+    basis_title: str,
+    basis_lines: list[str],
+    clinician_name: str,
+) -> bytes:
     buf = io.BytesIO()
-    c = canvas.Canvas(buf, pagesize=LETTER)
+    c = canvas.Canvas(buf, pagesize=LETTER, pageCompression=0)
     width, height = LETTER
     y = height - _MARGIN
 
@@ -44,7 +51,7 @@ def build_attestation_pdf(case: Case, rule_id: str, clinician_name: str) -> byte
         line(title, font="Helvetica-Bold", size=12, gap=16)
 
     c.setFont("Helvetica-Bold", 16)
-    c.drawString(_MARGIN, y, "Medical Exemption Attestation")
+    c.drawString(_MARGIN, y, title)
     y -= 22
 
     c.setFillColorRGB(0.7, 0, 0)
@@ -59,8 +66,9 @@ def build_attestation_pdf(case: Case, rule_id: str, clinician_name: str) -> byte
     line(case.renewal_date.isoformat())
     line(case.determination_final.rule_pack_version)
 
-    section("Exemption basis")
-    line(rule_id)
+    section(basis_title)
+    for basis_line in basis_lines:
+        line(basis_line)
 
     section("Evidence")
     for fact in case.facts:
@@ -77,3 +85,30 @@ def build_attestation_pdf(case: Case, rule_id: str, clinician_name: str) -> byte
 
     c.save()
     return buf.getvalue()
+
+
+def build_attestation_pdf(case: Case, rule_id: str, clinician_name: str) -> bytes:
+    return _build_evidence_pdf(
+        case,
+        "Medical Exemption Attestation",
+        "Exemption basis",
+        [rule_id],
+        clinician_name,
+    )
+
+
+def appeal_deadline(termination_date: date) -> date:
+    return termination_date + timedelta(days=30)
+
+
+def build_appeal_pdf(case: Case, termination_date: date, clinician_name: str) -> bytes:
+    return _build_evidence_pdf(
+        case,
+        "Evidence for appeal",
+        "Appeal dates",
+        [
+            f"Termination date: {termination_date.isoformat()}",
+            f"Response deadline: {appeal_deadline(termination_date).isoformat()}",
+        ],
+        clinician_name,
+    )
