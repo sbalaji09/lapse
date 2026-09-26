@@ -22,6 +22,12 @@ interface QueueItem {
   state_rule_ids: string[];
   verified_spans: number;
   clinician_name: string;
+  email_outreach: {
+    status: "sent" | "preview" | "not_sent" | "not_applicable";
+    sent: boolean;
+    at: string | null;
+    to: string | null;
+  };
   top_missing_fact: { key: string; holder: Holder; database: string | null; why: string } | null;
 }
 
@@ -338,17 +344,22 @@ export default function QueuePage() {
               </div>
             )}
             {evidence && (
-              <div className={q.runReceipt}>
-                <SourceMark source="note_span" />
-                <span>
-                  <strong>
-                    {liveRun?.notes ?? 0} notes read live with {
-                      liveRun?.provider === "bedrock" ? "Amazon Bedrock" : "the OpenAI fallback"
-                    } in {liveRun?.elapsed_seconds ?? 0}s
-                  </strong>
-                  Independent verifier dropped {evidence.verifier_dropped} claims the quoted text did not support
-                </span>
-              </div>
+              <>
+                <div className={q.runReceipt}>
+                  <SourceMark source="note_span" />
+                  <span>
+                    <strong>
+                      {liveRun?.notes ?? 0} notes read live with {
+                        liveRun?.provider === "bedrock" ? "Amazon Bedrock" : "the OpenAI fallback"
+                      } in {liveRun?.elapsed_seconds ?? 0}s
+                    </strong>
+                    Independent verifier dropped {evidence.verifier_dropped} claims the quoted text did not support
+                  </span>
+                </div>
+                <p className={q.outreach} role="status">
+                  No emails were sent automatically. Open a patient and use the email action when you are ready.
+                </p>
+              </>
             )}
             {runError && <p className={q.runError} role="alert">{runError}</p>}
           </div>
@@ -466,6 +477,17 @@ export default function QueuePage() {
                           <span className={u.faint}>{i.bucket === "SAFE" ? "Nothing to do" : "Help reporting hours"}</span>
                         ) : (
                           <span className={u.faint}>Available after chart read</span>
+                        )}
+                        {i.email_outreach.status !== "not_applicable" && (
+                          <span className={`${q.emailState} ${
+                            i.email_outreach.status === "sent" ? q.emailSent : q.emailPending
+                          }`}>
+                            {i.email_outreach.status === "sent"
+                              ? "Email sent"
+                              : i.email_outreach.status === "preview"
+                                ? "Demo email prepared"
+                                : "Email not sent"}
+                          </span>
                         )}
                       </td>
                     </tr>

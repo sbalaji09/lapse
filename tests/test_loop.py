@@ -111,3 +111,44 @@ def test_reset_restores_the_demo(api):
     api.post("/api/cases/g-deshawn/check-database")
     assert api.post("/api/demo/reset").json() == {"reloaded": 7}
     assert api.get("/api/cases/g-deshawn").json()["bucket"] == "ONE_AWAY"
+
+
+def test_read_notes_is_analysis_only_and_manual_email_state_is_retained(api, monkeypatch):
+    from api import main
+
+    monkeypatch.setattr(
+        main.live_notes,
+        "start",
+        lambda: {
+            "run_id": "test-live-run",
+            "status": "running",
+            "patient_states": {},
+        },
+    )
+    first = api.post("/api/run/evidence").json()
+
+    assert "outreach" not in first
+    assert first["status"] == "running"
+
+    rosa = api.get("/api/cases/g-rosa").json()
+    deshawn = api.get("/api/cases/g-deshawn").json()
+    assert rosa["status"] == "needs_action"
+    assert rosa["missing"][0]["status"] == "open"
+    assert rosa["email_outreach"]["status"] == "not_sent"
+    assert not any(event["kind"] == "patient_asked" for event in rosa["events"])
+    assert deshawn["status"] == "needs_action"
+    assert deshawn["missing"][0]["holder"] == "database"
+
+    sent = api.post("/api/cases/g-rosa/ask").json()
+    assert sent["delivery"] == "preview"
+
+    first_read = api.get("/api/cases/g-rosa").json()
+    second_read = api.get("/api/cases/g-rosa").json()
+    queue_item = next(item for item in api.get("/api/queue").json() if item["id"] == "g-rosa")
+    assert first_read["email_outreach"]["status"] == "preview"
+    assert second_read["email_outreach"] == first_read["email_outreach"]
+    assert queue_item["email_outreach"] == first_read["email_outreach"]
+    assert first_read["voice"]["manual_call_allowed"] is True
+
+    duplicate = api.post("/api/cases/g-rosa/ask")
+    assert duplicate.status_code == 400

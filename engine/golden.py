@@ -306,7 +306,7 @@ def rosa() -> tuple[Case, list[Note]]:
     ]
     case = Case(
         patient_id=pid, display_name="Rosa Delgado", age=52, language="es",
-        email="rosa.delgado@example.com", phone="+1-555-0101",
+        email="siddharthbalaji6@gmail.com", phone="+14086100377",
         clinic_id="clinic-mission", clinician_name="Dr. Anita Patel",
         renewal_date=date(2027, 3, 4), bucket=Bucket.ONE_AWAY, fragile=False, status=CaseStatus.needs_action,
         determination_a=det(pid, "A", "not_determined", [], [f_race]),

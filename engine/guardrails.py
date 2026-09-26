@@ -7,10 +7,9 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import tempfile
 from pathlib import Path
-
-import boto3
 
 from engine import config
 
@@ -27,6 +26,74 @@ class GuardrailIntervened(ValueError):
     def __init__(self, assessment: dict):
         super().__init__(assessment["output"])
         self.assessment = assessment
+
+
+_PRIVILEGED_PATTERNS = (
+    (
+        "Eligibility or exemption determination",
+        re.compile(
+            r"\b(?:exempt(?:ion|ed)?|eligib(?:le|ility)|ineligib(?:le|ility)|"
+            r"qualif(?:y|ies|ied)|exent[oa]|exenci[oó]n|elegible|inelegible|"
+            r"elegibilidad|califica|no\s+califica)\b",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "Approval or denial determination",
+        re.compile(
+            r"\b(?:approv(?:e|ed|al)|den(?:y|ied|ial)|aprob(?:ado|ada|aci[oó]n)|"
+            r"deneg(?:ado|ada|aci[oó]n))\b",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "Guaranteed coverage outcome",
+        re.compile(
+            r"\b(?:will|won't|will\s+not|guaranteed\s+to|va\s+a)\s+"
+            r"(?:keep|lose|retain|continue|mantener|perder|conservar)"
+            r"(?:\s+(?:your|su))?\s+(?:medi-cal\s+)?(?:coverage|cobertura)\b",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "Internal case status",
+        re.compile(
+            r"\b(?:one[_ -]?away|provable|no[_ -]?path|safe\s+bucket|"
+            r"waiting[_ -]?(?:patient|clinician)|attestation[_ -]?ready|"
+            r"(?:your|rosa(?:'s)?|su)\s+"
+            r"(?:(?:case|coverage|application|renewal|caso|cobertura|solicitud|"
+            r"renovaci[oó]n)\s+)?(?:current\s+)?(?:status|estado)|"
+            r"estado\s+de\s+su\s+(?:caso|cobertura|solicitud|renovaci[oó]n))\b",
+            re.IGNORECASE,
+        ),
+    ),
+)
+
+
+def check_local_patient_message(text: str) -> dict:
+    """Enforce the patient-message invariant without relying on a provider."""
+    detected = [
+        {
+            "name": name,
+            "type": "DENY",
+            "action": "BLOCKED",
+            "detected": True,
+        }
+        for name, pattern in _PRIVILEGED_PATTERNS
+        if pattern.search(text)
+    ]
+    allowed = not detected
+    return {
+        "allowed": allowed,
+        "action": "NONE" if allowed else "GUARDRAIL_INTERVENED",
+        "output": (
+            ""
+            if allowed
+            else "This message contains privileged eligibility or case-status information and cannot be sent."
+        ),
+        "topics": detected,
+        "provider": "Lapse deterministic outbound policy",
+    }
 
 
 def _settings() -> tuple[str, str, str]:
@@ -64,6 +131,13 @@ def save_local_config(guardrail_id: str, version: str, region: str) -> None:
 
 
 def _runtime_client(region: str):
+    try:
+        import boto3
+    except ModuleNotFoundError as error:
+        raise RuntimeError(
+            "boto3 is required when Amazon Bedrock Guardrails is configured; "
+            "install the project requirements"
+        ) from error
     return boto3.client("bedrock-runtime", region_name=region)
 
 
@@ -114,6 +188,13 @@ def check_patient_message(text: str) -> dict:
 
 
 def enforce_patient_message(text: str) -> dict:
+    local_assessment = check_local_patient_message(text)
+    if not local_assessment["allowed"]:
+        raise GuardrailIntervened(local_assessment)
+
+    if not configured():
+        return local_assessment
+
     assessment = check_patient_message(text)
     if not assessment["allowed"]:
         raise GuardrailIntervened(assessment)

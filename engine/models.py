@@ -97,3 +97,34 @@ class Case(BaseModel):
     missing: list[MissingFact]           # solver output, best first
     billed_dx_12mo: list[dict]           # [{date, code, display, sequence}] - what the state sees
     events: list[dict]                   # audit log: [{at, kind, detail}]
+
+
+class VoiceSessionStatus(str, Enum):
+    dialing = "dialing"
+    connected = "connected"
+    completed = "completed"
+    no_answer = "no_answer"
+    declined = "declined"
+    cancelled = "cancelled"
+    needs_human = "needs_human"
+    failed = "failed"
+
+
+class VoiceSession(BaseModel):
+    id: str
+    case_id: str
+    missing_fact_id: str
+    provider: str
+    provider_contact_id: str | None = None
+    status: VoiceSessionStatus
+    attempt: int
+    phone: str
+    language: str
+    message: str = ""
+    created_at: datetime
+    updated_at: datetime
+    due_at: datetime
+    transcript: str | None = None
+    recording_ref: str | None = None
+    result: dict | None = None
+    error: str | None = None

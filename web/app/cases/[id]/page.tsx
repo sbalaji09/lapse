@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import { apiFetch } from "@/lib/api";
-import type { Bucket, Case, Claim, MissingFact, Note } from "@/lib/types";
+import type { Bucket, Case, Claim, MissingFact, Note, VoiceCaseStatus, VoiceSessionStatus } from "@/lib/types";
 import {
   BUCKET_HINT, BUCKET_LABEL, FACT_LABEL, LANGUAGE_LABEL, SOURCE_LABEL, STATUS_LABEL, firstName, formatValue,
   nextStepLabel, ruleList,
@@ -12,7 +12,17 @@ import {
 import { BucketTag, Footer, Nav, SourceMark, u } from "@/components/ui";
 import c from "./case.module.css";
 
-type CaseDetail = Case & { notes: Note[]; clinician_url: string };
+type CaseDetail = Case & {
+  notes: Note[];
+  clinician_url: string;
+  email_outreach: {
+    status: "sent" | "preview" | "not_sent" | "not_applicable";
+    sent: boolean;
+    at: string | null;
+    to: string | null;
+  };
+  voice: VoiceCaseStatus;
+};
 type Dx = { claim_id: string; date: string; code: string; display: string; sequence: number };
 type Event = { at: string; kind: string; detail: any };
 type GuardrailResult = {
@@ -25,14 +35,6 @@ type GuardrailResult = {
 
 const UNSAFE_PATIENT_MESSAGE =
   "Rosa, you are exempt from the work requirement and will keep your Medi-Cal coverage.";
-
-// Rosa's pre-written reply for the demo, with the English gloss shown under it.
-const DEMO_REPLIES: Record<string, { text: string; gloss: string }> = {
-  "g-rosa": {
-    text: "Dejé de trabajar en marzo, la espalda no me aguanta más de diez minutos de pie.",
-    gloss: "\"I stopped working in March; I can't stay on my feet more than ten minutes.\"",
-  },
-};
 
 const HOLDER_SOURCE = { patient: "patient_reply", database: "external_db", clinician: "clinician_attestation" } as const;
 const MISSING_STATUS: Record<string, string> = {
@@ -47,13 +49,25 @@ function eventText(e: Event, name: string): string {
   const d = e.detail;
   switch (e.kind) {
     case "pipeline_run": return typeof d === "string" ? d : "Overnight run";
-    case "patient_asked": return `Emailed ${firstName(name)} the question: "${d?.subject ?? ""}"`;
+    case "patient_asked": return d?.delivery === "preview"
+      ? `Prepared a demo email for ${firstName(name)}: "${d?.subject ?? ""}"`
+      : `Emailed ${firstName(name)} the question: "${d?.subject ?? ""}"`;
+    case "patient_email_sent": return d?.delivery === "preview"
+      ? `Prepared a demo email for ${firstName(name)}: "${d?.subject ?? ""}"`
+      : `Emailed ${firstName(name)}: "${d?.subject ?? ""}"`;
     case "patient_reply_received": return `${firstName(name)} replied: "${d?.text ?? ""}"`;
     case "case_flipped": return `Moved from ${BUCKET_LABEL[d?.from as Bucket] ?? d?.from} to ${BUCKET_LABEL[d?.to as Bucket] ?? d?.to}`;
     case "reply_needs_human_read": return "Reply needs a human read. Nothing was guessed.";
     case "database_checked": return d?.text ?? "Checked a database";
     case "clinician_signed": return `Attestation signed by ${d?.clinician_name ?? "the clinician"}`;
     case "clinician_declined": return `${d?.clinician_name ?? "The clinician"} declined to sign`;
+    case "voice_call_started": return `Started reminder call (attempt ${d?.attempt ?? 1})`;
+    case "voice_call_connected": return "Reminder call connected";
+    case "voice_call_completed": return "Reminder message delivered";
+    case "voice_call_no_answer": return "Reminder call was not answered";
+    case "voice_call_declined": return "Further reminder calls were declined";
+    case "voice_call_cancelled": return "Reminder call was cancelled";
+    case "voice_call_failed": return "Reminder call failed";
     default: return typeof d === "string" ? d : e.kind.replaceAll("_", " ");
   }
 }
@@ -61,6 +75,19 @@ function eventText(e: Event, name: string): string {
 function when(iso: string): string {
   const d = new Date(iso);
   return isNaN(d.getTime()) ? iso : d.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
+}
+
+function voiceStatusLabel(status: VoiceSessionStatus): string {
+  return {
+    dialing: "Dialing",
+    connected: "Connected",
+    completed: "Complete",
+    no_answer: "No answer",
+    declined: "Declined",
+    cancelled: "Cancelled",
+    needs_human: "Needs human review",
+    failed: "Failed",
+  }[status];
 }
 
 /** A note with every verified claim's exact span highlighted and addressable. */
@@ -89,7 +116,6 @@ export default function CaseDetailPage() {
   const [busy, setBusy] = useState(false);
   const [flash, setFlash] = useState<string | null>(null);
   const [flipped, setFlipped] = useState<{ from: Bucket; to: Bucket } | null>(null);
-  const [reply, setReply] = useState("");
   const [waitingOnClinician, setWaitingOnClinician] = useState(false);
   const [guardrail, setGuardrail] = useState<GuardrailResult | null>(null);
   const [guardrailBusy, setGuardrailBusy] = useState(false);
@@ -106,12 +132,12 @@ export default function CaseDetailPage() {
     if (bucketRef.current && bucketRef.current !== d.bucket) setFlipped({ from: bucketRef.current, to: d.bucket });
     bucketRef.current = d.bucket;
     setData(d);
+    setError(null);
     return d;
   }, [id]);
 
   useEffect(() => {
     load();
-    setReply(DEMO_REPLIES[id]?.text ?? "");
     setGuardrail(null);
     setGuardrailError(null);
   }, [id, load]);
@@ -127,6 +153,13 @@ export default function CaseDetailPage() {
     return () => { clearInterval(t); clearTimeout(stop); };
   }, [waitingOnClinician, load]);
 
+  useEffect(() => {
+    const status = data?.voice.latest_session?.status;
+    if (data?.status !== "waiting_patient" && status !== "dialing" && status !== "connected") return;
+    const timer = setInterval(() => { void load(); }, 5000);
+    return () => clearInterval(timer);
+  }, [data?.status, data?.voice.latest_session?.status, load]);
+
   async function act(path: string, body?: unknown) {
     setBusy(true);
     setError(null);
@@ -136,8 +169,11 @@ export default function CaseDetailPage() {
         headers: body ? { "Content-Type": "application/json" } : undefined,
         body: body ? JSON.stringify(body) : undefined,
       });
-      if (!res.ok) setError((await res.json().catch(() => null))?.detail ?? `Request failed (${res.status})`);
+      const actionError = !res.ok
+        ? (await res.json().catch(() => null))?.detail ?? `Request failed (${res.status})`
+        : null;
       await load();
+      setError(actionError);
     } finally {
       setBusy(false);
     }
@@ -174,19 +210,26 @@ export default function CaseDetailPage() {
 
   const step = openStep(data.missing);
   const events = data.events as Event[];
-  const lastEmail = [...events].reverse().find((e) => e.kind === "patient_asked")?.detail;
+  const lastEmail = [...events].reverse().find(
+    (e) => e.kind === "patient_asked" || e.kind === "patient_email_sent",
+  )?.detail;
   const dx = data.billed_dx_12mo as Dx[];
   const byClaim = dx.reduce<Record<string, Dx[]>>((acc, d) => ((acc[d.claim_id] ??= []).push(d), acc), {});
   const claimOrder = Object.keys(byClaim).sort((a, b) => byClaim[b][0].date.localeCompare(byClaim[a][0].date));
   const days = Math.round((new Date(data.renewal_date).getTime() - new Date("2027-02-15").getTime()) / 86_400_000);
   const first = firstName(data.display_name);
   const a = data.determination_a;
+  const voice = data.voice;
+  const voiceSession = voice.latest_session;
+  const voiceActive = voiceSession?.status === "dialing" || voiceSession?.status === "connected";
+  const showVoice = !!voiceSession || (step?.holder === "patient" && step.status === "asked");
+  const emailWasSent = data.email_outreach.status === "sent";
 
   return (
     <>
       <Nav />
       <main className={u.wrap}>
-        <Link href="/" className={c.back}>← Queue</Link>
+        <Link href="/" className={c.back}>← Work queue</Link>
         <div className={c.header}>
           <div>
             <h1 className={u.h1}>{data.display_name}</h1>
@@ -208,6 +251,33 @@ export default function CaseDetailPage() {
           </p>
         )}
 
+        <section className={c.contact} aria-label={`Contact ${first}`}>
+          <div>
+            <h2>Contact {first}</h2>
+            <p>
+              {data.email_outreach.status === "sent" && data.email_outreach.at
+                ? `Last email sent ${when(data.email_outreach.at)}.`
+                : data.email_outreach.status === "preview" && data.email_outreach.at
+                  ? `Demo email prepared ${when(data.email_outreach.at)}.`
+                  : "No email has been sent."}
+              {" "}
+              {voiceSession
+                ? `Latest call: ${voiceStatusLabel(voiceSession.status).toLowerCase()}.`
+                : "No call has been placed."}
+            </p>
+          </div>
+          <div className={c.contactActions}>
+            <button className={u.btnDark} disabled={busy}
+              onClick={() => act(`/api/cases/${id}/email`)}>
+              {emailWasSent ? "Send email again" : "Send email"}
+            </button>
+            <button className={u.btn} disabled={busy || voiceActive || !voice.configured || !voice.direct_call_allowed}
+              onClick={() => act(`/api/cases/${id}/voice/call`)}>
+              {voiceActive ? "Calling…" : "Call patient"}
+            </button>
+          </div>
+        </section>
+
         {/* The one thing to do */}
         <section className={`${c.action} ${step ? "" : c.actionQuiet}`} aria-label="Next step">
           <div>
@@ -226,11 +296,6 @@ export default function CaseDetailPage() {
             )}
           </div>
           <div>
-            {step?.holder === "patient" && step.status === "open" && (
-              <button className={u.btnDark} disabled={busy} onClick={() => act(`/api/cases/${id}/ask`)}>
-                {nextStepLabel(step, data.display_name, data.clinician_name)} →
-              </button>
-            )}
             {step?.holder === "database" && (
               <button className={u.btnDark} disabled={busy} onClick={() => act(`/api/cases/${id}/check-database`)}>
                 {nextStepLabel(step, data.display_name, data.clinician_name)} →
@@ -324,22 +389,97 @@ export default function CaseDetailPage() {
             </aside>
           )}
 
-          {step?.holder === "patient" && step.status === "asked" && (
+          {lastEmail && (
             <div className={c.email}>
               <div className={c.mail}>
-                <div className={c.mailHead}>Sent to {first} · {data.email}</div>
+                <div className={c.mailHead}>
+                  {lastEmail?.delivery === "preview" ? "Demo email prepared for" : "Sent to"} {first} · {data.email}
+                </div>
                 <div className={c.mailSubject}>{lastEmail?.subject}</div>
                 <pre className={c.mailBody}>{lastEmail?.body}</pre>
               </div>
-              <div className={`${c.mail} ${c.reply}`}>
-                <label className={c.mailHead} htmlFor="reply">{first}&apos;s reply (simulated inbound email)</label>
-                <textarea id="reply" value={reply} onChange={(e) => setReply(e.target.value)} />
-                {DEMO_REPLIES[id] && reply === DEMO_REPLIES[id].text && <p className={c.gloss}>{DEMO_REPLIES[id].gloss}</p>}
-                <button className={u.btnDark} disabled={busy || !reply.trim()}
-                  onClick={() => act(`/api/cases/${id}/reply`, { text: reply })}>
-                  {first} replied →
-                </button>
+            </div>
+          )}
+          {showVoice && (
+            <div className={c.voice}>
+              <div className={c.voiceHead}>
+                <div>
+                  <p className={c.mailHead}>Phone reminder</p>
+                  <strong>The call asks {first} to check their email</strong>
+                </div>
+                {voiceSession && (
+                  <span className={c.voiceState}>{voiceStatusLabel(voiceSession.status)}</span>
+                )}
               </div>
+
+              {!voice.configured && (
+                <p className={c.voiceError}>Voice is not configured: {voice.configuration_errors.join("; ")}</p>
+              )}
+              {voice.reason === "waiting_for_reply" && voice.due_at && (
+                <p>
+                  The call is scheduled for {when(voice.due_at)} if no reply arrives first.
+                </p>
+              )}
+              {voice.reason === "outside_call_window" && (
+                <p>
+                  The reply window has passed. The scheduler will call during the next configured calling window.
+                </p>
+              )}
+              {voice.reason === "available" && !voiceSession && (
+                <p>The email reply window has passed. The automatic call is due now.</p>
+              )}
+              {voice.reason === "attempt_limit_reached" && (
+                <p>The {voice.max_attempts} automatic attempts are complete. Route any further outreach to a person.</p>
+              )}
+              {voice.reason === "patient_already_replied" && (
+                <p>A patient reply was received, so the automatic call was cancelled.</p>
+              )}
+              {voice.reason === "reminder_delivered" && (
+                <p>The reminder was delivered. Lapse is still waiting for an email reply.</p>
+              )}
+              {voiceSession?.status === "no_answer" && voice.reason === "waiting_for_reply" && (
+                <p>No one answered. The next attempt will wait for the configured retry interval.</p>
+              )}
+              {voiceSession?.status === "no_answer" && voice.reason === "available" && (
+                <p>No one answered the prior attempt. The next attempt is due now.</p>
+              )}
+              {voiceSession?.status === "declined" && (
+                <p>No further automatic calls will be placed.</p>
+              )}
+              {voiceSession?.status === "failed" && (
+                <p className={c.voiceError}>{voiceSession.error ?? "The call could not be started."}</p>
+              )}
+
+              <div className={c.voiceMeta}>
+                <span>{voice.backend === "twilio" ? "Twilio reminder call" : "Local call simulator"}</span>
+                <span>{voice.attempts} call attempt{voice.attempts === 1 ? "" : "s"}</span>
+                {voiceSession?.phone && <span>{voiceSession.phone}</span>}
+              </div>
+
+              <details className={c.voiceQuestion}>
+                <summary>Message the caller will hear</summary>
+                <p>{voice.reminder_message}</p>
+              </details>
+
+              {voice.backend === "local" && voiceActive && (
+                <div className={c.voiceSimulator}>
+                  <p>The local simulator is connected. Choose how the reminder call ended.</p>
+                  <div className={c.voiceActions}>
+                    <button className={u.btnDark} disabled={busy}
+                      onClick={() => act(`/api/cases/${id}/voice/simulate`, { outcome: "completed" })}>
+                      Complete test reminder
+                    </button>
+                    <button className={u.btnQuiet} disabled={busy}
+                      onClick={() => act(`/api/cases/${id}/voice/simulate`, { outcome: "no_answer" })}>
+                      Mark no answer
+                    </button>
+                    <button className={u.btnQuiet} disabled={busy}
+                      onClick={() => act(`/api/cases/${id}/voice/simulate`, { outcome: "failed" })}>
+                      Mark failed
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
           {waitingOnClinician && <p className={u.faint}>Waiting for {data.clinician_name} to sign in the other tab…</p>}

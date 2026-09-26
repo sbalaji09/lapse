@@ -44,8 +44,11 @@ Neutral process explanations and requests for information remain allowed.
   blocks the candidate.
 
 `engine/loop/outbound.py` applies the check before recording or sending a
-patient message. With no configured Guardrail, local mode continues to use its
-fixed reviewed templates. Once configured, AWS errors fail closed before the
+patient message. A local deterministic denied-topic policy is always active,
+so privileged eligibility and internal case-status language cannot leave the
+application even when Bedrock is unavailable. With no configured Bedrock
+Guardrail, local mode continues to use its fixed reviewed templates. Once
+configured, Bedrock adds a second check and AWS errors fail closed before the
 case changes.
 
 Guardrail responses are cached by immutable Guardrail version and candidate

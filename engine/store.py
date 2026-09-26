@@ -12,8 +12,8 @@ from pathlib import Path
 
 from engine.checks import check_case
 from engine.cohort import Patient
-from engine.config import AS_OF_DATE, DB_PATH, FIXTURES_PATH
-from engine.models import Bucket, Case, CaseStatus, Claim, Determination, Fact, Note
+from engine.config import AS_OF_DATE, DB_PATH, DEMO_ROSA_EMAIL, DEMO_ROSA_PHONE, FIXTURES_PATH
+from engine.models import Bucket, Case, CaseStatus, Claim, Determination, Fact, Note, VoiceSession
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS cases (
@@ -56,6 +56,16 @@ CREATE TABLE IF NOT EXISTS channel_runs (
     data       TEXT NOT NULL,
     PRIMARY KEY (patient_id, channel)
 );
+CREATE TABLE IF NOT EXISTS voice_sessions (
+    id              TEXT PRIMARY KEY,
+    case_id         TEXT NOT NULL,
+    missing_fact_id TEXT NOT NULL,
+    status          TEXT NOT NULL,
+    created_at      TEXT NOT NULL,
+    data            TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS voice_sessions_case ON voice_sessions (case_id, created_at);
+CREATE INDEX IF NOT EXISTS voice_sessions_status ON voice_sessions (status, created_at);
 """
 
 
@@ -69,7 +79,15 @@ def connect() -> sqlite3.Connection:
     return conn
 
 
+def _apply_demo_contact_overrides(case: Case) -> Case:
+    if case.patient_id == "g-rosa":
+        case.email = os.environ.get("DEMO_INBOX") or DEMO_ROSA_EMAIL
+        case.phone = os.environ.get("VOICE_DESTINATION_PHONE") or DEMO_ROSA_PHONE
+    return case
+
+
 def save_case(case: Case) -> None:
+    case = _apply_demo_contact_overrides(case)
     with connect() as conn:
         conn.execute(
             "INSERT OR REPLACE INTO cases VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -80,8 +98,10 @@ def save_case(case: Case) -> None:
 
 def replace_cases(cases: list[Case]) -> None:
     """Swap in the pipeline's cases for the whole cohort in one transaction."""
+    cases = [_apply_demo_contact_overrides(case) for case in cases]
     with connect() as conn:
         conn.execute("DELETE FROM cases")
+        conn.execute("DELETE FROM voice_sessions")
         conn.executemany(
             "INSERT INTO cases VALUES (?, ?, ?, ?, ?, ?, ?)",
             [(c.patient_id, c.renewal_date.isoformat(), c.bucket.value, int(c.fragile), c.status.value, c.clinic_id,
@@ -91,6 +111,7 @@ def replace_cases(cases: list[Case]) -> None:
 
 def save_baseline(cases: list[Case]) -> None:
     """Remember these cases' pre-demo state; reset_demo() puts them back."""
+    cases = [_apply_demo_contact_overrides(case) for case in cases]
     with connect() as conn:
         conn.execute("DELETE FROM baseline_cases")
         conn.executemany("INSERT INTO baseline_cases VALUES (?, ?)", [(c.patient_id, c.model_dump_json()) for c in cases])
@@ -101,6 +122,7 @@ def reset_demo() -> int:
     number on screen matches the eval), else the hand-built fixtures. Returns how many cases were restored."""
     with connect() as conn:
         rows = conn.execute("SELECT data FROM baseline_cases").fetchall()
+        conn.execute("DELETE FROM voice_sessions")
     if not rows:
         return load_fixtures()
     for (raw,) in rows:
@@ -119,7 +141,7 @@ def save_notes(notes: list[Note]) -> None:
 def get_case(patient_id: str) -> Case | None:
     with connect() as conn:
         row = conn.execute("SELECT data FROM cases WHERE patient_id = ?", (patient_id,)).fetchone()
-    return Case.model_validate_json(row[0]) if row else None
+    return _apply_demo_contact_overrides(Case.model_validate_json(row[0])) if row else None
 
 
 def get_notes(patient_id: str) -> list[Note]:
@@ -150,7 +172,7 @@ def list_cases(bucket: Bucket | str | None = None, fragile: bool | None = None,
     sql += " ORDER BY renewal_date, patient_id"
     with connect() as conn:
         rows = conn.execute(sql, args).fetchall()
-    return [Case.model_validate_json(r[0]) for r in rows]
+    return [_apply_demo_contact_overrides(Case.model_validate_json(r[0])) for r in rows]
 
 
 def replace_cohort(patients: list[Patient], notes: list[Note]) -> None:
@@ -234,6 +256,68 @@ def list_channel_runs(channel: str) -> dict[str, tuple[Determination, list[Fact]
         d = Determination.model_validate(data["determination"])
         out[d.patient_id] = (d, [Fact.model_validate(f) for f in data["facts"]])
     return out
+
+
+def save_voice_session(session: VoiceSession) -> None:
+    with connect() as conn:
+        conn.execute(
+            "INSERT OR REPLACE INTO voice_sessions VALUES (?, ?, ?, ?, ?, ?)",
+            (
+                session.id,
+                session.case_id,
+                session.missing_fact_id,
+                session.status.value,
+                session.created_at.isoformat(),
+                session.model_dump_json(),
+            ),
+        )
+
+
+def create_voice_session(session: VoiceSession) -> bool:
+    """Claim a new voice attempt. The primary key prevents duplicate schedulers from dialing twice."""
+    with connect() as conn:
+        result = conn.execute(
+            "INSERT OR IGNORE INTO voice_sessions VALUES (?, ?, ?, ?, ?, ?)",
+            (
+                session.id,
+                session.case_id,
+                session.missing_fact_id,
+                session.status.value,
+                session.created_at.isoformat(),
+                session.model_dump_json(),
+            ),
+        )
+    return result.rowcount == 1
+
+
+def get_voice_session(session_id: str) -> VoiceSession | None:
+    with connect() as conn:
+        row = conn.execute(
+            "SELECT data FROM voice_sessions WHERE id = ?",
+            (session_id,),
+        ).fetchone()
+    return VoiceSession.model_validate_json(row[0]) if row else None
+
+
+def list_voice_sessions(
+    case_id: str | None = None,
+    status: str | None = None,
+) -> list[VoiceSession]:
+    where: list[str] = []
+    args: list[str] = []
+    if case_id is not None:
+        where.append("case_id = ?")
+        args.append(case_id)
+    if status is not None:
+        where.append("status = ?")
+        args.append(status)
+    sql = "SELECT data FROM voice_sessions"
+    if where:
+        sql += " WHERE " + " AND ".join(where)
+    sql += " ORDER BY created_at, id"
+    with connect() as conn:
+        rows = conn.execute(sql, args).fetchall()
+    return [VoiceSession.model_validate_json(row[0]) for row in rows]
 
 
 def read_fixtures(path: Path = FIXTURES_PATH) -> list[tuple[Case, list[Note]]]:

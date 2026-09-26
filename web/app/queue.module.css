@@ -140,6 +140,16 @@
   font-size: 14px;
 }
 
+.outreach {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink-muted);
+  font-size: 15px;
+}
+
 .filters {
   display: flex;
   align-items: center;
@@ -298,6 +308,21 @@
   display: block;
   font-size: 14px;
   color: var(--ink-faint);
+}
+
+.emailState {
+  display: block;
+  width: fit-content;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.emailSent {
+  color: var(--pass);
+}
+
+.emailPending {
+  color: var(--ink-muted);
 }
 
 .soon {

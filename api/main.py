@@ -1,7 +1,11 @@
+import asyncio
+import contextlib
 import json
+import logging
 from datetime import date
+from urllib.parse import parse_qs
 
-from fastapi import APIRouter, FastAPI, HTTPException
+from fastapi import APIRouter, FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response, StreamingResponse
 from pydantic import BaseModel
@@ -13,10 +17,48 @@ from engine.rulepack import load_pack
 from engine.loop.database import check_database
 from engine.loop.clinician import case_for_token, clinician_card, clinician_token, sign_clinician
 from engine.loop.inbound import handle_reply
-from engine.loop.outbound import send_ask
+from engine.loop.outbound import email_health, send_ask, send_manual_email
 from engine.loop.pdf import build_appeal_pdf, build_attestation_pdf
+from engine.loop.voice import (
+    process_due_voice_calls,
+    simulate_local_voice_call,
+    start_voice_call,
+    twilio_status_event,
+    verify_twilio_signature,
+    voice_case_status,
+    voice_health,
+    voice_settings,
+)
 
-app = FastAPI()
+log = logging.getLogger(__name__)
+
+
+async def voice_scheduler() -> None:
+    while True:
+        settings = voice_settings()
+        try:
+            await asyncio.to_thread(process_due_voice_calls, settings=settings)
+        except Exception:
+            log.exception("voice scheduler iteration failed")
+        await asyncio.sleep(settings.scheduler_interval_seconds)
+
+
+@contextlib.asynccontextmanager
+async def lifespan(application: FastAPI):
+    task = None
+    if voice_settings().automation_enabled:
+        task = asyncio.create_task(voice_scheduler())
+        application.state.voice_scheduler_task = task
+    try:
+        yield
+    finally:
+        if task:
+            task.cancel()
+            with contextlib.suppress(asyncio.CancelledError):
+                await task
+
+
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -52,6 +94,10 @@ class GuardrailBody(BaseModel):
     text: str
 
 
+class VoiceSimulationBody(BaseModel):
+    outcome: str = "completed"
+
+
 def summary_dict(cases, channel_a_only: bool = False) -> dict:
     cohort = len(cases)
     # "Cleared" = compliant OR exempt: people who meet the hours/income rule are never contacted either.
@@ -79,9 +125,47 @@ def summary_dict(cases, channel_a_only: bool = False) -> dict:
     return result
 
 
+def email_outreach_state(case) -> dict:
+    event = next(
+        (
+            event
+            for event in reversed(case.events)
+            if event.get("kind") in {"patient_asked", "patient_email_sent"}
+        ),
+        None,
+    )
+    if event:
+        detail = event.get("detail") or {}
+        delivery = detail.get("delivery", "preview")
+        return {
+            "status": "sent" if delivery == "sent" else "preview",
+            "sent": delivery == "sent",
+            "at": event.get("at"),
+            "to": detail.get("to"),
+        }
+
+    has_email = bool(case.email)
+    return {
+        "status": "not_sent" if has_email else "not_applicable",
+        "sent": False,
+        "at": None,
+        "to": case.email if has_email else None,
+    }
+
+
 @router.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "email": email_health(), "voice": voice_health()}
+
+
+@router.get("/voice/health")
+def get_voice_health():
+    return voice_health()
+
+
+@router.get("/email/health")
+def get_email_health():
+    return email_health()
 
 
 @router.get("/summary")
@@ -136,6 +220,7 @@ def get_queue(bucket: str | None = None, window_days: int | None = None):
             "state_rule_ids": c.determination_a.rule_ids,
             "verified_spans": len(c.claims),
             "clinician_name": c.clinician_name,
+            "email_outreach": email_outreach_state(c),
             "top_missing_fact": {
                 "key": top_missing.key,
                 "holder": top_missing.holder.value,
@@ -152,16 +237,43 @@ def get_case_detail(id: str):
     if case is None:
         raise HTTPException(status_code=404, detail="case not found")
     notes = store.get_notes(id)
-    return {**case.model_dump(mode="json"), "notes": [n.model_dump(mode="json") for n in notes],
-            "clinician_url": f"/clinician/{clinician_token(id)}"}     # what "Send to Dr. X" opens
+    return {
+        **case.model_dump(mode="json"),
+        "notes": [n.model_dump(mode="json") for n in notes],
+        "clinician_url": f"/clinician/{clinician_token(id)}",
+        "email_outreach": email_outreach_state(case),
+        "voice": voice_case_status(id),
+    }     # what "Send to Dr. X" opens
 
 
 @router.post("/cases/{id}/ask")
 def case_ask(id: str):
     try:
         return send_ask(id)
+    except guardrails.GuardrailIntervened:
+        raise HTTPException(
+            status_code=422,
+            detail="Email blocked because it included privileged eligibility or case-status information.",
+        )
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@router.post("/cases/{id}/email")
+def case_email(id: str):
+    try:
+        return send_manual_email(id)
+    except guardrails.GuardrailIntervened:
+        raise HTTPException(
+            status_code=422,
+            detail="Email blocked because it included privileged eligibility or case-status information.",
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e))
 
 
 @router.post("/cases/{id}/reply")
@@ -170,6 +282,71 @@ def case_reply(id: str, body: ReplyBody):
         return handle_reply(id, body.text)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/cases/{id}/voice")
+def case_voice_status(id: str):
+    try:
+        return voice_case_status(id)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@router.post("/cases/{id}/voice/call")
+def case_voice_call(id: str):
+    try:
+        return start_voice_call(id, force=True).model_dump(mode="json")
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@router.post("/cases/{id}/voice/simulate")
+def case_voice_simulate(id: str, body: VoiceSimulationBody):
+    try:
+        return simulate_local_voice_call(id, outcome=body.outcome)
+    except (ValueError, KeyError) as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.post("/voice/twilio/status/{session_id}")
+async def receive_twilio_status(
+    session_id: str,
+    request: Request,
+    x_twilio_signature: str | None = Header(default=None),
+):
+    settings = voice_settings()
+    if not settings.public_api_url:
+        raise HTTPException(status_code=503, detail="LAPSE_PUBLIC_API_URL is not configured")
+    callback_url = f"{settings.public_api_url}{request.url.path}"
+    if request.url.query:
+        callback_url += f"?{request.url.query}"
+    raw = (await request.body()).decode()
+    params = parse_qs(raw, keep_blank_values=True)
+    if not verify_twilio_signature(
+        callback_url,
+        params,
+        x_twilio_signature,
+        settings.twilio_auth_token,
+    ):
+        raise HTTPException(status_code=401, detail="invalid Twilio signature")
+    provider_status = params.get("CallStatus", [""])[0]
+    if not provider_status:
+        raise HTTPException(status_code=400, detail="CallStatus is required")
+    try:
+        twilio_status_event(
+            session_id,
+            provider_status,
+            call_sid=params.get("CallSid", [None])[0],
+            error_code=params.get("ErrorCode", [None])[0],
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return Response(
+        content='<?xml version="1.0" encoding="UTF-8"?><Response></Response>',
+        media_type="application/xml",
+    )
 
 
 @router.post("/inbound/email")

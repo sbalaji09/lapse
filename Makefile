@@ -1,4 +1,4 @@
-.PHONY: api web pipeline eval test reset
+.PHONY: api web pipeline eval test reset voice-check voice-due
 
 PYTHON ?= python3
 
@@ -20,3 +20,9 @@ test:
 
 reset:
 	curl -X POST http://localhost:8000/api/demo/reset
+
+voice-check:
+	$(PYTHON) -m engine.loop.voice check
+
+voice-due:
+	$(PYTHON) -m engine.loop.voice process-due

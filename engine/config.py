@@ -60,6 +60,10 @@ GUARDRAIL_CACHE_DIR = CACHE_DIR / "guardrails"
 GUARDRAIL_CONFIG_PATH = CACHE_DIR / "bedrock_guardrail.json"
 DB_PATH = ROOT / "lapse.sqlite"
 
+# Controlled real destinations for the Rosa demo workflow.
+DEMO_ROSA_EMAIL = os.environ.get("DEMO_INBOX", "siddharthbalaji6@gmail.com")
+DEMO_ROSA_PHONE = os.environ.get("VOICE_DESTINATION_PHONE", "+14086100377")
+
 
 def rule_pack_path(state: str = ACTIVE_RULE_PACK) -> Path:
     return RULES_DIR / f"{state}.yaml"

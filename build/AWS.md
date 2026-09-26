@@ -56,7 +56,7 @@ Do the sections in order; each one is shippable on its own.
 | `make pipeline` by hand | EventBridge Scheduler -> Fargate task | `engine/pipeline.py` | Renewals are rolling; the queue must refresh daily without anyone pressing a button |
 | `.env` | AWS Secrets Manager | `engine/config.py` settings loader | No keys in images or environment files |
 | Case copilot, reply interpreter, appeal assembler | Strands Agents on Bedrock AgentCore | `engine/agents/` (new) | Open-ended, tool-choosing tasks; see the Agents section |
-| Voice call (stretch) | Amazon Connect + Polly + Transcribe | `engine/loop/` voice | Outbound call in the patient's language; transcript lands as a `patient_reply` fact |
+| Proactive reminder call | Twilio Programmable Voice | `engine/loop/voice.py` | Calls one configured number, reads a fixed reminder, and leaves the existing email reply path unchanged |
 
 ---
 
@@ -241,23 +241,21 @@ Two consecutive scheduled runs complete, and a case whose renewal enters the win
 
 ---
 
-## AWS7 - Voice for non-responders (stretch)
+## External reminder calls for non-responders
 
 ### Goal
-The existing voice stretch, on AWS: a patient who does not answer the email gets one call in their language.
+If a patient does not answer the email within 24 hours, the API automatically places a neutral reminder call during configured calling hours.
 
 ### Do
-1.
-   Amazon Connect instance with an outbound contact flow; Polly voices for `en` and `es` (and any other language we support in email).
-2.
-   The flow asks the same single question from the MissingFact and records the answer; Transcribe turns it into text.
-3.
-   The transcript goes to the same reply handler as email, stored as a `patient_reply` fact with the recording's S3 key in `source_ref`.
-4.
-   Same refusals as email: never states eligibility, never uses legal or medical language.
+1. The FastAPI scheduler creates a Twilio Programmable Voice call.
+2. Twilio reads a fixed English or Spanish reminder using inline TwiML, then hangs up.
+3. The call always goes to `VOICE_DESTINATION_PHONE`; it never dials a phone number from a case.
+4. Twilio posts signed status callbacks so Lapse can record connected, completed, no-answer, and failed outcomes.
+5. Two attempts maximum, a 24-hour retry interval, and configured calling hours remain enforced.
+6. The call does not collect an answer. The person must reply to the existing email, which remains the only path that changes facts or eligibility.
 
 ### Done when
-A call to a test phone number resolves `standing_tolerance_minutes` for a copy of Rosa.
+A call reaches a controlled test phone and reads the fixed reminder, a completed call leaves the case waiting for email, signed callbacks are idempotent, and an unanswered call becomes retryable instead of remaining active.
 
 ---
 
@@ -344,8 +342,8 @@ Judges give credit for a feature that visibly enforces something; they discount 
 7. **Batch inference and prompt caching: cost.**
    Batch for the nightly full-cohort run (AWS2), prompt caching for the long shared system prompt and rule text on live calls.
    Show cost per patient on the buyer view.
-8. **Nova Sonic for the voice call (AWS7).**
-   Speech-to-speech in the patient's language instead of Polly + Transcribe glue; the transcript still enters through the same reply handler.
+8. **Reminder-call reliability.**
+   Use Twilio's fixed-message call with signed status callbacks, strict calling hours, retry limits, and alerting for repeated provider failures.
 9. **Prompt Management: provenance for prompts.**
    Version every prompt in Bedrock Prompt Management and store the prompt version next to `rule_pack_version` on each fact produced by an LLM, so a fact can be traced to the exact prompt that made it.
    Adding a `prompt_version` field to `Fact` is a contract change; agree it with Track B first.

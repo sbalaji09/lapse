@@ -43,6 +43,38 @@
   animation: slide 500ms ease-out;
 }
 
+.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+.contact h2 {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.contact p {
+  margin: 4px 0 0;
+  color: var(--ink-muted);
+  font-size: 16px;
+}
+
+.contactActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
 @keyframes slide {
   from { transform: translateY(-8px); opacity: 0; }
   to { transform: none; opacity: 1; }
@@ -242,9 +274,75 @@
 
 .email {
   grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  display: block;
+}
+
+.voice {
+  grid-column: 1 / -1;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(200, 222, 224, 0.28);
+}
+
+.voice p {
+  margin: 8px 0;
+}
+
+.voiceHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 16px;
+}
+
+.voiceHead .mailHead {
+  margin: 0 0 3px;
+}
+
+.voiceState {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 9px;
+  background: #fff;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.voiceMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 12px 0;
+  color: var(--ink-muted);
+  font-size: 14px;
+}
+
+.voiceQuestion {
+  margin: 12px 0;
+  font-size: 15px;
+}
+
+.voiceQuestion summary {
+  cursor: pointer;
+  color: var(--ink-muted);
+}
+
+.voiceActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.voiceSimulator {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+
+.voiceError {
+  color: var(--fail);
 }
 
 .mail {
@@ -270,24 +368,6 @@
   white-space: pre-wrap;
   margin: 0;
   font-family: inherit;
-}
-
-.reply textarea {
-  width: 100%;
-  min-height: 92px;
-  font: inherit;
-  font-size: 16px;
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fff;
-  resize: vertical;
-}
-
-.gloss {
-  font-size: 14px;
-  color: var(--ink-faint);
-  margin: 6px 0 10px;
 }
 
 .error {
@@ -581,6 +661,15 @@
 }
 
 @media (max-width: 720px) {
+  .contact {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .contactActions > button {
+    flex: 1 1 auto;
+  }
+
   .cols,
   .email,
   .guardrailBoundary {
@@ -593,9 +682,14 @@
     display: grid;
     gap: 8px;
   }
+
   .guardrailDecision > button {
     width: 100%;
     justify-content: center;
     white-space: normal;
+  }
+
+  .voiceHead {
+    flex-direction: column;
   }
 }

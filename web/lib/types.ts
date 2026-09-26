@@ -75,6 +75,59 @@ export interface MissingFact {
   status: string;
 }
 
+export type VoiceSessionStatus =
+  | "dialing"
+  | "connected"
+  | "completed"
+  | "no_answer"
+  | "declined"
+  | "cancelled"
+  | "needs_human"
+  | "failed";
+
+export interface VoiceSession {
+  id: string;
+  case_id: string;
+  missing_fact_id: string;
+  provider: string;
+  provider_contact_id: string | null;
+  status: VoiceSessionStatus;
+  attempt: number;
+  phone: string;
+  language: string;
+  message: string;
+  created_at: string;
+  updated_at: string;
+  due_at: string;
+  transcript: string | null;
+  recording_ref: string | null;
+  result: Record<string, unknown> | null;
+  error: string | null;
+}
+
+export interface VoiceCaseStatus {
+  backend: "local" | "twilio" | string;
+  automation_enabled: boolean;
+  configured: boolean;
+  configuration_errors: string[];
+  escalation_minutes: number;
+  max_attempts: number;
+  attempts: number;
+  reason: string;
+  due: boolean;
+  due_at: string | null;
+  manual_call_allowed: boolean;
+  direct_call_allowed: boolean;
+  will_call_automatically: boolean;
+  call_window: {
+    timezone: string;
+    start_hour: number;
+    end_hour: number;
+  };
+  latest_session: VoiceSession | null;
+  reminder_message: string;
+}
+
 export interface Case {
   patient_id: string;
   display_name: string;
