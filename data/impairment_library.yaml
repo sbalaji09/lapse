@@ -1,0 +1,154 @@
+# Hand-authored sentences injected verbatim into generated notes (engine/notes.py). Every injection is
+# recorded in data/truth/labels.jsonl with its exact offsets, so Channel B can be scored against it.
+# The only placeholder is {minutes}, filled from the patient's true standing tolerance.
+#
+# Per condition group (keys match data/qualifying_conditions.yaml):
+#   unstated - the condition is present, how it limits the person is not said   -> the ONE_AWAY population
+#   positive - the condition AND a functional limitation are stated             -> provable from the chart
+# Shared:
+#   function_normal - explicitly unimpaired (label impairs=false)
+#   sud_treatment   - evidence for the separate SUD-treatment exemption
+#   distractors     - look like evidence but are not: negated, resolved, family, past, hypothetical
+conditions:
+  diabetic_neuropathy:
+    unstated:
+      - "Type 2 diabetes with peripheral neuropathy, stable on gabapentin."
+      - "Diabetic peripheral neuropathy with decreased monofilament sensation in both feet."
+    positive:
+      - "Unable to stand longer than {minutes} minutes due to neuropathic pain in both feet."
+      - "Burning foot pain from neuropathy limits standing to about {minutes} minutes at a time."
+  ckd_advanced:
+    unstated:
+      - "Chronic kidney disease, followed by nephrology, labs stable."
+      - "Advanced chronic kidney disease, monitoring potassium and hemoglobin."
+    positive:
+      - "Fatigue from kidney disease means sitting down after about {minutes} minutes of standing."
+      - "Dialysis three days a week leaves no energy for more than {minutes} minutes of standing or walking."
+  copd:
+    unstated:
+      - "COPD on maintenance inhaler, no exacerbation since last visit."
+      - "Chronic obstructive pulmonary disease, former smoker, using tiotropium daily."
+    positive:
+      - "Short of breath after about {minutes} minutes of standing or slow walking due to COPD."
+      - "COPD limits walking to less than one block before stopping to rest."
+  heart_disease:
+    unstated:
+      - "Coronary artery disease, on aspirin and a statin, no chest pain today."
+      - "Chronic heart failure, euvolemic on current diuretic dose."
+    positive:
+      - "Heart failure symptoms with exertion; cannot stand at a counter longer than {minutes} minutes."
+      - "Exertional chest pressure from ischemic heart disease limits standing and walking to about {minutes} minutes."
+  chronic_pain:
+    unstated:
+      - "Chronic low back pain, managed with stretching and ibuprofen."
+      - "Chronic pain syndrome, followed in pain clinic."
+    positive:
+      - "Chronic back pain prevents standing longer than {minutes} minutes or lifting more than 10 pounds."
+      - "Widespread chronic pain requires changing position every {minutes} minutes; cannot stand through a work shift."
+  osteoarthritis:
+    unstated:
+      - "Osteoarthritis of the knee, using topical diclofenac."
+      - "Degenerative joint disease of the hip on imaging, managed conservatively."
+    positive:
+      - "Knee osteoarthritis pain limits standing to about {minutes} minutes and stairs are not possible."
+      - "Hip arthritis requires a cane; unable to stand for more than {minutes} minutes."
+  rheumatoid_arthritis:
+    unstated:
+      - "Rheumatoid arthritis on methotrexate, followed by rheumatology."
+      - "Seropositive rheumatoid arthritis, disease activity under review."
+    positive:
+      - "Rheumatoid arthritis flares leave hands too swollen to grip and limit standing to {minutes} minutes."
+      - "Morning stiffness from rheumatoid arthritis lasts until midday; cannot stand longer than {minutes} minutes."
+  sud:
+    unstated:
+      - "Opioid use disorder, on buprenorphine maintenance."
+      - "Substance use disorder, discussed harm reduction and naloxone."
+    positive:
+      - "Ongoing substance use has led to missed days and inability to keep a daily schedule."
+      - "Withdrawal symptoms and cravings prevent sustained daily activity outside the home."
+  mental_illness:
+    unstated:
+      - "Major depressive disorder, on sertraline, follows with behavioral health."
+      - "Generalized anxiety with panic attacks, on escitalopram."
+    positive:
+      - "Severe depression; spends most days in bed and is unable to manage household tasks."
+      - "Panic attacks most days prevent leaving home alone or keeping appointments without support."
+  seizure:
+    unstated:
+      - "Seizure disorder on levetiracetam."
+      - "Epilepsy, last seizure several months ago per patient."
+    positive:
+      - "Breakthrough seizures twice a month; unable to drive and cannot be left alone at a worksite."
+      - "Frequent seizures with prolonged confusion afterward limit daily activities."
+  neuro:
+    unstated:
+      - "History of traumatic brain injury, followed by neurology."
+      - "Cerebral palsy with lower extremity spasticity."
+    positive:
+      - "Weakness and spasticity allow standing for only about {minutes} minutes with a walker."
+      - "Memory and attention deficits after brain injury require supervision for multi-step tasks."
+  intellectual:
+    unstated:
+      - "Intellectual disability, accompanied by sister today."
+      - "Intellectual disability, attends a day program."
+    positive:
+      - "Needs help from family for shopping, finances, and transportation due to intellectual disability."
+      - "Unable to complete forms or manage money independently because of intellectual disability."
+  cancer:
+    unstated:
+      - "Malignancy under active oncology care, next scan scheduled."
+      - "Cancer treatment ongoing per oncology, tolerating therapy."
+    positive:
+      - "Chemotherapy fatigue limits standing or walking to about {minutes} minutes before needing rest."
+      - "Treatment side effects mean staying in bed two to three days after each infusion."
+  hiv:
+    unstated:
+      - "HIV infection on antiretroviral therapy, viral load undetectable."
+      - "HIV, adherent to antiretroviral therapy."
+    positive:
+      - "Advanced HIV with weight loss; too weak to stand more than {minutes} minutes."
+      - "HIV-related fatigue and neuropathy limit standing to about {minutes} minutes."
+  asthma:
+    unstated:
+      - "Asthma, using albuterol as needed."
+      - "Persistent asthma on inhaled steroid."
+    positive:
+      - "Severe persistent asthma; wheezing after about {minutes} minutes of standing or slow walking."
+      - "Asthma attacks triggered by minimal exertion; cannot stand or walk more than {minutes} minutes."
+  migraine:
+    unstated:
+      - "Chronic migraine, on preventive therapy."
+      - "Chronic migraine without aura, tracking headache days."
+    positive:
+      - "Migraines 15 or more days a month force lying in a dark room for most of those days."
+      - "Daily headaches with light sensitivity make screen work or bright settings impossible."
+
+function_normal:
+  - "Remains fully independent with daily activities and reports no limits on standing or walking."
+  - "Exercises regularly and reports no functional limitations."
+  - "Active and independent; no difficulty with household tasks or errands."
+
+sud_treatment:
+  - "Continues in the outpatient opioid treatment program with daily methadone dosing."
+  - "Attending an intensive outpatient program for alcohol use disorder three days a week."
+  - "Enrolled in a residential substance use treatment program since last month."
+
+# avoid_groups: never inject for a patient who has one of these groups (it would contradict the truth).
+# avoid_if_impaired: never inject for a patient whose truth says significantly_impairs = true.
+distractors:
+  - {polarity: negated, category: physical_disability, text: "Denies difficulty walking or standing.", avoid_if_impaired: true}
+  - {polarity: negated, category: serious_complex_medical, text: "No history of seizures.", avoid_groups: [seizure]}
+  - {polarity: negated, category: serious_mental_illness, text: "Denies depression or anxiety.", avoid_groups: [mental_illness]}
+  - {polarity: negated, category: physical_disability, text: "No numbness or tingling in the feet.", avoid_groups: [diabetic_neuropathy]}
+  - {polarity: resolved, category: physical_disability, text: "Low back pain has resolved after physical therapy.", avoid_groups: [chronic_pain]}
+  - {polarity: resolved, category: physical_disability, text: "Prior wrist sprain fully healed."}
+  - {polarity: resolved, category: serious_mental_illness, text: "Anxiety symptoms resolved after counseling ended last year.", avoid_groups: [mental_illness]}
+  - {polarity: family, category: physical_disability, text: "Mother has severe arthritis."}
+  - {polarity: family, category: physical_disability, text: "Brother uses a wheelchair after a spinal cord injury."}
+  - {polarity: family, category: serious_complex_medical, text: "Father is on dialysis for kidney failure."}
+  - {polarity: family, category: serious_mental_illness, text: "Sister has bipolar disorder with frequent hospitalizations."}
+  - {polarity: past, category: physical_disability, text: "Was on crutches in 2019 after an ankle fracture."}
+  - {polarity: past, category: sud, text: "Remote history of alcohol use disorder, sober since 2015.", avoid_groups: [sud, sud_treatment]}
+  - {polarity: past, category: physical_disability, text: "Used a walker briefly after knee surgery in 2018."}
+  - {polarity: hypothetical, category: physical_disability, text: "Discussed risk of neuropathy if blood sugar stays high.", avoid_groups: [diabetic_neuropathy]}
+  - {polarity: hypothetical, category: serious_mental_illness, text: "Depression screening today was negative.", avoid_groups: [mental_illness]}

@@ -15,12 +15,6 @@ from engine.models import (Bucket, Case, CaseStatus, Claim, Determination, Fact,
 PACK = "ca-2027.02-demo"
 RUN_AT = datetime(AS_OF_DATE.year, AS_OF_DATE.month, AS_OF_DATE.day, 6, 0, 0)
 
-CLINICS = {
-    "clinic-mission": "Mission Community Health",
-    "clinic-eastside": "Eastside Family Clinic",
-    "clinic-valley": "Valley Health Center",
-}
-
 # Registry questions, filled per patient (see rules/fact_registry.yaml).
 Q_STANDING = {"en": "How long can you stand before you need to sit down?",
               "es": "¿Cuánto tiempo puede estar de pie antes de necesitar sentarse?"}

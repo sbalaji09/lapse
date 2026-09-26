@@ -1,0 +1,139 @@
+# Ground truth: which SNOMED conditions (as Synthea codes them) fall in a medically-frail qualifying
+# category, grouped into families that share note sentences in data/impairment_library.yaml.
+#
+# This is the world's truth, not the state's view. The state's code list (rules/codes/*.txt) is a
+# separate, narrower thing that A2 builds; the gap between the two is what Lapse finds.
+#
+#   category   - PROJECT.md qualifying category
+#   condition  - plain name used in notes and clinician questions
+#   physical   - limitation shows up as standing/walking tolerance (drives standing_tolerance_minutes)
+#   p_impairs  - chance the condition significantly impairs this person (seeded draw in engine/truth.py)
+groups:
+  diabetic_neuropathy:
+    category: physical_disability
+    condition: diabetic peripheral neuropathy
+    physical: true
+    p_impairs: 0.6
+    codes: {"368581000119106": Neuropathy due to type 2 diabetes mellitus}
+  ckd_advanced:
+    category: serious_complex_medical
+    condition: chronic kidney disease
+    physical: true
+    p_impairs: 0.7
+    codes:
+      "433144002": Chronic kidney disease stage 3
+      "431857002": Chronic kidney disease stage 4
+      "46177005": End-stage renal disease
+      "698306007": Awaiting transplantation of kidney
+  copd:
+    category: serious_complex_medical
+    condition: COPD
+    physical: true
+    p_impairs: 0.7
+    codes:
+      "185086009": Chronic obstructive bronchitis
+      "87433001": Pulmonary emphysema
+  heart_disease:
+    category: serious_complex_medical
+    condition: heart disease
+    physical: true
+    p_impairs: 0.5
+    codes:
+      "88805009": Chronic congestive heart failure
+      "414545008": Ischemic heart disease
+  chronic_pain:
+    category: physical_disability
+    condition: chronic pain
+    physical: true
+    p_impairs: 0.3
+    codes:
+      "82423001": Chronic pain
+      "278860009": Chronic low back pain
+      "1121000119107": Chronic neck pain
+      "203082005": Fibromyalgia
+      "95417003": Primary fibromyalgia syndrome
+  osteoarthritis:
+    category: physical_disability
+    condition: osteoarthritis
+    physical: true
+    p_impairs: 0.5
+    codes:
+      "239873007": Osteoarthritis of knee
+      "239872002": Osteoarthritis of hip
+  rheumatoid_arthritis:
+    category: physical_disability
+    condition: rheumatoid arthritis
+    physical: true
+    p_impairs: 0.6
+    codes: {"69896004": Rheumatoid arthritis}
+  sud:
+    category: sud
+    condition: substance use disorder
+    physical: false
+    p_impairs: 0.5
+    codes:
+      "6525002": Dependent drug abuse
+      "5602001": Opioid abuse
+      "7200002": Alcoholism
+  mental_illness:
+    category: serious_mental_illness
+    condition: depression or anxiety disorder
+    physical: false
+    p_impairs: 0.5
+    codes:
+      "370143000": Major depressive disorder
+      "80583007": Severe anxiety (panic)
+  seizure:
+    category: serious_complex_medical
+    condition: seizure disorder
+    physical: false
+    p_impairs: 0.4
+    codes:
+      "128613002": Seizure disorder
+      "84757009": Epilepsy
+  neuro:
+    category: physical_disability
+    condition: neurological disability
+    physical: true
+    p_impairs: 0.7
+    codes:
+      "127294003": Traumatic or nontraumatic brain injury
+      "128188000": Cerebral palsy
+      "230690007": Cerebrovascular accident
+      "230265002": Familial Alzheimer's disease of early onset
+  intellectual:
+    category: intellectual_developmental_disability
+    condition: intellectual disability
+    physical: false
+    p_impairs: 0.8
+    codes: {"110359009": Intellectual disability}
+  cancer:
+    category: serious_complex_medical
+    condition: cancer
+    physical: true
+    p_impairs: 0.6
+    codes:
+      "254837009": Malignant neoplasm of breast
+      "363406005": Malignant neoplasm of colon
+      "93761005": Primary malignant neoplasm of colon
+      "109838007": Overlapping malignant neoplasm of colon
+  hiv:
+    category: serious_complex_medical
+    condition: HIV
+    physical: true
+    p_impairs: 0.3
+    codes: {"86406008": Human immunodeficiency virus infection}
+  asthma:
+    category: serious_complex_medical
+    condition: asthma
+    physical: true
+    p_impairs: 0.2
+    codes: {"195967001": Asthma}
+  migraine:
+    category: serious_complex_medical
+    condition: chronic migraine
+    physical: false
+    p_impairs: 0.4
+    codes:
+      "124171000119105": Chronic intractable migraine without aura
+      "427419006": Transformed migraine

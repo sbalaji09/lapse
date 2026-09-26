@@ -1,4 +1,5 @@
 """SQLite store. The Case is the aggregate and is stored whole as JSON; notes live in their own table.
+Patients (Track A's raw cohort records, engine/cohort.py) are stored the same way for the later stages.
 
     python -m engine.store --load-fixtures     # load fixtures/golden_cases.json, checking every span
 """
@@ -10,6 +11,7 @@ from datetime import timedelta
 from pathlib import Path
 
 from engine.checks import check_case
+from engine.cohort import Patient
 from engine.config import AS_OF_DATE, DB_PATH, FIXTURES_PATH
 from engine.models import Bucket, Case, CaseStatus, Note
 
@@ -31,6 +33,10 @@ CREATE TABLE IF NOT EXISTS notes (
     data       TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS notes_patient ON notes (patient_id);
+CREATE TABLE IF NOT EXISTS patients (
+    id   TEXT PRIMARY KEY,
+    data TEXT NOT NULL
+);
 """
 
 
@@ -96,6 +102,28 @@ def list_cases(bucket: Bucket | str | None = None, fragile: bool | None = None,
     with connect() as conn:
         rows = conn.execute(sql, args).fetchall()
     return [Case.model_validate_json(r[0]) for r in rows]
+
+
+def replace_cohort(patients: list[Patient], notes: list[Note]) -> None:
+    """Swap in a freshly generated cohort and all of its notes in one transaction. Cases are left alone."""
+    with connect() as conn:
+        conn.execute("DELETE FROM patients")
+        conn.execute("DELETE FROM notes")
+        conn.executemany("INSERT INTO patients VALUES (?, ?)", [(p.id, p.model_dump_json()) for p in patients])
+        conn.executemany("INSERT INTO notes VALUES (?, ?, ?, ?)",
+                         [(n.id, n.patient_id, n.date.isoformat(), n.model_dump_json()) for n in notes])
+
+
+def get_patient(patient_id: str) -> Patient | None:
+    with connect() as conn:
+        row = conn.execute("SELECT data FROM patients WHERE id = ?", (patient_id,)).fetchone()
+    return Patient.model_validate_json(row[0]) if row else None
+
+
+def list_patients() -> list[Patient]:
+    with connect() as conn:
+        rows = conn.execute("SELECT data FROM patients ORDER BY id").fetchall()
+    return [Patient.model_validate_json(r[0]) for r in rows]
 
 
 def read_fixtures(path: Path = FIXTURES_PATH) -> list[tuple[Case, list[Note]]]:
