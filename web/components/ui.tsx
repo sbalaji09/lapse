@@ -20,7 +20,6 @@ function LogoMark() {
 
 const LINKS = [
   { href: "/", label: "Work queue", hint: "Members renewing soon, and the one action that keeps each covered" },
-  { href: "/tests", label: "Verification", hint: "Re-run every claim the product makes against the live system" },
   { href: "/plan", label: "Analytics", hint: "Totals, accuracy, and the members you would lose to paperwork" },
 ];
 
@@ -65,7 +64,10 @@ export function Footer() {
   return (
     <footer className={`${u.footer} ${u.wrap}`}>
       <span>Lapse. Keeping eligible Medicaid members covered through the work requirement.</span>
-      <span>All member data shown is synthetic. No real patient information is used.</span>
+      <span>
+        All member data shown is synthetic. No real patient information is used.{" "}
+        <Link href="/tests">Every number here is re-checked live against the product →</Link>
+      </span>
     </footer>
   );
 }

@@ -77,7 +77,7 @@ export default function QueuePage() {
 
         <p className={q.revealNote}>
           Both steps show results from the most recent full run over all members, so they appear instantly. The
-          accuracy of each is measured on the Accuracy tab, and every figure is re-checked on the Verification tab.
+          accuracy of each is measured on the Analytics tab, and every figure is re-checked live against the product.
         </p>
         <section className={q.reveal} aria-label="The state's check, then the notes">
           <div className={`${q.step} ${q.stepState}`}>
