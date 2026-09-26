@@ -1,6 +1,6 @@
 """Inbound patient-reply parsing. Deterministic keyword parser, not an LLM call.
 
-# ponytail: keyword parser, not an LLM call — no API key required for this demo build;
+# ponytail: keyword parser, not an LLM call; no API key required for this demo build;
 # upgrade to engine.llm.call_json when there's key + budget for open-ended replies
 """
 import re

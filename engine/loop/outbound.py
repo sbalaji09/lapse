@@ -1,4 +1,4 @@
-"""Outbound patient-ask email flow. Mock/log only — no Resend network call.
+"""Outbound patient-ask email flow. Mock/log only: no Resend network call.
 
 # ponytail: no real email send here, log-only preview; wire Resend when we have a key + domain.
 """
@@ -14,17 +14,17 @@ TEMPLATES = {
             "Hi {name},\n\n"
             "As part of your Medi-Cal coverage review (due {renewal_date}), we have one quick question:\n\n"
             "{question}\n\n"
-            "Please reply in your own words, in any language you're comfortable with — no login needed.\n\n"
+            "Please reply in your own words, in any language you're comfortable with. No login needed.\n\n"
             "Thank you,\n{clinic_name}"
         ),
     },
     "es": {
-        "subject": "Una pregunta rapida sobre su revision de cobertura",
+        "subject": "Una pregunta rápida sobre su revisión de cobertura",
         "body": (
             "Hola {name},\n\n"
-            "Como parte de su revision de cobertura de Medi-Cal (vence el {renewal_date}), tenemos una pregunta rapida:\n\n"
+            "Como parte de su revisión de cobertura de Medi-Cal (vence el {renewal_date}), tenemos una pregunta rápida:\n\n"
             "{question}\n\n"
-            "Por favor responda con sus propias palabras, en cualquier idioma que prefiera — no necesita iniciar sesion.\n\n"
+            "Por favor responda con sus propias palabras, en cualquier idioma que prefiera. No necesita iniciar sesión.\n\n"
             "Gracias,\n{clinic_name}"
         ),
     },
