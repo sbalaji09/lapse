@@ -110,7 +110,8 @@ def _why(key: str, rule: str, holder: Holder, db: str | None, case: Case, condit
         return (f"Notes document a substance use disorder. If {name} is in a treatment program now, that alone is "
                 f"an exemption; {case.clinician_name} can confirm.")
     if holder == Holder.database:
-        return f"{DB_LABELS.get(db, db)} can confirm {RULE_NAMES[rule]} without contacting anyone."
+        label = DB_LABELS.get(db, db)
+        return f"{label[:1].upper() + label[1:]} can confirm {RULE_NAMES[rule]} without contacting anyone."
     return f"Would qualify through {RULE_NAMES[rule]}."
 
 
