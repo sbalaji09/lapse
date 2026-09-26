@@ -1,6 +1,12 @@
 """Global settings for the Lapse engines. Everything time-dependent reads AS_OF_DATE, never the wall clock."""
+import os
 from datetime import date, datetime
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+ROOT = Path(__file__).resolve().parent.parent
+load_dotenv(ROOT / ".env")
 
 AS_OF_DATE = date(2027, 2, 15)
 # Timestamp stamped on every fact the batch pipeline records ("the overnight run before the demo morning").
@@ -21,13 +27,20 @@ CLINICS = {
                       "phone": "(555) 010-0103"},
 }
 
-# Fast model for extraction/parsing, stronger model for the verifier. Bedrock is a config swap.
-MODEL_FAST = "gpt-4.1-mini"
-MODEL_VERIFY = "gpt-4.1"
+# Local remains the default. AWS mode swaps only provider-specific settings; callers still use MODEL_FAST/VERIFY.
+LAPSE_BACKEND = os.environ.get("LAPSE_BACKEND", "local")
+AWS_REGION = os.environ.get("AWS_REGION", "us-west-2")
+
+OPENAI_MODEL_FAST = os.environ.get("OPENAI_MODEL_FAST", "gpt-4.1-mini")
+OPENAI_MODEL_VERIFY = os.environ.get("OPENAI_MODEL_VERIFY", "gpt-4.1")
+BEDROCK_MODEL_FAST = os.environ.get("BEDROCK_MODEL_FAST", "amazon.nova-lite-v1:0")
+BEDROCK_MODEL_VERIFY = os.environ.get("BEDROCK_MODEL_VERIFY", "amazon.nova-pro-v1:0")
+
+MODEL_FAST = BEDROCK_MODEL_FAST if LAPSE_BACKEND == "aws" else OPENAI_MODEL_FAST
+MODEL_VERIFY = BEDROCK_MODEL_VERIFY if LAPSE_BACKEND == "aws" else OPENAI_MODEL_VERIFY
 
 ACTIVE_RULE_PACK = "ca"
 
-ROOT = Path(__file__).resolve().parent.parent
 RULES_DIR = ROOT / "rules"
 FACT_REGISTRY_PATH = RULES_DIR / "fact_registry.yaml"
 DATA_DIR = ROOT / "data"

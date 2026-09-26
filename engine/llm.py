@@ -1,11 +1,12 @@
-"""OpenAI wrapper with a disk cache. Every call is cached, so the demo replays offline after one warm run.
+"""LLM provider wrapper with a disk cache. Every call is cached, so the demo replays offline after one warm run.
 
     call_json(model, system, user, schema)            -> dict      (one call)
     run_batch([{"model", "system", "user", "schema"}]) -> [dict]    (concurrent, same order)
 
-Cache: .cache/llm/{sha256(model + system + user + schema)}.json. A hit makes no network call.
+Set LAPSE_BACKEND=aws for Bedrock; local uses OpenAI as the explicit fallback.
+Cache: .cache/llm/{sha256(provider model + system + user + schema)}.json. A hit makes no network call.
 Set LAPSE_OFFLINE=1 to turn a cache miss into an error instead of a request (use it for demo runs).
-Responses use OpenAI structured outputs, so the dict always matches the schema.
+Responses use provider-native structured outputs.
 """
 import asyncio
 import hashlib
@@ -17,11 +18,8 @@ import tempfile
 import time
 from dataclasses import dataclass, field
 
-from dotenv import load_dotenv
-
-from engine.config import LLM_CACHE_DIR, ROOT
-
-load_dotenv(ROOT / ".env")
+from engine import config
+from engine.config import LLM_CACHE_DIR
 
 CONCURRENCY = 16
 MAX_RETRIES = 2          # SDK-level; _with_backoff below does the patient retrying
@@ -47,16 +45,42 @@ class Stats:
     output_tokens: dict[str, int] = field(default_factory=dict)
 
     def add(self, model: str, usage) -> None:
+        if isinstance(usage, dict):
+            input_tokens = usage.get("inputTokens", 0)
+            output_tokens = usage.get("outputTokens", 0)
+        else:
+            input_tokens = usage.prompt_tokens
+            output_tokens = usage.completion_tokens
         self.misses += 1
-        self.input_tokens[model] = self.input_tokens.get(model, 0) + usage.prompt_tokens
-        self.output_tokens[model] = self.output_tokens.get(model, 0) + usage.completion_tokens
+        self.input_tokens[model] = self.input_tokens.get(model, 0) + input_tokens
+        self.output_tokens[model] = self.output_tokens.get(model, 0) + output_tokens
 
 
 stats = Stats()
 
 
+def _provider() -> str:
+    return "bedrock" if os.environ.get("LAPSE_BACKEND", config.LAPSE_BACKEND) == "aws" else "openai"
+
+
+def _effective_model(model: str) -> str:
+    """Map the engine's fast/verifier roles to their configured Bedrock model IDs."""
+    if _provider() != "bedrock":
+        return model
+
+    fast = os.environ.get("BEDROCK_MODEL_FAST", config.BEDROCK_MODEL_FAST)
+    verify = os.environ.get("BEDROCK_MODEL_VERIFY", config.BEDROCK_MODEL_VERIFY)
+    if model in {config.OPENAI_MODEL_FAST, config.BEDROCK_MODEL_FAST, config.MODEL_FAST, fast}:
+        return fast
+    if model in {config.OPENAI_MODEL_VERIFY, config.BEDROCK_MODEL_VERIFY, config.MODEL_VERIFY, verify}:
+        return verify
+    return model
+
+
 def _key(model: str, system: str, user: str, schema: dict) -> str:
-    raw = json.dumps([model, system, user, schema], sort_keys=True, ensure_ascii=False)
+    # Keep legacy OpenAI keys stable while isolating Bedrock caches by the exact deployed model ID.
+    cache_model = model if _provider() == "openai" else f"bedrock:{_effective_model(model)}"
+    raw = json.dumps([cache_model, system, user, schema], sort_keys=True, ensure_ascii=False)
     return hashlib.sha256(raw.encode()).hexdigest()
 
 
@@ -70,7 +94,13 @@ def cached(model: str, system: str, user: str, schema: dict) -> dict | None:
 def _store(model: str, system: str, user: str, schema: dict, response: dict) -> None:
     LLM_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     path = LLM_CACHE_DIR / f"{_key(model, system, user, schema)}.json"
-    body = json.dumps({"model": model, "system": system, "user": user, "response": response}, ensure_ascii=False)
+    body = json.dumps({
+        "provider": _provider(),
+        "model": _effective_model(model),
+        "system": system,
+        "user": user,
+        "response": response,
+    }, ensure_ascii=False)
     with tempfile.NamedTemporaryFile("w", dir=LLM_CACHE_DIR, delete=False, suffix=".tmp") as f:
         f.write(body)
     os.replace(f.name, path)     # atomic: a crash never leaves a half-written cache entry
@@ -87,6 +117,60 @@ def _request(model: str, system: str, user: str, schema: dict, max_tokens: int =
     }
 
 
+def _bedrock_client():
+    import boto3
+    from botocore.config import Config
+
+    return boto3.client(
+        "bedrock-runtime",
+        region_name=os.environ.get("AWS_REGION", config.AWS_REGION),
+        config=Config(retries={"max_attempts": MAX_RETRIES, "mode": "adaptive"}),
+    )
+
+
+def _bedrock_request(
+    model: str,
+    system: str,
+    user: str,
+    schema: dict,
+    max_tokens: int = MAX_OUTPUT_TOKENS,
+) -> dict:
+    return {
+        "modelId": _effective_model(model),
+        "system": [{"text": system}],
+        "messages": [{"role": "user", "content": [{"text": user}]}],
+        "inferenceConfig": {"temperature": 0, "maxTokens": max_tokens},
+        "toolConfig": {
+            "tools": [{
+                "toolSpec": {
+                    "name": "return_json",
+                    "description": "Return JSON matching the required schema.",
+                    "inputSchema": {"json": schema},
+                }
+            }],
+            "toolChoice": {"tool": {"name": "return_json"}},
+        },
+    }
+
+
+def _bedrock_response(response: dict) -> dict:
+    content = response["output"]["message"]["content"]
+    for block in content:
+        tool_use = block.get("toolUse")
+        if tool_use and tool_use.get("name") == "return_json":
+            result = tool_use.get("input")
+            if isinstance(result, dict):
+                return result
+
+    # Defensive fallback for a model that emits valid JSON text despite the forced tool choice.
+    text = "".join(block.get("text", "") for block in content)
+    if text:
+        result = json.loads(text)
+        if isinstance(result, dict):
+            return result
+    raise ValueError("Bedrock response did not contain a return_json tool result")
+
+
 def _offline() -> bool:
     return os.environ.get("LAPSE_OFFLINE") == "1"
 
@@ -98,11 +182,20 @@ def call_json(model: str, system: str, user: str, schema: dict, max_tokens: int 
         return hit
     if _offline():
         raise CacheMiss(f"LAPSE_OFFLINE=1 and no cached response for this {model} call")
-    from openai import OpenAI
 
-    resp = OpenAI(max_retries=MAX_RETRIES).chat.completions.create(**_request(model, system, user, schema, max_tokens))
-    out = json.loads(resp.choices[0].message.content)
-    stats.add(model, resp.usage)
+    if _provider() == "bedrock":
+        effective_model = _effective_model(model)
+        resp = _bedrock_client().converse(**_bedrock_request(model, system, user, schema, max_tokens))
+        out = _bedrock_response(resp)
+        stats.add(effective_model, resp.get("usage", {}))
+    else:
+        from openai import OpenAI
+
+        resp = OpenAI(max_retries=MAX_RETRIES).chat.completions.create(
+            **_request(model, system, user, schema, max_tokens)
+        )
+        out = json.loads(resp.choices[0].message.content)
+        stats.add(model, resp.usage)
     _store(model, system, user, schema, out)
     return out
 
@@ -159,30 +252,76 @@ async def _with_backoff(make_call):
 
 
 async def _batch(calls: list[dict], concurrency: int) -> list[dict]:
+    results = [None] * len(calls)
+    pending = []
+    for index, call in enumerate(calls):
+        hit = cached(call["model"], call["system"], call["user"], call["schema"])
+        if hit is not None:
+            stats.hits += 1
+            results[index] = hit
+        else:
+            pending.append((index, call))
+
+    if not pending:
+        return results
+    if _offline():
+        model = pending[0][1]["model"]
+        raise CacheMiss(f"LAPSE_OFFLINE=1 and no cached response for this {model} call")
+
+    sem = asyncio.Semaphore(concurrency)
+
+    if _provider() == "bedrock":
+        client = _bedrock_client()
+
+        async def one_bedrock(index: int, call: dict) -> None:
+            async with sem:
+                response = await asyncio.to_thread(
+                    client.converse,
+                    **_bedrock_request(
+                        call["model"],
+                        call["system"],
+                        call["user"],
+                        call["schema"],
+                        call.get("max_tokens", MAX_OUTPUT_TOKENS),
+                    ),
+                )
+            result = _bedrock_response(response)
+            effective_model = _effective_model(call["model"])
+            stats.add(effective_model, response.get("usage", {}))
+            _store(call["model"], call["system"], call["user"], call["schema"], result)
+            results[index] = result
+
+        await asyncio.gather(*(one_bedrock(index, call) for index, call in pending))
+        return results
+
     from openai import AsyncOpenAI
 
     client = AsyncOpenAI(max_retries=MAX_RETRIES)
-    sem = asyncio.Semaphore(concurrency)
-    buckets = {m: TokenBucket(TPM_LIMITS.get(m, DEFAULT_TPM) * TPM_HEADROOM) for m in {c["model"] for c in calls}}
+    buckets = {
+        model: TokenBucket(TPM_LIMITS.get(model, DEFAULT_TPM) * TPM_HEADROOM)
+        for model in {call["model"] for _, call in pending}
+    }
 
-    async def one(c: dict) -> dict:
-        hit = cached(c["model"], c["system"], c["user"], c["schema"])
-        if hit is not None:
-            stats.hits += 1
-            return hit
-        if _offline():
-            raise CacheMiss(f"LAPSE_OFFLINE=1 and no cached response for this {c['model']} call")
+    async def one_openai(index: int, call: dict) -> None:
         async with sem:
-            await buckets[c["model"]].acquire(estimate_tokens(c))
-            resp = await _with_backoff(lambda: client.chat.completions.create(
-                **_request(c["model"], c["system"], c["user"], c["schema"], c.get("max_tokens", MAX_OUTPUT_TOKENS))))
-        out = json.loads(resp.choices[0].message.content)
-        stats.add(c["model"], resp.usage)
-        _store(c["model"], c["system"], c["user"], c["schema"], out)
-        return out
+            await buckets[call["model"]].acquire(estimate_tokens(call))
+            response = await _with_backoff(lambda: client.chat.completions.create(
+                **_request(
+                    call["model"],
+                    call["system"],
+                    call["user"],
+                    call["schema"],
+                    call.get("max_tokens", MAX_OUTPUT_TOKENS),
+                )
+            ))
+        result = json.loads(response.choices[0].message.content)
+        stats.add(call["model"], response.usage)
+        _store(call["model"], call["system"], call["user"], call["schema"], result)
+        results[index] = result
 
     try:
-        return await asyncio.gather(*(one(c) for c in calls))
+        await asyncio.gather(*(one_openai(index, call) for index, call in pending))
+        return results
     finally:
         await client.close()
 
