@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
-// The browser calls /api/* on this server and Next forwards it to FastAPI, so pages need no absolute URL,
-// no env var and no CORS. Point API_ORIGIN elsewhere to use a remote API.
-const API_ORIGIN = process.env.API_ORIGIN ?? "http://localhost:8000";
+// Keep relative downloads and browser fetches on the same API even when local development uses a non-default port.
+const API_ORIGIN = (
+  process.env.API_ORIGIN
+  ?? process.env.NEXT_PUBLIC_API_URL
+  ?? "http://localhost:8000"
+).replace(/\/$/, "");
 
 const nextConfig = {
   async rewrites() {

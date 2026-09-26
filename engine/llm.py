@@ -27,6 +27,7 @@ from engine.config import LLM_CACHE_DIR
 CONCURRENCY = 16
 MAX_RETRIES = 2          # SDK-level; _with_backoff below does the patient retrying
 BACKOFF_ATTEMPTS = 12
+BEDROCK_MODEL_ATTEMPTS = 3
 MAX_OUTPUT_TOKENS = 1500  # default cap; OpenAI charges prompt + max_tokens against the per-minute budget on admission
 
 # Tokens per minute this account may use (x-ratelimit-limit-tokens). Batches pace themselves to TPM_HEADROOM of
@@ -104,13 +105,20 @@ def cached(model: str, system: str, user: str, schema: dict) -> dict | None:
     return None
 
 
-def _store(model: str, system: str, user: str, schema: dict, response: dict) -> None:
+def _store(
+    model: str,
+    system: str,
+    user: str,
+    schema: dict,
+    response: dict,
+    provider_model: str | None = None,
+) -> None:
     cache_dir = _cache_dir()
     cache_dir.mkdir(parents=True, exist_ok=True)
     path = cache_dir / f"{_key(model, system, user, schema)}.json"
     body = json.dumps({
         "provider": _provider(),
-        "model": _effective_model(model),
+        "model": provider_model or _effective_model(model),
         "system": system,
         "user": user,
         "response": response,
@@ -148,9 +156,10 @@ def _bedrock_request(
     user: str,
     schema: dict,
     max_tokens: int = MAX_OUTPUT_TOKENS,
+    model_id: str | None = None,
 ) -> dict:
     return {
-        "modelId": _effective_model(model),
+        "modelId": model_id or _effective_model(model),
         "system": [{"text": system}],
         "messages": [{"role": "user", "content": [{"text": user}]}],
         "inferenceConfig": {"temperature": 0, "maxTokens": max_tokens},
@@ -185,6 +194,69 @@ def _bedrock_response(response: dict) -> dict:
     raise ValueError("Bedrock response did not contain a return_json tool result")
 
 
+def _bedrock_models(model: str) -> list[str]:
+    """Primary model plus a stronger Bedrock fallback for malformed fast-model output."""
+    primary = _effective_model(model)
+    fast = os.environ.get("BEDROCK_MODEL_FAST", config.BEDROCK_MODEL_FAST)
+    verify = os.environ.get("BEDROCK_MODEL_VERIFY", config.BEDROCK_MODEL_VERIFY)
+    return [primary, verify] if primary == fast and verify != primary else [primary]
+
+
+def _retryable_bedrock_error(error: Exception) -> bool:
+    """ModelErrorException means Bedrock rejected the model's own tool sequence."""
+    if isinstance(error, ValueError):
+        return True
+    try:
+        from botocore.exceptions import ClientError
+    except ImportError:
+        return False
+    return isinstance(error, ClientError) and error.response.get("Error", {}).get("Code") == "ModelErrorException"
+
+
+def _bedrock_converse(client, model: str, system: str, user: str, schema: dict, max_tokens: int):
+    last_error = None
+    for model_id in _bedrock_models(model):
+        for attempt in range(BEDROCK_MODEL_ATTEMPTS):
+            try:
+                response = client.converse(
+                    **_bedrock_request(model, system, user, schema, max_tokens, model_id=model_id)
+                )
+                return response, _bedrock_response(response), model_id
+            except Exception as error:
+                if not _retryable_bedrock_error(error):
+                    raise
+                last_error = error
+                if attempt + 1 < BEDROCK_MODEL_ATTEMPTS:
+                    time.sleep(0.2 * (2 ** attempt))
+    raise last_error
+
+
+async def _bedrock_converse_async(
+    client,
+    model: str,
+    system: str,
+    user: str,
+    schema: dict,
+    max_tokens: int,
+):
+    last_error = None
+    for model_id in _bedrock_models(model):
+        for attempt in range(BEDROCK_MODEL_ATTEMPTS):
+            try:
+                response = await asyncio.to_thread(
+                    client.converse,
+                    **_bedrock_request(model, system, user, schema, max_tokens, model_id=model_id),
+                )
+                return response, _bedrock_response(response), model_id
+            except Exception as error:
+                if not _retryable_bedrock_error(error):
+                    raise
+                last_error = error
+                if attempt + 1 < BEDROCK_MODEL_ATTEMPTS:
+                    await asyncio.sleep(0.2 * (2 ** attempt))
+    raise last_error
+
+
 def _offline() -> bool:
     return os.environ.get("LAPSE_OFFLINE") == "1"
 
@@ -198,9 +270,9 @@ def call_json(model: str, system: str, user: str, schema: dict, max_tokens: int 
         raise CacheMiss(f"LAPSE_OFFLINE=1 and no cached response for this {model} call")
 
     if _provider() == "bedrock":
-        effective_model = _effective_model(model)
-        resp = _bedrock_client().converse(**_bedrock_request(model, system, user, schema, max_tokens))
-        out = _bedrock_response(resp)
+        resp, out, effective_model = _bedrock_converse(
+            _bedrock_client(), model, system, user, schema, max_tokens
+        )
         stats.add(effective_model, resp.get("usage", {}))
     else:
         from openai import OpenAI
@@ -210,7 +282,7 @@ def call_json(model: str, system: str, user: str, schema: dict, max_tokens: int 
         )
         out = json.loads(resp.choices[0].message.content)
         stats.add(model, resp.usage)
-    _store(model, system, user, schema, out)
+    _store(model, system, user, schema, out, provider_model=effective_model if _provider() == "bedrock" else None)
     return out
 
 
@@ -289,20 +361,23 @@ async def _batch(calls: list[dict], concurrency: int, use_cache: bool = True) ->
 
         async def one_bedrock(index: int, call: dict) -> None:
             async with sem:
-                response = await asyncio.to_thread(
-                    client.converse,
-                    **_bedrock_request(
-                        call["model"],
-                        call["system"],
-                        call["user"],
-                        call["schema"],
-                        call.get("max_tokens", MAX_OUTPUT_TOKENS),
-                    ),
+                response, result, effective_model = await _bedrock_converse_async(
+                    client,
+                    call["model"],
+                    call["system"],
+                    call["user"],
+                    call["schema"],
+                    call.get("max_tokens", MAX_OUTPUT_TOKENS),
                 )
-            result = _bedrock_response(response)
-            effective_model = _effective_model(call["model"])
             stats.add(effective_model, response.get("usage", {}))
-            _store(call["model"], call["system"], call["user"], call["schema"], result)
+            _store(
+                call["model"],
+                call["system"],
+                call["user"],
+                call["schema"],
+                result,
+                provider_model=effective_model,
+            )
             results[index] = result
 
         await asyncio.gather(*(one_bedrock(index, call) for index, call in pending))
