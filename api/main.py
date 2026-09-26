@@ -9,7 +9,8 @@ from pydantic import BaseModel
 from engine import store
 from engine.config import ACTIVE_RULE_PACK, AS_OF_DATE, DATA_DIR
 from engine.rulepack import load_pack
-from engine.loop.clinician import case_for_token, sign_clinician
+from engine.loop.database import check_database
+from engine.loop.clinician import case_for_token, clinician_card, sign_clinician
 from engine.loop.inbound import handle_reply
 from engine.loop.outbound import send_ask
 from engine.loop.pdf import build_appeal_pdf, build_attestation_pdf
@@ -146,7 +147,10 @@ def inbound_email(body: dict):
 
 @router.post("/cases/{id}/check-database")
 def case_check_database(id: str):
-    not_implemented()
+    try:
+        return check_database(id)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.get("/clinician/{token}")
@@ -154,7 +158,7 @@ def get_clinician(token: str):
     case = case_for_token(token)
     if case is None:
         raise HTTPException(status_code=404, detail="invalid token")
-    return {"patient_id": case.patient_id, "name": case.display_name, "status": case.status.value}
+    return clinician_card(case)
 
 
 @router.post("/clinician/{token}")

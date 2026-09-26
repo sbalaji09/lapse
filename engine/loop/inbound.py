@@ -7,8 +7,10 @@ import re
 from datetime import datetime, timezone
 
 from engine.models import CaseStatus, Fact, Holder, Source
-import engine.config as config
 import engine.store as store
+from engine.buckets import values
+from engine.rulepack import load_pack
+from engine.solver import reevaluate
 
 _NUMBER_WORDS = {
     "uno": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7,
@@ -102,14 +104,21 @@ def handle_reply(
             source_ref=ref,
             quote=item["quote"],
             recorded_at=datetime.now(timezone.utc),
-            rule_pack_version=config.ACTIVE_RULE_PACK,
+            rule_pack_version=load_pack().version,
         )
         case.facts.append(fact)
 
-    target.status = "resolved_true"
+    before = case.bucket
+    target.status = "answered"          # answered items survive re-evaluation; refined below
+    case = reevaluate(case)
+    target = next(m for m in case.missing if m.id == target.id)
+    implied = values(case.facts).get("significantly_impairs") if target.key == "standing_tolerance_minutes" \
+        else parsed["value"]
+    target.status = "resolved_true" if implied is True else "resolved_false" if implied is False else "answered"
+    if case.bucket != before:
+        case.events.append({"at": now, "kind": "case_flipped",
+                            "detail": {"from": before.value, "to": case.bucket.value}})
 
-    # ponytail: local re-determination shortcut, not the full A4 solver re-run;
-    # import engine.solver here and re-run it once it exists.
     remaining = [m for m in case.missing if m.status == "open" and m.id != target.id]
     if remaining and remaining[0].holder == Holder.clinician:
         case.status = CaseStatus.waiting_clinician
@@ -119,4 +128,4 @@ def handle_reply(
         case.status = CaseStatus.needs_action
 
     store.save_case(case)
-    return {"status": case.status.value, "parsed": True, "fact_key": target.key}
+    return {"status": case.status.value, "bucket": case.bucket.value, "parsed": True, "fact_key": target.key}
