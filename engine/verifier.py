@@ -42,7 +42,7 @@ def verify_call(c: Claim) -> dict:
     claim = (f"condition: {c.condition}; category: {c.category}; qualifying: {str(c.qualifying_category).lower()}; "
              f"impairs: {c.significantly_impairs.value}")
     return {"model": MODEL_VERIFY, "system": SYSTEM, "user": f"Claim: {claim}\nQuoted sentence: \"{c.quote}\"",
-            "schema": SCHEMA}
+            "schema": SCHEMA, "max_tokens": 150}     # a boolean and one sentence; a small cap keeps the TPM reservation small
 
 
 def apply(c: Claim, response: dict) -> Claim:
