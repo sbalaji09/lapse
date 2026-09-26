@@ -29,7 +29,7 @@ CLINICS = {
 
 # Local remains the default. AWS mode swaps only provider-specific settings; callers still use MODEL_FAST/VERIFY.
 LAPSE_BACKEND = os.environ.get("LAPSE_BACKEND", "local")
-AWS_REGION = os.environ.get("AWS_REGION", "us-west-2")
+AWS_REGION = os.environ.get("AWS_REGION", "us-east-1")
 
 OPENAI_MODEL_FAST = os.environ.get("OPENAI_MODEL_FAST", "gpt-4.1-mini")
 OPENAI_MODEL_VERIFY = os.environ.get("OPENAI_MODEL_VERIFY", "gpt-4.1")

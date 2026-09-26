@@ -11,10 +11,7 @@ from engine.config import AWS_REGION
 
 NAME = "lapse-patient-safety"
 POLICY = {
-    "description": (
-        "Blocks patient-facing eligibility determinations and independently "
-        "checks clinical assertions against source notes."
-    ),
+    "description": "Blocks patient-facing eligibility and coverage determinations.",
     "topicPolicyConfig": {
         "topicsConfig": [{
             "name": "Patient eligibility determinations",
@@ -37,12 +34,6 @@ POLICY = {
             "outputEnabled": True,
         }],
         "tierConfig": {"tierName": "CLASSIC"},
-    },
-    "contextualGroundingPolicyConfig": {
-        "filtersConfig": [
-            {"type": "GROUNDING", "threshold": 0.40, "action": "BLOCK", "enabled": True},
-            {"type": "RELEVANCE", "threshold": 0.70, "action": "NONE", "enabled": True},
-        ]
     },
     "blockedInputMessaging": (
         "I can explain the review process, but I cannot make or promise an eligibility decision."
@@ -93,7 +84,7 @@ def provision(name: str, region: str) -> tuple[str, str]:
 
     version = client.create_guardrail_version(
         guardrailIdentifier=guardrail_id,
-        description="Patient determination denial and claim grounding thresholds.",
+        description="Patient eligibility and coverage determination denial.",
     )["version"]
     wait_ready(client, guardrail_id, version)
     guardrails.save_local_config(guardrail_id, version, region)

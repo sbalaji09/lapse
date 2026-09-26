@@ -11,9 +11,8 @@ callers. Preserve the local OpenAI path and disk-cache replay.
 - `LAPSE_BACKEND=aws`: Bedrock Runtime Converse in `AWS_REGION`.
 - `BEDROCK_MODEL_FAST`: extraction model, default Amazon Nova Lite.
 - `BEDROCK_MODEL_VERIFY`: verifier model, default Amazon Nova Pro.
-- Credentials use boto3's standard chain. Prefer `AWS_PROFILE`/IAM Identity
-  Center; access-key fields in `.env.example` are only for synthetic local
-  development.
+- `AWS_BEARER_TOKEN_BEDROCK`: the Bedrock API key used by boto3 for local
+  development. No IAM profile or access-key pair is required.
 
 OpenAI is an explicit fallback: switch `LAPSE_BACKEND` back to `local`. Bedrock
 errors do not silently resend clinical text to OpenAI because that would break
@@ -50,8 +49,8 @@ step.
 - Offline mode must inspect the cache before constructing either provider
   client.
 - The existing Channel B/verifier tests and full suite must remain green.
-- A live Bedrock smoke requires AWS credentials plus model access in
-  `us-west-2`; no live call is required for unit tests.
+- A live Bedrock smoke requires a Bedrock API key plus model access in the
+  configured region; no live call is required for unit tests.
 
 On 2026-09-26, synthetic live smokes passed through Converse for both configured
 defaults: Nova Lite (fast path) and Nova Pro (verifier path).
@@ -60,4 +59,4 @@ defaults: Nova Lite (fast path) and Nova Pro (verifier path).
 
 - Bedrock batch inference for the full 1,000-person nightly run.
 - S3-backed shared LLM cache.
-- Bedrock-vs-OpenAI eval comparison and production guardrails.
+- Bedrock-vs-OpenAI eval comparison.

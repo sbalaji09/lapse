@@ -7,7 +7,7 @@ from fastapi.responses import Response
 from pydantic import BaseModel
 
 from api.dev import router as dev_router
-from engine import store
+from engine import guardrails, store
 from engine.config import ACTIVE_RULE_PACK, AS_OF_DATE, DATA_DIR
 from engine.rulepack import load_pack
 from engine.loop.database import check_database
@@ -46,6 +46,10 @@ class ReplyBody(BaseModel):
 
 class DecisionBody(BaseModel):
     decision: str
+
+
+class GuardrailBody(BaseModel):
+    text: str
 
 
 def summary_dict(cases, channel_a_only: bool = False) -> dict:
@@ -216,6 +220,16 @@ def get_eval():
 @router.get("/fragile")
 def get_fragile():
     return [c.model_dump(mode="json") for c in store.list_cases(fragile=True)]
+
+
+@router.post("/guardrails/check")
+def check_guardrail(body: GuardrailBody):
+    try:
+        return guardrails.check_patient_message(body.text)
+    except guardrails.GuardrailNotConfigured as error:
+        raise HTTPException(status_code=503, detail=str(error))
+    except guardrails.GuardrailCacheMiss as error:
+        raise HTTPException(status_code=503, detail=str(error))
 
 
 @router.post("/rulepack/{state}")

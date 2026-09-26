@@ -1,8 +1,7 @@
-"""Amazon Bedrock Guardrails: patient-message safety and contextual grounding.
+"""Amazon Bedrock Guardrails for patient-message safety.
 
-The deterministic eligibility engine never calls this module. Patient-facing
-output is checked as a denied topic; clinical assertions are checked against
-their source note for the independent grounding report.
+The deterministic eligibility engine never calls this module. Candidate
+patient-facing output is checked against a denied topic before it is recorded.
 """
 import argparse
 import hashlib
@@ -55,11 +54,6 @@ def configured() -> bool:
         return False
 
 
-def identity() -> dict:
-    guardrail_id, version, region = _settings()
-    return {"id": guardrail_id, "version": version, "region": region}
-
-
 def save_local_config(guardrail_id: str, version: str, region: str) -> None:
     config.GUARDRAIL_CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
     config.GUARDRAIL_CONFIG_PATH.write_text(json.dumps({
@@ -73,14 +67,14 @@ def _runtime_client(region: str):
     return boto3.client("bedrock-runtime", region_name=region)
 
 
-def _cache_path(guardrail_id: str, version: str, source: str, content: list[dict]) -> Path:
-    raw = json.dumps([guardrail_id, version, source, content], sort_keys=True, ensure_ascii=False)
+def _cache_path(guardrail_id: str, version: str, text: str) -> Path:
+    raw = json.dumps([guardrail_id, version, text], ensure_ascii=False)
     return config.GUARDRAIL_CACHE_DIR / f"{hashlib.sha256(raw.encode()).hexdigest()}.json"
 
 
-def _apply(source: str, content: list[dict]) -> dict:
+def _apply(text: str) -> dict:
     guardrail_id, version, region = _settings()
-    path = _cache_path(guardrail_id, version, source, content)
+    path = _cache_path(guardrail_id, version, text)
     if path.exists():
         return json.loads(path.read_text())
     if os.environ.get("LAPSE_OFFLINE") == "1":
@@ -89,8 +83,8 @@ def _apply(source: str, content: list[dict]) -> dict:
     response = _runtime_client(region).apply_guardrail(
         guardrailIdentifier=guardrail_id,
         guardrailVersion=version,
-        source=source,
-        content=content,
+        source="OUTPUT",
+        content=[{"text": {"text": text}}],
         outputScope="FULL",
     )
     response.pop("ResponseMetadata", None)
@@ -105,7 +99,7 @@ def _apply(source: str, content: list[dict]) -> dict:
 
 def check_patient_message(text: str) -> dict:
     """Check a candidate patient-facing output for a denied determination."""
-    response = _apply("OUTPUT", [{"text": {"text": text}}])
+    response = _apply(text)
     topics = []
     for assessment in response.get("assessments", []):
         topics.extend(assessment.get("topicPolicy", {}).get("topics", []))
@@ -115,6 +109,7 @@ def check_patient_message(text: str) -> dict:
         "action": response["action"],
         "output": output,
         "topics": topics,
+        "provider": "Amazon Bedrock Guardrails",
     }
 
 
@@ -123,30 +118,6 @@ def enforce_patient_message(text: str) -> dict:
     if not assessment["allowed"]:
         raise GuardrailIntervened(assessment)
     return assessment
-
-
-def check_grounding(source: str, query: str, assertion: str) -> dict:
-    """Score one assertion against its full source and extraction standard."""
-    response = _apply("OUTPUT", [
-        {"text": {"text": source, "qualifiers": ["grounding_source"]}},
-        {"text": {"text": query, "qualifiers": ["query"]}},
-        {"text": {"text": assertion, "qualifiers": ["guard_content"]}},
-    ])
-    filters = {}
-    for assessment in response.get("assessments", []):
-        for item in assessment.get("contextualGroundingPolicy", {}).get("filters", []):
-            filters[item["type"].lower()] = {
-                "score": item["score"],
-                "threshold": item["threshold"],
-                "action": item["action"],
-            }
-    if set(filters) != {"grounding", "relevance"}:
-        raise ValueError("Bedrock response did not contain grounding and relevance assessments")
-    return {
-        "kept": filters["grounding"]["action"] == "NONE",
-        "action": response["action"],
-        **filters,
-    }
 
 
 def main() -> None:

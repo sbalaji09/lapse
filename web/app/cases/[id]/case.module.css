@@ -75,6 +75,171 @@
   color: var(--ink-muted);
 }
 
+.guardrailBoundary {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  gap: 18px;
+  padding: 18px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.guardrailDraft {
+  min-width: 0;
+  padding: 4px 4px 4px 2px;
+}
+
+.guardrailMark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--sun);
+}
+
+.guardrailMark span {
+  display: grid;
+  color: rgba(255, 248, 237, 0.66);
+  font-size: 13px;
+}
+
+.guardrailMark strong {
+  color: var(--paper);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.guardrailTitle {
+  margin: 20px 0 5px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.guardrailCopy {
+  margin: 0;
+  color: rgba(255, 248, 237, 0.72);
+  font-size: 15px;
+}
+
+.guardrailQuote {
+  margin: 16px 0 0;
+  padding: 11px 14px;
+  border: 1px solid rgba(255, 248, 237, 0.22);
+  border-radius: 7px;
+  background: rgba(255, 248, 237, 0.08);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.guardrailDecision {
+  align-self: stretch;
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.guardrailLabel {
+  margin: 0 0 6px;
+  color: var(--ink-faint);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.guardrailStandby {
+  margin: 0 0 18px;
+  color: var(--ink-muted);
+  font-size: 15px;
+}
+
+.guardrailResult {
+  margin-bottom: 16px;
+  padding: 14px;
+  border: 1px solid rgba(63, 107, 74, 0.32);
+  border-radius: 8px;
+  background: var(--sage);
+}
+
+.guardrailFailed {
+  border-color: rgba(184, 67, 29, 0.42);
+  background: var(--clay-soft);
+}
+
+.guardrailResultHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--pass);
+}
+
+.guardrailFailed .guardrailResultHead {
+  color: var(--fail);
+}
+
+.guardrailResultHead span {
+  display: grid;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.guardrailResultHead strong {
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.guardrailOutcome {
+  margin: 10px 0 0;
+  font-size: 14px;
+}
+
+.guardrailSafe {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.guardrailResult .guardrailLabel {
+  margin-top: 13px;
+}
+
+.guardrailFacts {
+  display: flex;
+  gap: 20px;
+  margin: 14px 0 0;
+  padding-top: 11px;
+  border-top: 1px solid rgba(30, 30, 30, 0.14);
+}
+
+.guardrailFacts div {
+  display: grid;
+  gap: 1px;
+}
+
+.guardrailFacts dt {
+  color: var(--ink-faint);
+  font-size: 11px;
+}
+
+.guardrailFacts dd {
+  margin: 0;
+  font-size: 13px;
+  text-transform: lowercase;
+}
+
+.guardrailError {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-radius: 7px;
+  background: var(--clay-soft);
+  color: var(--fail);
+  font-size: 14px;
+}
+
 .email {
   grid-column: 1 / -1;
   display: grid;
@@ -417,10 +582,20 @@
 
 @media (max-width: 720px) {
   .cols,
-  .email {
+  .email,
+  .guardrailBoundary {
     grid-template-columns: 1fr;
   }
   .action {
     grid-template-columns: 1fr;
+  }
+  .guardrailFacts {
+    display: grid;
+    gap: 8px;
+  }
+  .guardrailDecision > button {
+    width: 100%;
+    justify-content: center;
+    white-space: normal;
   }
 }

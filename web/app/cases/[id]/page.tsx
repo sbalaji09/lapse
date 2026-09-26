@@ -15,6 +15,16 @@ import c from "./case.module.css";
 type CaseDetail = Case & { notes: Note[]; clinician_url: string };
 type Dx = { claim_id: string; date: string; code: string; display: string; sequence: number };
 type Event = { at: string; kind: string; detail: any };
+type GuardrailResult = {
+  allowed: boolean;
+  action: string;
+  output: string;
+  provider: string;
+  topics: Array<{ name: string; type: string; action: string; detected?: boolean }>;
+};
+
+const UNSAFE_PATIENT_MESSAGE =
+  "Rosa, you are exempt from the work requirement and will keep your Medi-Cal coverage.";
 
 // Rosa's pre-written reply for the demo, with the English gloss shown under it.
 const DEMO_REPLIES: Record<string, { text: string; gloss: string }> = {
@@ -81,6 +91,9 @@ export default function CaseDetailPage() {
   const [flipped, setFlipped] = useState<{ from: Bucket; to: Bucket } | null>(null);
   const [reply, setReply] = useState("");
   const [waitingOnClinician, setWaitingOnClinician] = useState(false);
+  const [guardrail, setGuardrail] = useState<GuardrailResult | null>(null);
+  const [guardrailBusy, setGuardrailBusy] = useState(false);
+  const [guardrailError, setGuardrailError] = useState<string | null>(null);
   const bucketRef = useRef<Bucket | null>(null);
 
   const load = useCallback(async () => {
@@ -99,6 +112,8 @@ export default function CaseDetailPage() {
   useEffect(() => {
     load();
     setReply(DEMO_REPLIES[id]?.text ?? "");
+    setGuardrail(null);
+    setGuardrailError(null);
   }, [id, load]);
 
   // After "Send to Dr. X", watch for the signature landing in the other tab.
@@ -125,6 +140,25 @@ export default function CaseDetailPage() {
       await load();
     } finally {
       setBusy(false);
+    }
+  }
+
+  async function challengeGuardrail() {
+    setGuardrailBusy(true);
+    setGuardrailError(null);
+    try {
+      const response = await apiFetch("/api/guardrails/check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: UNSAFE_PATIENT_MESSAGE }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.detail ?? `Guardrail check failed (${response.status})`);
+      setGuardrail(result);
+    } catch (cause) {
+      setGuardrailError(cause instanceof Error ? cause.message : "The Guardrail check could not run.");
+    } finally {
+      setGuardrailBusy(false);
     }
   }
 
@@ -214,6 +248,81 @@ export default function CaseDetailPage() {
               </a>
             )}
           </div>
+
+          {id === "g-rosa" && step?.holder === "patient" && step.status === "open" && (
+            <aside className={c.guardrailBoundary} aria-labelledby="guardrail-title">
+              <div className={c.guardrailDraft}>
+                <div className={c.guardrailMark}>
+                  <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.7"
+                    strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M12 3 19 6v5c0 4.8-2.7 8.1-7 10-4.3-1.9-7-5.2-7-10V6l7-3Z" />
+                    <path d="M8.5 12h7" />
+                  </svg>
+                  <span>
+                    <strong>Outbound safety challenge</strong>
+                    Amazon Bedrock Guardrails
+                  </span>
+                </div>
+                <h2 id="guardrail-title" className={c.guardrailTitle}>Try the message Lapse must refuse.</h2>
+                <p className={c.guardrailCopy}>This draft makes an eligibility decision that only the state can make.</p>
+                <blockquote className={c.guardrailQuote}>&ldquo;{UNSAFE_PATIENT_MESSAGE}&rdquo;</blockquote>
+              </div>
+
+              <div className={c.guardrailDecision}>
+                {guardrail ? (
+                  <div className={`${c.guardrailResult} ${guardrail.allowed ? c.guardrailFailed : ""}`} role="status">
+                    <div className={c.guardrailResultHead}>
+                      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.8"
+                        strokeLinecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M8 12h8" />
+                      </svg>
+                      <span>
+                        <strong>{guardrail.allowed ? "Not blocked — do not send" : "Blocked before sending"}</strong>
+                        {guardrail.provider}
+                      </span>
+                    </div>
+                    <p className={c.guardrailOutcome}>
+                      {guardrail.allowed
+                        ? "The safety boundary did not intervene."
+                        : "Rosa did not receive this draft. Her case and activity log are unchanged."}
+                    </p>
+                    {!guardrail.allowed && guardrail.output && (
+                      <>
+                        <p className={c.guardrailLabel}>Safe guidance returned</p>
+                        <blockquote className={c.guardrailSafe}>&ldquo;{guardrail.output}&rdquo;</blockquote>
+                      </>
+                    )}
+                    <dl className={c.guardrailFacts}>
+                      <div>
+                        <dt>Denied topic</dt>
+                        <dd>{guardrail.topics.find((topic) => topic.detected)?.name ?? "None detected"}</dd>
+                      </div>
+                      <div>
+                        <dt>AWS action</dt>
+                        <dd>{guardrail.action.replaceAll("_", " ")}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                ) : (
+                  <>
+                    <p className={c.guardrailLabel}>At the send boundary</p>
+                    <p className={c.guardrailStandby}>The candidate is still inside Lapse. Challenge the live policy before using the reviewed question above.</p>
+                  </>
+                )}
+
+                {guardrailError && (
+                  <p className={c.guardrailError} role="alert">
+                    {guardrailError} Run the Guardrail provision command, then try again.
+                  </p>
+                )}
+
+                <button className={u.btnDark} onClick={challengeGuardrail} disabled={guardrailBusy}>
+                  {guardrailBusy ? "Checking with Bedrock…" : guardrail ? "Challenge it again" : "Attempt unsafe send →"}
+                </button>
+              </div>
+            </aside>
+          )}
 
           {step?.holder === "patient" && step.status === "asked" && (
             <div className={c.email}>
