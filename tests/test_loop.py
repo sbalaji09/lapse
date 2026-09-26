@@ -1,10 +1,31 @@
 """The demo flows end to end through the HTTP API, against a throwaway database loaded with the golden cases:
 Rosa is asked, replies in Spanish, flips to the clinician, is signed, and gets a PDF; Deshawn is cleared by one
 database click; a vague reply is left for a human."""
+import asyncio
+
+import httpx
 import pytest
-from fastapi.testclient import TestClient
 
 from engine import store
+
+
+class APIClient:
+    def __init__(self, app):
+        self.app = app
+
+    def request(self, method, path, **kwargs):
+        async def send():
+            transport = httpx.ASGITransport(app=self.app)
+            async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
+                return await client.request(method, path, **kwargs)
+
+        return asyncio.run(send())
+
+    def get(self, path, **kwargs):
+        return self.request("GET", path, **kwargs)
+
+    def post(self, path, **kwargs):
+        return self.request("POST", path, **kwargs)
 
 
 @pytest.fixture
@@ -13,7 +34,7 @@ def api(tmp_path, monkeypatch):
     store.load_fixtures()
     from api.main import app
 
-    return TestClient(app)
+    return APIClient(app)
 
 
 ROSA_REPLY = "Dejé de trabajar en marzo, la espalda no me aguanta más de diez minutos de pie."

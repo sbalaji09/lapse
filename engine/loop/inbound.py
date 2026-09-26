@@ -6,11 +6,11 @@
 import re
 from datetime import datetime, timezone
 
-from engine.models import CaseStatus, Fact, Holder, Source
-import engine.store as store
 from engine.buckets import values
-from engine.rulepack import load_pack
-from engine.solver import reevaluate
+from engine.models import Fact, Holder, Source
+import engine.solver as solver
+import engine.store as store
+from engine.loop.workflow import status_after_reevaluation
 
 _NUMBER_WORDS = {
     "uno": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7,
@@ -66,6 +66,12 @@ def handle_reply(
     if case is None:
         raise ValueError(f"no such case: {case_id}")
 
+    if not message_id:
+        reply_number = 1 + sum(
+            event.get("kind") == "patient_reply_received" for event in case.events
+        )
+        message_id = f"reply-{case_id}-{reply_number}"
+
     now = datetime.now(timezone.utc).isoformat()
     case.events.append({
         "at": now,
@@ -93,8 +99,8 @@ def handle_reply(
 
     parsed_items = [parsed] + parse_side_facts(text)
     for item in parsed_items:
-        ref = {"message_id": message_id} if message_id else {}
-        ref.update(source_ref or {})
+        ref = dict(source_ref or {})
+        ref["message_id"] = message_id
         fact = Fact(
             id=f"fact-{case_id}-{item['key']}-{len(case.facts)}",
             patient_id=case_id,
@@ -104,13 +110,13 @@ def handle_reply(
             source_ref=ref,
             quote=item["quote"],
             recorded_at=datetime.now(timezone.utc),
-            rule_pack_version=load_pack().version,
+            rule_pack_version=case.determination_final.rule_pack_version,
         )
         case.facts.append(fact)
 
     before = case.bucket
     target.status = "answered"          # answered items survive re-evaluation; refined below
-    case = reevaluate(case)
+    case = solver.reevaluate(case)
     target = next(m for m in case.missing if m.id == target.id)
     implied = values(case.facts).get("significantly_impairs") if target.key == "standing_tolerance_minutes" \
         else parsed["value"]
@@ -119,13 +125,7 @@ def handle_reply(
         case.events.append({"at": now, "kind": "case_flipped",
                             "detail": {"from": before.value, "to": case.bucket.value}})
 
-    remaining = [m for m in case.missing if m.status == "open" and m.id != target.id]
-    if remaining and remaining[0].holder == Holder.clinician:
-        case.status = CaseStatus.waiting_clinician
-    elif remaining:
-        case.status = CaseStatus.waiting_patient
-    else:
-        case.status = CaseStatus.needs_action
+    case.status = status_after_reevaluation(case)
 
     store.save_case(case)
     return {"status": case.status.value, "bucket": case.bucket.value, "parsed": True, "fact_key": target.key}

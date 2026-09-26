@@ -3,10 +3,10 @@ import hashlib
 import hmac
 from datetime import datetime, timezone
 
+import engine.solver as solver
 import engine.store as store
-from engine.rulepack import load_pack
-from engine.solver import reevaluate
 from engine.models import Case, CaseStatus, Fact, Holder, Source
+from engine.loop.workflow import status_after_reevaluation
 
 CLINICIAN_TOKEN_SECRET = b"lapse-demo-secret"  # hackathon demo only, not real auth
 
@@ -30,33 +30,41 @@ def sign_clinician(case_id: str, decision: str) -> dict:
     if case is None:
         raise ValueError(f"no such case: {case_id}")
 
-    clinician_missing = next(
-        (m for m in case.missing if m.holder == Holder.clinician and m.status in ("open", "asked")),
+    pending = next(
+        (
+            m for m in case.missing
+            if m.status in ("open", "asked")
+        ),
         None,
     )
+    if pending is None or pending.holder != Holder.clinician:
+        raise ValueError("no pending clinician attestation")
 
     if decision == "sign":
-        if clinician_missing is not None:
-            case.facts.append(Fact(
-                id=f"fact-{case_id}-{clinician_missing.key}-{len(case.facts)}",
-                patient_id=case_id,
-                key=clinician_missing.key,
-                value=True,
-                source=Source.clinician_attestation,
-                source_ref={"attestation_id": f"att-{case_id}"},
-                quote=None,
-                recorded_at=datetime.now(timezone.utc),
-                rule_pack_version=load_pack().version,
-            ))
-            clinician_missing.status = "resolved_true"
-        case = reevaluate(case)
-        case.status = CaseStatus.attestation_ready
+        case.facts.append(Fact(
+            id=f"fact-{case_id}-{pending.key}-{len(case.facts)}",
+            patient_id=case_id,
+            key=pending.key,
+            value=True,
+            source=Source.clinician_attestation,
+            source_ref={"attestation_id": f"att-{case_id}"},
+            quote=None,
+            recorded_at=datetime.now(timezone.utc),
+            rule_pack_version=case.determination_final.rule_pack_version,
+        ))
+        pending.status = "resolved_true"
+        case = solver.reevaluate(case)
+        case.status = status_after_reevaluation(
+            case,
+            fallback=CaseStatus.attestation_ready,
+        )
         case.events.append({
             "at": datetime.now(timezone.utc).isoformat(),
             "kind": "clinician_signed",
             "detail": {"clinician_name": case.clinician_name},
         })
     else:
+        pending.status = "resolved_false"
         case.status = CaseStatus.needs_action
         case.events.append({
             "at": datetime.now(timezone.utc).isoformat(),

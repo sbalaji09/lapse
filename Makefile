@@ -10,7 +10,7 @@ web:
 	cd web && npm run dev
 
 pipeline:
-	$(PYTHON) -m engine.pipeline
+	$(PYTHON) -m engine.pipeline $(ARGS)
 
 eval:
 	$(PYTHON) -m engine.eval
