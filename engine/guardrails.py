@@ -42,7 +42,7 @@ def _settings() -> tuple[str, str, str]:
     if not guardrail_id or not version:
         raise GuardrailNotConfigured(
             "set BEDROCK_GUARDRAIL_ID and BEDROCK_GUARDRAIL_VERSION, "
-            "or run scripts/provision_guardrail.py"
+            "or run python -m scripts.provision_guardrail"
         )
     return guardrail_id, version, region
 
@@ -53,6 +53,11 @@ def configured() -> bool:
         return True
     except GuardrailNotConfigured:
         return False
+
+
+def identity() -> dict:
+    guardrail_id, version, region = _settings()
+    return {"id": guardrail_id, "version": version, "region": region}
 
 
 def save_local_config(guardrail_id: str, version: str, region: str) -> None:
@@ -138,7 +143,7 @@ def check_grounding(source: str, query: str, assertion: str) -> dict:
     if set(filters) != {"grounding", "relevance"}:
         raise ValueError("Bedrock response did not contain grounding and relevance assessments")
     return {
-        "kept": all(item["action"] == "NONE" for item in filters.values()),
+        "kept": filters["grounding"]["action"] == "NONE",
         "action": response["action"],
         **filters,
     }

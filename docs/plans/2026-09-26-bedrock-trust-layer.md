@@ -34,10 +34,18 @@ attributes the condition to someone else.
 One Guardrail contains:
 
 - a denied topic for patient-directed coverage and eligibility determinations;
-- a contextual `GROUNDING` filter with threshold `0.70`;
-- a contextual `RELEVANCE` filter with threshold `0.70`.
+- a contextual `GROUNDING` filter with threshold `0.40`, calibrated against
+  the labeled synthetic golden claims;
+- a contextual `RELEVANCE` filter with threshold `0.70` in observe-only mode.
 
-`scripts/provision_guardrail.py` creates or updates the named Guardrail, creates
+Grounding is the independent keep/drop decision. Relevance is reported for
+diagnosis, but does not reject a claim: whether an assertion is responsive to
+an extraction prompt is different from whether its source actually supports
+it. On the golden calibration set, Bedrock scored the known family-history
+bait at `0.04`, the lowest true current claim at `0.43`, and the remaining true
+claims from `0.86` to `0.99`.
+
+`python -m scripts.provision_guardrail` creates or updates the named Guardrail, creates
 an immutable version, and writes its non-secret ID, version, and region to
 `.cache/bedrock_guardrail.json`. Environment variables override that local
 file:
